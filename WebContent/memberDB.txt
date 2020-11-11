@@ -1,0 +1,20 @@
+//SQL에서 MEMBER TABLE 만들기
+
+CREATE TABLE member (
+   no   NUMBER   PRIMARY KEY,
+   id    VARCHAR2(20)   NOT NULL UNIQUE,
+   pw VARCHAR2(20)   NOT NULL,
+   name VARCHAR2(20)   NOT NULL,
+    mobiie VARCHAR2(20)   NOT NULL,
+    address VARCHAR2(80)   NOT NULL,
+    type NUMBER DEFAULT 0,
+    vip NUMBER DEFAULT 0,
+    position VARCHAR2(20) DEFAULT 'Customer'
+);
+
+//시퀀스 (자동으로 숫자올리는거. MEMBER에서 NO에 해당됨) 만들기
+
+CREATE SEQUENCE member_seq;
+
+//연습용 로그인 아이디 만들기 (아이디 aa 비번 123)
+INSERT INTO member VALUES(member_seq.NEXTVAL, 'aa', '123', '연습용', '010-4545-4545', '서울특별시 경인로 784-15, 아파트 1479호', null, null, null);

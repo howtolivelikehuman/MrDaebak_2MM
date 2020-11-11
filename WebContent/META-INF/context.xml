@@ -2,7 +2,7 @@
 <Context docBase = "MrDaebak_2MM"
 			path = "/MrDaebak_2MM"
 			reloadable = "true"
-			source = "org.eclipse.jst.jee.server:myhome">
+			source = "org.eclipse.jst.jee.server:MrDaebak_2MM">
 			
 			
 <Resource 
@@ -10,7 +10,7 @@
 	name = "jdbc/oracle"
 	type = "javax.sql.DataSource"
 	driverClassName = "oracle.jdbc.driver.OracleDriver"
-	url = "jdbc:oracle:thin:@localhost:1521:xe"
+	url = "jdbc:oracle:thin:@localhost:1521:orcl"
 	username = "daebak"
 	password = "1234"
 	maxTotal="20"
