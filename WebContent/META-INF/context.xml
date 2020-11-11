@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase = "MrDaebak_2MM"
+			path = "/MrDaebak_2MM"
+			reloadable = "true"
+			source = "org.eclipse.jst.jee.server:myhome">
+			
+			
+<Resource 
+	auth = "Container"
+	name = "jdbc/oracle"
+	type = "javax.sql.DataSource"
+	driverClassName = "oracle.jdbc.driver.OracleDriver"
+	url = "jdbc:oracle:thin:@localhost:1521:xe"
+	username = "daebak"
+	password = "1234"
+	maxTotal="20"
+	maActive="20"
+	maxIdle="3"
+	maxWaitMillis = "-1"/>
+	
+	
+</Context>
