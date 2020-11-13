@@ -1,6 +1,22 @@
 @charset "UTF-8";
 
-.header, .footer {
+.container{
+	width:45vw;
+	height:90vh;
+	border: 2px solid red;
+}
+.main-menu{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.menu{
+	padding:5%;
+	margin:5%;
+	background-color: black;
+	color:white;
+}
+/* .header, .footer {
 	width: 80%;
 	padding: 1em;
 	background: #968f8f;
@@ -24,4 +40,4 @@
 	font: sans-serif;
 	font-style: normal;
 	color: #968fff;
-}
+} */
