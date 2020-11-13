@@ -15,7 +15,7 @@ public class LogInService implements Action{
 		String id = request.getParameter("user_id");
 		String password = request.getParameter("user_password");
 				
-		MemberDAO dao = new MemberDAO();
+		MemberDAO dao = MemberDAO.getInstance();
 		Member member = dao.select(id, password);
 		
 		if(member == null ) {

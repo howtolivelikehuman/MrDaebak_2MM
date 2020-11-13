@@ -17,13 +17,16 @@ public class MemberDAO {
 		//private String db_url = "jdbc:oracle:thin:@localhost:1521:orcl";
 		//private String db_username = "mrdaebak";
 		//private String db_password = "1234";
-		
+	
+		private static MemberDAO dao;
 		private Connection con;
 		private PreparedStatement ps;
 		private ResultSet rs;
 		private String sql;
 		
 		static private DataSource ds;
+		
+		
 		static {
 			try {
 				System.out.println("start DBCP!");
@@ -32,6 +35,15 @@ public class MemberDAO {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		
+		//ΩÃ±€≈Ê ∆–≈œ
+		private MemberDAO() {}
+		public synchronized static MemberDAO getInstance() {
+			if(dao == null) {
+				dao = new MemberDAO();
+			}
+			return dao;
 		}
 		
 		
