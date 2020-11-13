@@ -10,18 +10,18 @@
 	</head>
 	<body>
 		<div class = "header" align = "center">
+			<a class="top-menu" href = "/MrDaebak_2MM/index.jsp"> Main </a>
 			<c:choose>
 				<c:when test = "${sessionScope.currentNickname == null}" >
-					<a href = "/MrDaebak_2MM/Member/loginView.jsp"> LOGIN </a>
-					<a  href = "/MrDaebak_2MM/Member/signUpView.jsp"> JOIN  </a>
+					<a class="top-menu" href = "/MrDaebak_2MM/Member/loginView.jsp"> LOGIN </a>
+					<a class="top-menu" href = "/MrDaebak_2MM/Member/signUpView.jsp"> JOIN  </a>
 				</c:when>
 				<c:otherwise>
 					${sessionScope.Name}님
-					<a href = "/myhome/logout/logoutLogic.jsp">LOGOUT</a> 
-					<a href = "/myhome/mypage/mypageView.jsp">MY PAGE</a>
+					<a class="top-menu" href = "/myhome/logout/logoutLogic.jsp">LOGOUT</a> 
+					<a class="top-menu" href = "/myhome/mypage/mypageView.jsp">MY PAGE</a>
 				</c:otherwise>
 			</c:choose>
-			<a href = "/myhome/board/BoardList.do?page=1">BOARD</a>
 		</div>
 	</body>
 			

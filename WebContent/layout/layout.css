@@ -1,14 +1,28 @@
 @charset "UTF-8";
-
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	direction: column;
+}
 .container{
-	width:45vw;
+	display: flex;
+	width:48vw;
 	height:90vh;
 	border: 2px solid red;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
 }
 .main-menu{
 	display:flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
 .menu{
 	padding:5%;
@@ -16,6 +30,16 @@
 	background-color: black;
 	color:white;
 }
+table{
+
+}
+
+/* .top-menu{
+	padding: 5%;
+	margin-left: 5%;
+	background-color: black;
+	color: white;
+} */
 /* .header, .footer {
 	width: 80%;
 	padding: 1em;

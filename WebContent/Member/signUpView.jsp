@@ -2,11 +2,16 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<head>
+		<meta charset="UTF-8">
+		<title>Mr.Daebak</title>
+		<link rel="stylesheet" type="text/css" href="../layout/layout.css">
+</head>
+<body>
+<div class="container">
 <jsp:include page = "/layout/header.jsp">
 	<jsp:param name="title" value="회원가입"/>
 </jsp:include>
-
-
 <form action = "Logic.SignUp" method = "post">
 	<table border = "1">
 	<caption><h3>회원가입</h3></caption>
@@ -43,5 +48,5 @@
 
 	</table>
 </form>
-
-<jsp:include page = "/layout/footer.jsp"/>
+</div>
+</body>
