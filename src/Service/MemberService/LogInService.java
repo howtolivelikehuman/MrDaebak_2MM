@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.MemberDAO;
+import DTO.Customer;
 import DTO.Member;
 import Service.Action;
 import Service.ActionForward;
@@ -18,6 +19,8 @@ public class LogInService implements Action{
 		MemberDAO dao = MemberDAO.getInstance();
 		Member member = dao.select(id, password);
 		
+		
+		
 		if(member == null ) {
 			request.setAttribute("state", "failed");
 		}
@@ -27,8 +30,17 @@ public class LogInService implements Action{
 			System.out.println(member.getName() + " "+ member.getId());
 			
 			HttpSession session = request.getSession();
+			session.setMaxInactiveInterval(3600);
 			session.setAttribute("Name", member.getName());
 			session.setAttribute("Id",member.getId());
+			
+			if(member instanceof Customer) {
+				session.setAttribute("type", "Customer");
+			}
+			else {
+				session.setAttribute("type", "Employee");
+			}
+			
 		}
 		
 		ActionForward nextAction = new ActionForward();

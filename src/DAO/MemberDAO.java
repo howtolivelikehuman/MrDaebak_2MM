@@ -150,6 +150,68 @@ public class MemberDAO {
 			return member;
 		}
 		
+		public Member select(String id) {
+			Member member = null;
+			sql = "SELECT * FROM member WHERE id = ?";
+			try {
+				con = ds.getConnection();
+				ps = con.prepareStatement(sql);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+				 
+				if(rs.next()) {
+					
+					int type = rs.getInt("type");
+					
+					switch (type) {
+					
+					case 0: //customer
+						member = new Customer();
+						member.setNo(rs.getInt("no"));
+						member.setId(rs.getString("id"));
+						member.setPw(rs.getString("pw"));
+						member.setName(rs.getString("name"));
+						member.setMobile(rs.getString("phone"));
+						member.setAddress(rs.getString("address"));
+						
+						if(rs.getInt("vip") == 0) {
+							((Customer)member).setVip(false);
+						}
+						else {
+							((Customer)member).setVip(true);
+						}
+						break;
+						
+					case 1: //employee
+						member = new Employee();
+						member.setNo(rs.getInt("no"));
+						member.setId(rs.getString("id"));
+						member.setPw(rs.getString("pw"));
+						member.setName(rs.getString("name"));
+						member.setMobile(rs.getString("phone"));
+						member.setAddress(rs.getString("address"));
+						((Employee)member).setPosition(rs.getString("position"));
+						break;
+						
+					default:
+						break;
+					}
+				}		
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				try {
+					if(rs != null) rs.close();
+					if(ps != null) ps.close();
+					if(con != null)con.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return member;
+		}
+		
 		
 		public boolean delete(String id, String password) {
 			boolean result = false;

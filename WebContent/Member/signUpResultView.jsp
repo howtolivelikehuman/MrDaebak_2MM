@@ -7,7 +7,7 @@
 </jsp:include>
 
 <c:choose>
-	<c:when test = "${param.result }">
+	<c:when test = "${param.result}">
 		<h3>회원가입에 감사드립니다.</h3>
 		<input type = "button" value = "로그인" onclick = "location.href='/MrDaebak_2MM/Member/loginView.jsp'">
 	</c:when>

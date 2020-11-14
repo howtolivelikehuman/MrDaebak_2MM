@@ -25,7 +25,6 @@ public class SignUpController extends HttpServlet{
 		String requestPage = requestURI.substring(Index); // "xxx.signup" 꼴만 남게
 		
 		System.out.println("Controller 등장 " + requestPage);
-		System.out.println("이거 실행");
 		
 		try {
 			if(requestPage.equals("signUpView.signup")) { //회원가입 창요청

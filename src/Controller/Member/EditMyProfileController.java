@@ -8,40 +8,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Service.ActionForward;
 import Service.Action;
-import Service.MemberService.LogInService;
+import Service.ActionForward;
+import Service.MemberService.EditMyProfileService;
+import Service.MemberService.SignUpService;
 
-@WebServlet("*.login") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
-
-public class LogInController extends HttpServlet{
+@WebServlet("*.myprofile") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
+public class EditMyProfileController extends HttpServlet{
 	ActionForward nextAction = null; 
 	Action action = null;
 	private static final long serialVersionUID = 1L;
-
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String requestURI = request.getRequestURI(); //요청된 uri 주소
 		int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
-		String requestPage = requestURI.substring(Index); // "xxx.login" 꼴만 남게
+		String requestPage = requestURI.substring(Index); // "xxx.signup" 꼴만 남게
 		
 		System.out.println("Controller 등장 " + requestPage);
 		
 		try {
-			if(requestPage.equals("LoginView.login")) { //로그인 창요청
-				nextAction = new ActionForward();
-				nextAction.setNextPath("loginView.jsp");
-				nextAction.setRedirect(false);
-			}
-			else if(requestPage.equals("Logic.login")) { //로그인 논리 요청
-				action = new LogInService();
-				nextAction = action.execute(request, response);
-			}
-			else if(requestPage.equals("ResultView.login")) { //로그인 결과 창요청
-				nextAction = new ActionForward();
-				nextAction.setNextPath("loginResultView.jsp");
-				nextAction.setRedirect(false);
+			if(requestPage.equals("Read.myprofile")) { //회원정보 받아오기 (로직)
+				action = new EditMyProfileService();
+				nextAction = ((EditMyProfileService)action).ReadMyProfile(request, response);
+				
 			}
 			
+			else if(requestPage.equals("modifyView.myprofile")) { //회원정보 받아오기 (뷰)
+				nextAction = new ActionForward();
+				nextAction.setNextPath("modifyView.jsp");
+				nextAction.setRedirect(false);
+			}
 			
 			if(nextAction != null) { //리다이렉트 방식으로 nextPath
 				if(nextAction.isRedirect()) {
@@ -51,12 +47,12 @@ public class LogInController extends HttpServlet{
 				}
 			}
 			
-		}catch(Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			doGet(request, response);
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 }
