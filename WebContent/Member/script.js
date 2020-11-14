@@ -16,7 +16,7 @@ function checkId(){
 	if(id == ""){
 		alert("아이디를 먼저 입력하세요");
 	} else{
-		window.open("joinCheckIdLogic.jsp?id=" + id, "","width = 350 height = 100 left = 400 top = 350");
+		window.open("CheckIdLogic.signup?id=" + id, "","width = 350 height = 100 left = 400 top = 350");
 	}
 }
 

@@ -10,7 +10,7 @@
 <script type ="text/javascript" src = "script.js"></script>
 </head>
 <body>
-	<form method = "post" action ="joinCheckIdLogic.jsp">
+	<form method = "post" action ="CheckIdLogic.signup">
 	<c:choose>
 		<c:when test = "${param.result}" >
 			&quot;${param.id }&quot; 는(은) 사용중입니다! <br><br>

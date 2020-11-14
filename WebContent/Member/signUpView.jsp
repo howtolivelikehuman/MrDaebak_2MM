@@ -1,52 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%request.setCharacterEncoding("UTF-8"); %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<head>
-		<meta charset="UTF-8">
-		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="../layout/layout.css">
-</head>
-<body>
-<div class="container">
 <jsp:include page = "/layout/header.jsp">
-	<jsp:param name="title" value="회원가입"/>
+	<jsp:param name="title" value="회원 가입 !"/>
 </jsp:include>
-<form action = "Logic.SignUp" method = "post">
-	<table border = "1">
-	<caption><h3>회원가입</h3></caption>
+<script type = "text/javascript" src = "script.js"></script>
+<form name = "joinForm" method = "post" action = "signUpLogic.signup">
+	<table border = "1" align = "center">
+		<caption><h3>회원 가입</h3></caption>
 		<tr>
-			<th>이름<th>
-			<input type="text" name = "user_name" placeholder="이름을 입력하세요." required>
+			<th>
+				ID
+			</th>
+			<td>
+				<input type = "text" name ="user_id" placeholder="아이디를 입력하세요." required>
+				<input type = "button" value = "중복확인" onclick = "checkId()">
+			</td>
 		</tr>
 		<tr>
-			<th>ID</th>
-		<c:choose>
-				<c:when test = "${cookie.rememberID.value == null }">
-			<td><input type = "text" name = "user_id" placeholder="ID를 입력하세요." required></td>
-				</c:when>
-			<c:otherwise>
-				<td><input type = "text" name = "user_id" value =  ${cookie.rememberID.value }></td>
-			</c:otherwise>
-		</c:choose>
+			<th rowspan = "2">
+				Password
+			</th>
+			<td>
+				<input type = "password" name = "user_password" placeholder="비밀번호를 입력하세요." required>
+			</td>
 		</tr>
 		<tr>
-			<th>PASSWORD</th>
-			<td><input type = "password" name = "user_password" placeholder="PASSWORD를 입력하세요." required></td>
+			<td>
+				<input type = "password" name = "user_repassword" placeholder="비밀번호를 다시 입력하세요." required>
+			</td>
+		</tr>
+		
+		
+		<tr>
+			<th>
+				Name
+			</th>
+			<td>
+				<input type = "text" name = "user_name" placeholder = "이름을 입력하세요." required>
+			</td>
 		</tr>
 		<tr>
-			<th>전화번호<th>
-			<input type="text" name = "user_mobile" placeholder="전화번호를 입력하세요." required>
+			<th>
+				Mobile
+			</th>
+			<td>
+				<input type = "text" name = "user_mobile" placeholder = "닉네임을 입력하세요." required>
+			</td>
 		</tr>
 		<tr>
-			<th>주소<th>
-			<input type="text" name = "user_address" placeholder="주소를 입력하세요." required>
+			<th>
+				Address
+			</th>
+			<td>
+				<input type = "text" name = "user_address" placeholder = "주소를 입력하세요." required>
+			</td>
 		</tr>
 		<tr>
-			<td colspan ="2"  align = "center"><input type = "submit" value = "회원가입">
+			<td colspan = "2" align = "center">
+				<script type = "text/javascript" src ="script.js"></script>
+				<input type = "button" value = "가입" onclick = "checkPassword()">
+				<input type = "reset" value = "초기화">
+			</td>
 		</tr>
-
 	</table>
 </form>
-</div>
-</body>
+
+<jsp:include page = "/layout/footer.jsp"/>

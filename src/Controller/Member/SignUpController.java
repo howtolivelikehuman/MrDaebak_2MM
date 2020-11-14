@@ -8,42 +8,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Service.ActionForward;
 import Service.Action;
-import Service.MemberService.LogInService;
+import Service.ActionForward;
+import Service.MemberService.SignUpService;
 
-@WebServlet("*.login") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
+@WebServlet("*.signup") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
 
-public class LogInController extends HttpServlet{
+public class SignUpController extends HttpServlet{
 	ActionForward nextAction = null; 
 	Action action = null;
 	private static final long serialVersionUID = 1L;
-
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String requestURI = request.getRequestURI(); //요청된 uri 주소
 		int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
-		String requestPage = requestURI.substring(Index); // "xxx.login" 꼴만 남게
+		String requestPage = requestURI.substring(Index); // "xxx.signup" 꼴만 남게
 		
 		System.out.println("Controller 등장 " + requestPage);
+		System.out.println("이거 실행");
 		
 		try {
-			if(requestPage.equals("LoginView.login")) { //로그인 창요청
+			if(requestPage.equals("signUpView.signup")) { //회원가입 창요청
 				nextAction = new ActionForward();
-				nextAction.setNextPath("loginView.jsp");
-				nextAction.setRedirect(false);
-			}
-			else if(requestPage.equals("Logic.login")) { //로그인 논리 요청
-				action = new LogInService();
-				nextAction = action.execute(request, response);
-			}
-			else if(requestPage.equals("ResultView.login")) { //로그인 결과 창요청
-				nextAction = new ActionForward();
-				nextAction.setNextPath("loginResultView.jsp");
+				nextAction.setNextPath("signUpView.jsp");
 				nextAction.setRedirect(false);
 			}
 			
-			System.out.println("다음 경로 " + nextAction.getNextPath());
-			System.out.println(request.getAttribute("member"));
+			else if(requestPage.equals("CheckIdLogic.signup")) { //아이디 확인
+				action = new SignUpService();
+				nextAction = ((SignUpService)action).CheckID(request, response);
+			}
+			
+			else if(requestPage.equals("signUpLogic.signup")) { //회원가입 실행
+				action = new SignUpService();
+				nextAction = action.execute(request, response);
+			}
+			
 			
 			if(nextAction != null) { //리다이렉트 방식으로 nextPath
 				if(nextAction.isRedirect()) {
@@ -53,12 +53,13 @@ public class LogInController extends HttpServlet{
 				}
 			}
 			
-		}catch(Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			doGet(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 }

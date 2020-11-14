@@ -47,7 +47,7 @@ public class MemberDAO {
 		}
 		
 		
-		public boolean insert(Customer customer) {
+		public boolean insert(Member member) {
 			sql = "INSERT INTO member VALUES(member_seq.NEXTVAL, ?, ?, ?, ?, ?, default, default, default)";
 			boolean result = false;
 			
@@ -55,11 +55,11 @@ public class MemberDAO {
 				con = ds.getConnection();
 				ps = con.prepareStatement(sql);
 				
-				ps.setString(1, customer.getId());
-				ps.setString(2, customer.getPw());
-				ps.setString(3, customer.getName());
-				ps.setString(4, customer.getMobile());
-				ps.setString(5, customer.getAddress());
+				ps.setString(1, member.getId());
+				ps.setString(2, member.getPw());
+				ps.setString(3, member.getName());
+				ps.setString(4, member.getMobile());
+				ps.setString(5, member.getAddress());
 				//ps.setInt(6, 0); //Å¸ÀÔ default = 0 (¼Õ´Ô)
 				//ps.setInt(7, 0); //vip¿©ºÎ default = 0 (vip¾Æ´Ô)
 				//ps.setInt(8, 0); //Á÷Ã¥ default = Customer
