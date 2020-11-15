@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
     
 <%request.setCharacterEncoding("UTF-8"); %>
-
+<head>
+		<meta charset="UTF-8">
+		<title>Mr.Daebak</title>
+		<link rel="stylesheet" type="text/css" href="../layout/layout.css">
+</head>
 <body>
 	<jsp:include page = "/layout/header.jsp">
 		<jsp:param name="title" value="회원 가입 !"/>

@@ -5,10 +5,10 @@
 <html>
 <head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after1">
+		<link rel="stylesheet" type="text/css" href="./layout.css?after1">
 	</head>
 <body>
-<p id="footer">copyright 2MM</p>
+<p id="footer"> © 2020 2MM - All rights reserved</p>
 </body>
 </html>
 			

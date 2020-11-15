@@ -6,10 +6,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>MrDaebak_2MM : ${param.title != null ? param.title : "나의 페이지!" }</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after1">
+		<link rel="stylesheet" type="text/css" href="./layout.css?after1">
 	</head>
 	<body>
-		<div class = "header" align = "center">
+		<div class = "header">
+		<span id="logo">Mr.Daebak</span>
 			<c:choose>
 				<c:when test = "${sessionScope.Name == null}" >
 					<a class="top-menu" href = "/MrDaebak_2MM/index.jsp"> Main </a>

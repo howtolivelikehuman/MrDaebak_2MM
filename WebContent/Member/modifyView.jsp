@@ -2,21 +2,25 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
+<head>
+		<meta charset="UTF-8">
+		<title>Mr.Daebak</title>
+		<link rel="stylesheet" type="text/css" href="../layout/layout.css">
+</head>
+<body>
 <jsp:include page = "/layout/header.jsp">
 	<jsp:param name="title" value="나의 페이지"/>
 </jsp:include>
-
+<div class="container">
 <c:set var = "dto" value = "${requestScope.member}" scope = "page"/>
 <c:remove var ="dto" scope = "request"/>
-
-
 	<c:if test = "${dto == null }">
 		<script>
 			alert("오류가 발생하였습니다");
 			history.back();
 		</script>
 	</c:if>
-	
 	<form action = "modifyLogic.modify" method ="post">
 		<input type = "hidden" name = "user_no" value = "${dto.no}">
 		<table border = "1">
@@ -62,6 +66,6 @@
 			</tr>		
 		</table>
 	</form>
-
-
+	</div>
 <jsp:include page = "/layout/footer.jsp"/>
+</body>
