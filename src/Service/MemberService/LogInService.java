@@ -20,9 +20,11 @@ public class LogInService implements Action{
 		Member member = dao.select(id, password);
 		
 		
-		
+		ActionForward nextAction = new ActionForward();
 		if(member == null ) {
 			request.setAttribute("state", "failed");
+			nextAction.setNextPath("ResultView.login");
+			nextAction.setRedirect(false);
 		}
 		else {
 			request.setAttribute("state", "success");
@@ -36,17 +38,23 @@ public class LogInService implements Action{
 			
 			if(member instanceof Customer) {
 				session.setAttribute("type", "Customer");
+				
+				nextAction.setNextPath("Customer.login");
+				nextAction.setRedirect(false);
 			}
 			else {
 				session.setAttribute("type", "Employee");
+				
+				nextAction.setNextPath("Employee.login");
+				nextAction.setRedirect(false);
 			}
 			
 		}
 		
-		ActionForward nextAction = new ActionForward();
-		nextAction.setNextPath("ResultView.login");
-		nextAction.setRedirect(false);
-		
+//		ActionForward nextAction = new ActionForward();
+//		nextAction.setNextPath("ResultView.login");
+//		nextAction.setRedirect(false);
+//		
 		return nextAction;
 		
 	}

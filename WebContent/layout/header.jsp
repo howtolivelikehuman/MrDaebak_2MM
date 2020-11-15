@@ -10,19 +10,19 @@
 	</head>
 	<body>
 		<div class = "header" align = "center">
-			<a class="top-menu" href = "/MrDaebak_2MM/index.jsp"> Main </a>
 			<c:choose>
 				<c:when test = "${sessionScope.Name == null}" >
+					<a class="top-menu" href = "/MrDaebak_2MM/index.jsp"> Main </a>
 					<a class="top-menu" href = "/MrDaebak_2MM/Member/loginView.jsp"> LOGIN </a>
 					<a class="top-menu" href = "/MrDaebak_2MM/Member/signUpView.jsp"> JOIN  </a>
 				</c:when>
 				<c:otherwise>
-					${sessionScope.Name}님
-					<a class="top-menu" href = "/myhome/logout/logoutLogic.jsp">LOGOUT</a> 
-					<form action = "Read.myprofile" method = "post"> <input type = "submit" value = "MY PAGE"> </form></a>
+					<form class="top-menu" action = "Read.myprofile" method = "post"> <input type = "submit" value = "MY PAGE"> </form>
+					<a class="top-menu" href = "/MrDaebak_2MM/index.jsp">LOGOUT</a> 
 				</c:otherwise>
 			</c:choose>
 		</div>
+		
 	</body>
 			
 

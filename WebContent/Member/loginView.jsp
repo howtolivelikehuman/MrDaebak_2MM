@@ -9,10 +9,10 @@
 		<link rel="stylesheet" type="text/css" href="../layout/layout.css">
 </head>
 <body>
-	<div class="container">
-		<jsp:include page = "/layout/header.jsp">
+<jsp:include page = "/layout/header.jsp">
 			<jsp:param name="title" value="로그인"/>
 		</jsp:include>
+	<div class="container">
 		<form action = "Logic.login" method = "post">
 			<table border = "1">
 			<caption><h3>로그인</h3></caption>
@@ -38,4 +38,5 @@
 			</table>
 		</form>
 	</div>
+	<jsp:include page = "/layout/footer.jsp"/>
 </body>

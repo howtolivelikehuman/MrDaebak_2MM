@@ -3,11 +3,12 @@
     
 <%request.setCharacterEncoding("UTF-8"); %>
 
-	
-<div class="container">
+<body>
 	<jsp:include page = "/layout/header.jsp">
 		<jsp:param name="title" value="회원 가입 !"/>
 	</jsp:include>
+<div class="container">
+
 	<script type = "text/javascript" src = "script.js"></script>
 	
 	<form name = "joinForm" method = "post" action = "signUpLogic.signup">
@@ -70,7 +71,7 @@
 			</tr>
 		</table>
 	</form>
-	<jsp:include page = "/layout/footer.jsp"/>
 </div>
-
+<jsp:include page = "/layout/footer.jsp"/>
+</body>
 
