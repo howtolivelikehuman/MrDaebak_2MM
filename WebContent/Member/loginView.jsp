@@ -6,18 +6,37 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="../layout/layout.css">
+		<link rel="stylesheet" type="text/css" href="../layout/layout.css?after">
 </head>
 <body>
 <jsp:include page = "/layout/header.jsp">
 			<jsp:param name="title" value="로그인"/>
 		</jsp:include>
 	<div class="container">
-		<form action = "Logic.login" method = "post">
+		<form class="form-login" action = "Logic.login" method = "post">
+			<c:choose>
+						<c:when test = "${cookie.rememberID.value == null }">
+					<input type = "text" class="input" name = "user_id" placeholder="ID" required>
+						</c:when>
+					<c:otherwise>
+						<input type = "text" class="input" name = "user_id" value =  ${cookie.rememberID.value } placeholder="ID" required>
+					</c:otherwise>
+				</c:choose>
+					<input type = "password" class="input" name = "user_password" placeholder="PASSWORD" required>
+					<button class="btn" type="submit">로그인</button>
+		</form>
+	</div>
+	<jsp:include page = "/layout/footer.jsp"/>
+</body>
+
+
+
+
+<%-- <form action = "Logic.login" method = "post">
 			<table border = "1">
 			<caption><h3>로그인</h3></caption>
 				<tr>
-					<th>ID</th>
+					
 				<c:choose>
 						<c:when test = "${cookie.rememberID.value == null }">
 					<td><input type = "text" name = "user_id" placeholder="ID를 입력하세요." required></td>
@@ -28,7 +47,7 @@
 				</c:choose>
 				</tr>
 				<tr>
-					<th>PASSWORD</th>
+					
 					<td><input type = "password" name = "user_password" placeholder="PASSWORD를 입력하세요." required></td>
 					</tr>
 				<tr>
@@ -36,7 +55,4 @@
 				</tr>
 		
 			</table>
-		</form>
-	</div>
-	<jsp:include page = "/layout/footer.jsp"/>
-</body>
+		</form> --%>
