@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="../layout/layout.css?after">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
 		<script type = "text/javascript" src ="script.js"></script>
 </head>
 <body>
@@ -19,10 +19,11 @@
 					<input class="input" type = "text" name ="user_id" placeholder="아이디를 입력하세요." required>
 					<input class="btn" type = "button" value = "중복확인" onclick = "checkId()">
 					<input class="input" type = "password" name = "user_password" placeholder="비밀번호를 입력하세요." required>
+					<input class="input" type = "password" name = "user_repassword" placeholder="비밀번호를 다시 입력하세요." required>
 					<input class="input" type = "text" name = "user_name" placeholder = "이름을 입력하세요." required>
-					<input class="input" type = "text" name = "user_mobile" placeholder = "닉네임을 입력하세요." required>
+					<input class="input" type = "text" name = "user_mobile" placeholder = "전화번호를 입력하세요." required>
 					<input class="input" type = "text" name = "user_address" placeholder = "주소를 입력하세요." required>
-					<input type = "password" name = "user_code" placeholder = "관리자라면 관리자 코드를 입력하세요.">
+					<input class = "input" type = "password" name = "user_code" placeholder = "관리자라면 관리자 코드를 입력하세요.">
 					<input class="btn" type = "button" value = "가입" onclick = "checkPassword()">
 
 	</form>

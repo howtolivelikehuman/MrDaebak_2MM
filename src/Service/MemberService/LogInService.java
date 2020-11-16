@@ -1,4 +1,6 @@
 package Service.MemberService;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,6 +25,7 @@ public class LogInService extends Service{
 		ActionForward nextAction = new ActionForward();
 		if(member == null) {
 			request.setAttribute("state", "failed");
+			request.setAttribute("altmsg", "로그인에 실패하였습니다.");
 			nextAction.setNextPath("ResultView.login");
 			nextAction.setRedirect(false);
 		}
@@ -39,13 +42,13 @@ public class LogInService extends Service{
 			
 			if(member instanceof Customer) {
 				session.setAttribute("type", "Customer");
-				
+				request.setAttribute("altmsg", "로그인에 성공하였습니다.");
 				nextAction.setNextPath("Customer.login");
 				nextAction.setRedirect(false);
 			}
 			else {
 				session.setAttribute("type", "Employee");
-				
+				request.setAttribute("altmsg", "로그인에 성공하였습니다.");
 				nextAction.setNextPath("Employee.login");
 				nextAction.setRedirect(false);
 			}

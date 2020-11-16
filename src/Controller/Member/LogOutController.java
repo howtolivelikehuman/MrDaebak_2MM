@@ -32,11 +32,6 @@ public class LogOutController extends HttpServlet{
 				action = new LogOutService();
 				nextAction = ((LogOutService)action).LogOut(request, response);
 			}
-			else if(requestPage.equals("Result.logout")) { //로그인 논리 요청
-				nextAction = new ActionForward();
-				nextAction.setNextPath("index.jsp");
-				nextAction.setRedirect(false);
-			}
 			
 			
 			if(nextAction != null) { //리다이렉트 방식으로 nextPath

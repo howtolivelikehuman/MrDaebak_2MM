@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/layout/layout.css">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
 </head>
 <body>
 <jsp:include page = "/layout/header.jsp">
@@ -21,7 +21,8 @@
 			history.back();
 		</script>
 	</c:if>
-	<form action = "modifyLogic.modify" method ="post">
+	
+	<form action = "Update.myprofile" method = "post">
 		<input type = "hidden" name = "user_no" value = "${dto.no}">
 		<table border = "1">
 			<tr>
@@ -40,7 +41,7 @@
 			
 			<tr>
 				<th>Name</th>
-				<td><input type = "text" name = "user_nickname" value = "${dto.name }" required></td>
+				<td><input type = "text" name = "user_name" value = "${dto.name }" required></td>
 			</tr>
 			
 			<tr>
@@ -58,10 +59,15 @@
 				</tr>	
 			</c:if>	
 		</table>
+		<input type = "submit" value = "수정"> </form>
+		
+		
+		<form action = "Delete.myprofile" method = "post">  
+			<input type = "hidden" name = "user_no" value = "${dto.no}">
+			<input type = "submit" value = "삭제"> 
+		</form>
+		
 		<form action = "Check.myprofile" method = "post"> <input type = "submit" value = "확인"> </form>
-		<form action = "Update.myprofile" method = "post">  <input type = "submit" value = "수정"> </form>
-		<form action = "Delete.myprofile" method = "post">  <input type = "submit" value = "삭제"> </form>
-	</form>
 	</div>
 <jsp:include page = "/layout/footer.jsp"/>
 </body>

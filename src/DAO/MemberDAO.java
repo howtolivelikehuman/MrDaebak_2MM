@@ -47,7 +47,7 @@ public class MemberDAO {
 		}
 
 		public boolean update(Member member) {
-			sql = "UPDATE member SET password = ?, name = ?, phone = ?, address = ? WHERE no = ?";
+			sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ? WHERE no = ?";
 			boolean result = false;
 			
 			try {

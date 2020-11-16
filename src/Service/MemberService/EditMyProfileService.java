@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import DAO.MemberDAO;
 import DTO.Member;
@@ -15,9 +16,7 @@ public class EditMyProfileService extends Service{
 	public ActionForward UpdateMyProfile(HttpServletRequest request, HttpServletResponse response) throws Exception {	
 		
 		request.setCharacterEncoding("UTF-8");
-		
 		int no = Integer.parseInt(request.getParameter("user_no"));
-		String id = request.getParameter("user_id");
 		String password = request.getParameter("user_password");
 		String name = request.getParameter("user_name");
 		String mobile = request.getParameter("user_mobile");
@@ -25,7 +24,6 @@ public class EditMyProfileService extends Service{
 		
 		Member dto = new Member();
 		dto.setNo(no);
-		dto.setId(id);
 		dto.setPw(password);
 		dto.setName(name);
 		dto.setAddress(address);
@@ -54,15 +52,14 @@ public class EditMyProfileService extends Service{
 		MemberDAO dao = MemberDAO.getInstance();
 		boolean result = dao.delete(no);
 		
-		
+		nextAction = new ActionForward();
 		if(result) {
 			request.setAttribute("altmsg", "삭제에 성공하였습니다.");
+			nextAction.setNextPath("Logic.logout");
 		}else {
 			request.setAttribute("altmsg", "삭제도중 요류가 발생하였습니다.");
+			nextAction.setNextPath("Result.myprofile");
 		}
-		
-		nextAction = new ActionForward();
-		nextAction.setNextPath("Result.myprofile");
 		nextAction.setRedirect(false);	
 
 		return nextAction;
@@ -75,6 +72,7 @@ public class EditMyProfileService extends Service{
 		String id = (String) request.getSession().getAttribute("Id");
 		MemberDAO dao = MemberDAO.getInstance();
 		Member member = dao.select(id);
+		System.out.println(member.getNo());
 		
 		request.setAttribute("member", member);
 		

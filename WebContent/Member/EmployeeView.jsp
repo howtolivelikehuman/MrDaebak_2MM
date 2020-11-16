@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>환영합니다!</title>
-		<link rel="stylesheet" type="text/css" href="../layout/layout.css">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
 </head>
 <body>
 <div class="container">

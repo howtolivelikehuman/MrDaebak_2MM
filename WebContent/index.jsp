@@ -1,14 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%request.setCharacterEncoding("UTF-8"); %>
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="./layout/layout.css?after">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
 </head>
 <body>
-<script type = "text/javascript" src ="script.js"></script>
+
+
+<c:if test = "${!empty requestScope.altmsg}">
+		<script>
+			alert( "${requestScope.altmsg}");
+		</script>
+</c:if>
+
 <jsp:include page = "/layout/header.jsp">
 		<jsp:param name="title" value="로그인 결과!"/>
 	</jsp:include>
