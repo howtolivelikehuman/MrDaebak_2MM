@@ -6,11 +6,11 @@ import javax.servlet.http.HttpSession;
 import DAO.MemberDAO;
 import DTO.Customer;
 import DTO.Member;
-import Service.Action;
+import Service.Service;
 import Service.ActionForward;
 
-public class LogInService implements Action{
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+public class LogInService extends Service{
+	public ActionForward LogIn(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("user_id");
@@ -21,7 +21,7 @@ public class LogInService implements Action{
 		
 		
 		ActionForward nextAction = new ActionForward();
-		if(member == null ) {
+		if(member == null) {
 			request.setAttribute("state", "failed");
 			nextAction.setNextPath("ResultView.login");
 			nextAction.setRedirect(false);
@@ -33,6 +33,7 @@ public class LogInService implements Action{
 			
 			HttpSession session = request.getSession();
 			session.setMaxInactiveInterval(3600);
+			
 			session.setAttribute("Name", member.getName());
 			session.setAttribute("Id",member.getId());
 			

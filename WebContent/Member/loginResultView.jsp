@@ -8,12 +8,12 @@
 	</jsp:include>
 	
 	<c:choose>
-		<c:when test = "${sessionScope.Name != null}">
-			<h3>환영합니다 ! <br> ${sessionScope.Name}님!</h3><br>
+		<c:when test = "${requestScope.state == success}">
+			<h3>환영합니다 ! ${requestScope.state} <br> ${sessionScope.Name}님!</h3><br>
 			 <br> 회원 타입 : ${sessionScope.type} <br>
 		</c:when>
 		<c:otherwise>
-			<h3> 아이디 혹은 비밀번호를 확인해주세요.</h3>
+			<h3> ${requestScope.state}, 아이디 혹은 비밀번호를 확인해주세요.</h3>
 		</c:otherwise>
 	</c:choose>
 	

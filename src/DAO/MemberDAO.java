@@ -45,10 +45,39 @@ public class MemberDAO {
 			}
 			return dao;
 		}
-		
+
+		public boolean update(Member member) {
+			sql = "UPDATE member SET password = ?, name = ?, phone = ?, address = ? WHERE no = ?";
+			boolean result = false;
+			
+			try {
+				con = ds.getConnection();
+				ps=con.prepareStatement(sql);
+				ps.setString(1, member.getPw());
+				ps.setString(2, member.getName());
+				ps.setString(3, member.getMobile());
+				ps.setString(4, member.getAddress());
+				ps.setInt(5, member.getNo());
+				result = 1 == ps.executeUpdate();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				try {
+					if(rs != null) rs.close();
+					if(ps != null) ps.close();
+					if(con != null) con.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return result;
+
+		}
 		
 		public boolean insert(Member member) {
-			sql = "INSERT INTO member VALUES(member_seq.NEXTVAL, ?, ?, ?, ?, ?, default, default, default)";
+			sql = "INSERT INTO member VALUES(member_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, default, default)";
 			boolean result = false;
 			
 			try{
@@ -60,7 +89,13 @@ public class MemberDAO {
 				ps.setString(3, member.getName());
 				ps.setString(4, member.getMobile());
 				ps.setString(5, member.getAddress());
-				//ps.setInt(6, 0); //Å¸ÀÔ default = 0 (¼Õ´Ô)
+				
+				if(member instanceof Employee) {
+					ps.setInt(6, 1); // 1 = ¸Å´ÏÀú
+				}
+				else {
+					ps.setInt(6, 0); //0 = (¼Õ´Ô)
+				}
 				//ps.setInt(7, 0); //vip¿©ºÎ default = 0 (vip¾Æ´Ô)
 				//ps.setInt(8, 0); //Á÷Ã¥ default = Customer
 				
@@ -213,14 +248,13 @@ public class MemberDAO {
 		}
 		
 		
-		public boolean delete(String id, String password) {
+		public boolean delete(int no) {
 			boolean result = false;
-			sql = "DELETE FROM MEMBER WHERE ID = ? AND PASSWORD = ?";
+			sql = "DELETE FROM MEMBER WHERE no = ?";
 			try {
 				con = ds.getConnection();
 				ps = con.prepareStatement(sql);
-				ps.setString(1, id);
-				ps.setString(2, password);
+				ps.setInt(1, no);
 				result = 1 ==ps.executeUpdate();	
 			}catch(Exception e) {
 				e.printStackTrace();

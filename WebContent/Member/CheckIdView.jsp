@@ -10,9 +10,6 @@
 <script type ="text/javascript" src = "script.js"></script>
 </head>
 <body>
-<jsp:include page = "/layout/header.jsp">
-		<jsp:param name="title" value="로그인 결과!"/>
-	</jsp:include>
 	<form method = "post" action ="CheckIdLogic.signup">
 	<c:choose>
 		<c:when test = "${param.result}" >

@@ -18,8 +18,9 @@
 					<a class="top-menu" href = "/MrDaebak_2MM/Member/signUpView.jsp"> JOIN  </a>
 				</c:when>
 				<c:otherwise>
+					<a class="top-menu" href = "/MrDaebak_2MM/index.jsp">Main</a> 
 					<form class="top-menu" action = "Read.myprofile" method = "post"> <input type = "submit" value = "MY PAGE"> </form>
-					<a class="top-menu" href = "/MrDaebak_2MM/index.jsp">LOGOUT</a> 
+					<form class="top-menu" action = "Logic.logout" method = "post"> <input type = "submit" value = "LOGOUT"> </form>
 				</c:otherwise>
 			</c:choose>
 		</div>

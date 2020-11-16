@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="../layout/layout.css">
+		<link rel="stylesheet" type="text/css" href="/layout/layout.css">
 </head>
 <body>
 <jsp:include page = "/layout/header.jsp">
@@ -56,15 +56,11 @@
 				<tr>
 					<th>이사람은 직원입니다.</th>
 				</tr>	
-			</c:if>
-			
-			<tr>
-				<td colspan = "2" align = "center">
-					<input type = "button" value = "확인" onclick = "location.href='/MrDaebak_2MM'">
-					<input type = "submit" value = "수정">
-				</td>
-			</tr>		
+			</c:if>	
 		</table>
+		<form action = "Check.myprofile" method = "post"> <input type = "submit" value = "확인"> </form>
+		<form action = "Update.myprofile" method = "post">  <input type = "submit" value = "수정"> </form>
+		<form action = "Delete.myprofile" method = "post">  <input type = "submit" value = "삭제"> </form>
 	</form>
 	</div>
 <jsp:include page = "/layout/footer.jsp"/>

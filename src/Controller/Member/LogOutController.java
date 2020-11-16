@@ -10,37 +10,32 @@ import javax.servlet.http.HttpServletResponse;
 
 import Service.Service;
 import Service.ActionForward;
+import Service.MemberService.LogOutService;
 import Service.MemberService.SignUpService;
 
-@WebServlet("*.signup") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
-
-public class SignUpController extends HttpServlet{
+@WebServlet("*.logout")
+public class LogOutController extends HttpServlet{
 	ActionForward nextAction = null; 
 	Service action = null;
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String requestURI = request.getRequestURI(); //요청된 uri 주소
-		int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
-		String requestPage = requestURI.substring(Index); // "xxx.signup" 꼴만 남게
+		String requestURI = request.getRequestURI(); 
+		int Index = requestURI.lastIndexOf("/") + 1; 
+		String requestPage = requestURI.substring(Index);
 		
 		System.out.println("Controller 등장 " + requestPage);
 		
+		
 		try {
-			if(requestPage.equals("signUpView.signup")) { //회원가입 창요청
+			if(requestPage.equals("Logic.logout")) { //로그인 창요청
+				action = new LogOutService();
+				nextAction = ((LogOutService)action).LogOut(request, response);
+			}
+			else if(requestPage.equals("Result.logout")) { //로그인 논리 요청
 				nextAction = new ActionForward();
-				nextAction.setNextPath("signUpView.jsp");
+				nextAction.setNextPath("index.jsp");
 				nextAction.setRedirect(false);
-			}
-			
-			else if(requestPage.equals("CheckIdLogic.signup")) { //아이디 확인
-				action = new SignUpService();
-				nextAction = ((SignUpService)action).CheckID(request, response);
-			}
-			
-			else if(requestPage.equals("signUpLogic.signup")) { //회원가입 실행
-				action = new SignUpService();
-				nextAction = ((SignUpService)action).SignUp(request, response);
 			}
 			
 			
@@ -52,14 +47,14 @@ public class SignUpController extends HttpServlet{
 				}
 			}
 			
-		}catch (Exception e) {
+		}catch(Exception e) {
 			e.printStackTrace();
-			request.setAttribute("altmsg", "개인정보 처리 과정에서 요류가 발생하였습니다.");
 		}
+		
+		
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
-	}
+}
+	
 }

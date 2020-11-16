@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Service.Action;
+import Service.Service;
 import Service.ActionForward;
 import Service.MemberService.EditMyProfileService;
 import Service.MemberService.SignUpService;
@@ -16,13 +16,13 @@ import Service.MemberService.SignUpService;
 @WebServlet("*.myprofile") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
 public class EditMyProfileController extends HttpServlet{
 	ActionForward nextAction = null; 
-	Action action = null;
+	Service action = null;
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String requestURI = request.getRequestURI(); //요청된 uri 주소
-		int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
-		String requestPage = requestURI.substring(Index); // "xxx.signup" 꼴만 남게
+		String requestURI = request.getRequestURI(); 
+		int Index = requestURI.lastIndexOf("/") + 1; 
+		String requestPage = requestURI.substring(Index); 
 		
 		System.out.println("Controller 등장 " + requestPage);
 		
@@ -33,9 +33,27 @@ public class EditMyProfileController extends HttpServlet{
 				
 			}
 			
-			else if(requestPage.equals("modifyView.myprofile")) { //회원정보 받아오기 (뷰)
+			else if(requestPage.equals("EditView.myprofile")) { //회원정보 받아오기 (뷰)
 				nextAction = new ActionForward();
-				nextAction.setNextPath("modifyView.jsp");
+				nextAction.setNextPath("/Member/EditView.jsp");
+				nextAction.setRedirect(false);
+			}
+			else if(requestPage.equals("Check.myprofile")) { //회원정보 받아오기 (뷰)
+				nextAction = new ActionForward();
+				nextAction.setNextPath("index.jsp"); //맞는 회원 뷰로 바꿔야함.
+				nextAction.setRedirect(false);
+			}
+			else if(requestPage.equals("Update.myprofile")) { //회원정보 받아오기 (뷰)
+				action = new EditMyProfileService();
+				nextAction = ((EditMyProfileService)action).UpdateMyProfile(request, response);
+			}
+			else if(requestPage.equals("Delete.myprofile")) { //회원정보 받아오기 (뷰)
+				action = new EditMyProfileService();
+				nextAction = ((EditMyProfileService)action).ReadMyProfile(request, response);
+			}
+			else if(requestPage.equals("Result.myprofile")) { //회원정보 받아오기 (뷰)
+				nextAction = new ActionForward();
+				nextAction.setNextPath("/Member/index.jsp");  //맞는 회원 뷰로 바꿔야함.
 				nextAction.setRedirect(false);
 			}
 			

@@ -5,15 +5,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.MemberDAO;
+import DTO.Employee;
 import DTO.Member;
-import Service.Action;
+import Service.Service;
 import Service.ActionForward;
 
-public class SignUpService implements Action{
-	ActionForward nextAction;
+public class SignUpService extends Service{
 	boolean result;
 	
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward SignUp(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		request.setCharacterEncoding("UTF-8");
 		
@@ -22,13 +22,22 @@ public class SignUpService implements Action{
 		String name = request.getParameter("user_name");
 		String mobile = request.getParameter("user_mobile");
 		String address= request.getParameter("user_address");
+		String code = request.getParameter("user_code");
 		
-		Member dto = new Member();
+		Member dto;
+		
+		if(code.contentEquals("2mm") ) {
+			 dto = new Employee();
+		}else {
+			 dto = new Member();
+		}
+		
 		dto.setId(id);
 		dto.setPw(password);
 		dto.setName(name);
 		dto.setAddress(address);
 		dto.setMobile(mobile);
+		
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		result = dao.insert(dto);

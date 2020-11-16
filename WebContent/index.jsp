@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="./layout/layout.css">
 </head>
 <body>
+<script type = "text/javascript" src ="script.js"></script>
 <jsp:include page = "/layout/header.jsp">
 		<jsp:param name="title" value="로그인 결과!"/>
 	</jsp:include>

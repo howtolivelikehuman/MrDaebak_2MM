@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Service.ActionForward;
-import Service.Action;
+import Service.Service;
+import Service.MemberService.EditMyProfileService;
 import Service.MemberService.LogInService;
 
 @WebServlet("*.login") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
 
 public class LogInController extends HttpServlet{
 	ActionForward nextAction = null; 
-	Action action = null;
+	Service action = null;
 	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +35,7 @@ public class LogInController extends HttpServlet{
 			}
 			else if(requestPage.equals("Logic.login")) { //로그인 논리 요청
 				action = new LogInService();
-				nextAction = action.execute(request, response);
+				nextAction = ((LogInService)action).LogIn(request, response);
 			}
 			else if(requestPage.equals("ResultView.login")) { //로그인 결과 창요청
 				nextAction = new ActionForward();

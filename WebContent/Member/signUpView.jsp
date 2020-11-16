@@ -40,8 +40,6 @@
 					<input type = "password" name = "user_repassword" placeholder="비밀번호를 다시 입력하세요." required>
 				</td>
 			</tr>
-			
-			
 			<tr>
 				<th>
 					Name
@@ -64,6 +62,14 @@
 				</th>
 				<td>
 					<input type = "text" name = "user_address" placeholder = "주소를 입력하세요." required>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Manager-Code
+				</th>
+				<td>
+					<input type = "password" name = "user_code" placeholder = "관리자라면 관리자 코드를 입력하세요.">
 				</td>
 			</tr>
 			<tr>
