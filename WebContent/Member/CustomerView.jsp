@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after">
 </head>
 <body>
 <jsp:include page = "/layout/header.jsp">
@@ -20,13 +20,15 @@
 </c:if>
 	
 <div class="container">
-	<h1 id="title">환영합니다!</h1>
 	<div class = "main-menu">
-			
-		<form class="menu" action = "Read.myprofile" method = "post"> <input class="menu" type = "submit" value = "내 정보 확인"> </form>
-		<a class="menu" href = "/MrDaebak_2MM/Member/signUpView.jsp"> 주문하기</a>
-		<a class="menu" href="/MrDaebak_2MM/Order/Order.jsp">주문기록 확인</a>			
+		<form class="menu" action = "Read.myprofile" method = "post">
+			<button class="menu menu-submit" type="submit">내 정보 확인</button>
+		</form>
+		<button class="menu" type="button" onclick="location.href='/MrDaebak_2MM/Member/signUpView.jsp'">주문하기</button>
+		<button class="menu" type="button" onclick="location.href='/MrDaebak_2MM/Order/Order.jsp'">주문기록 확인</button>
 	</div>
+	
+		
 </div>
 
 <jsp:include page = "/layout/footer.jsp"/>

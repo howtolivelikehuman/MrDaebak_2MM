@@ -21,10 +21,10 @@
 			history.back();
 		</script>
 	</c:if>
-	
+	<div>
 	<form action = "Update.myprofile" method = "post">
 		<input type = "hidden" name = "user_no" value = "${dto.no}">
-		<table border = "1">
+		<table border = "0">
 			<tr>
 				<th>ID</th>
 				<td>${dto.id}</td>
@@ -32,25 +32,25 @@
 			
 			<tr>
 				<th rowspan = "2">Password</th>
-				<td> <input type = "password" name = "user_password" value = "${dto.pw }" required></td>
+				<td> <input class="input" type = "password" name = "user_password" value = "${dto.pw }" required></td>
 			</tr>
 			
 			<tr>
-				<td> <input type = "password" name = "user_repassword" value = "${dto.pw }" required></td>
+				<td> <input class="input" type = "password" name = "user_repassword" value = "${dto.pw }" required></td>
 			</tr>
 			
 			<tr>
 				<th>Name</th>
-				<td><input type = "text" name = "user_name" value = "${dto.name }" required></td>
+				<td><input class="input" type = "text" name = "user_name" value = "${dto.name }" required></td>
 			</tr>
 			
 			<tr>
 				<th>Mobile</th>
-				<td><input type = "text" name = "user_mobile" value = "${dto.mobile }" required></td>
+				<td><input class="input" type = "text" name = "user_mobile" value = "${dto.mobile }" required></td>
 			</tr>
 			<tr>
 				<th>Address</th>
-				<td><input type = "text" name = "user_address" value = "${dto.address }" required></td>
+				<td><input class="input" type = "text" name = "user_address" value = "${dto.address }" required></td>
 			</tr>
 			
 			<c:if test = "${dto.id != sessionScope.Id}"> 
@@ -59,15 +59,17 @@
 				</tr>	
 			</c:if>	
 		</table>
-		<input type = "submit" value = "수정"> </form>
-		
-		
-		<form action = "Delete.myprofile" method = "post">  
-			<input type = "hidden" name = "user_no" value = "${dto.no}">
-			<input type = "submit" value = "삭제"> 
+		<button class="btn" type = "submit" >수정</button>
 		</form>
 		
-		<form action = "Check.myprofile" method = "post"> <input type = "submit" value = "확인"> </form>
+		
+		<form action = "Delete.myprofile" style="margin-top:3px; margin-bottom:3px;"  method = "post">  
+			<input type = "hidden" name = "user_no" value = "${dto.no}">
+			<button class="btn" type = "submit" >삭제</button> 
+		</form>
+		
+		<form action = "Check.myprofile" method = "post"> <button class="btn" type = "submit" >확인</button> </form>
+	</div>
 	</div>
 <jsp:include page = "/layout/footer.jsp"/>
 </body>

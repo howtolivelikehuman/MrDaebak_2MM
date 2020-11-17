@@ -5,19 +5,24 @@
 <head>
 		<meta charset="UTF-8">
 		<title>환영합니다!</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after">
 </head>
 <body>
-<div class="container">
+
 <jsp:include page = "/layout/header.jsp">
 		<jsp:param name="title" value="로그인 결과!"/>
 	</jsp:include>
-	<h1 id="title">환영합니다! </h1>
+<div class="container">
 	<div class = "main-menu">
-			
-		<a class="menu" href = "/MrDaebak_2MM/Member/loginView.jsp"> 회원 관리</a>
-		<a class="menu" href = "/MrDaebak_2MM/Member/signUpView.jsp"> 재고 관리</a>
-		<a class="menu" href="/MrDaebak_2MM/Order/Order.jsp">주문목록 관리</a>			
+		<form class="menu" action = "" method = "post">
+			<button class="menu menu-submit" type="submit">회원 관리</button>
+		</form>
+		<form class="menu" action = "" method = "post">
+			<button class="menu menu-submit" type="submit">재고 관리</button>
+		</form>
+		<form class="menu" action = "" method = "post">
+			<button class="menu menu-submit" type="submit">주문목록 관리</button>
+		</form>		
 	</div>
 </div>
 <jsp:include page = "/layout/footer.jsp"/>
