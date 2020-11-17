@@ -2,6 +2,7 @@ package DTO;
 
 public class Customer extends Member{
 	private boolean isVip;
+	private int type = 0;
 
 	public boolean isVip() {
 		return isVip;

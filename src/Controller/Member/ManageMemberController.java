@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Service.Service;
+import Service.MemberService.ManageMemberService;
 import Service.ActionForward;
 
 @WebServlet("*.manageMem")
+
 public class ManageMemberController extends HttpServlet{
 	ActionForward nextAction = null; 
-	Service action = null;
+	ManageMemberService service = null;
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,9 +25,22 @@ public class ManageMemberController extends HttpServlet{
 		String requestPage = requestURI.substring(Index); // "xxx.manageMem" 꼴만 남게
 		
 		try {
-			if(requestPage.equals("MemberList.manageMem")) { //글 목록 -DB조회
+			if(requestPage.equals("MemberList.manageMem")) { //회원 목록 - DB조회
+				service = new ManageMemberService();
+				nextAction = service.ListMember(request, response);
+
+			} else if(requestPage.equals("MemberListView.manageMem")) { //회원 목록 - View
+				nextAction = new ActionForward();
+				nextAction.setNextPath("MemberListView.jsp");
+				nextAction .setRedirect(false);
 				
-			} else if(requestPage.equals("MemberRead.manageMem")) { //글 수정 - DB 조회(원문 받아오기)
+			} else if(requestPage.equals("MemberRead.manageMem")) { //회원 조회 - DB
+				
+			} else if(requestPage.equals("MemberReadView.manageMem")) { //회원 조회 - View
+				
+			} else if(requestPage.equals("MemberEdit.manageMem")) { //회원 수정 - DB
+				
+			} else if(requestPage.equals("MemberDelete.manageMem")) { //회원 삭제 -DB
 				
 			}
 

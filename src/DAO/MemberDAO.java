@@ -45,6 +45,21 @@ public class MemberDAO {
 			}
 			return dao;
 		}
+		
+		//close 하는 메소드.
+		private static void close(Connection con, PreparedStatement ps, ResultSet rs) {
+			try {
+				if(rs != null) { rs.close();}
+				if(con != null) {con.close(); }
+				if(ps != null) {ps.close(); }
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		private static void close(Connection con, PreparedStatement ps) {
+			close(con,ps,null);
+		}
 
 		public boolean update(Member member) {
 			sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ? WHERE no = ?";
@@ -65,9 +80,8 @@ public class MemberDAO {
 			}
 			finally {
 				try {
-					if(rs != null) rs.close();
-					if(ps != null) ps.close();
-					if(con != null) con.close();
+					close(con,ps);
+					
 				} catch(Exception e) {
 					e.printStackTrace();
 				}
@@ -105,17 +119,7 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 			finally {  // 닫는건 예외처리 상관없이 실행되어야 함으로.
-				try {
-					if( ps != null) {
-						ps.close(); // null이면 실행 불가함 (null pointer exception 발생)
-					}
-					if(con != null) {
-						con.close();
-					}
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
-
+				close(con,ps);
 			}
 			return result; 
 
@@ -174,13 +178,7 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 			finally {
-				try {
-					if(rs != null) rs.close();
-					if(ps != null) ps.close();
-					if(con != null)con.close();
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
+				close(con,ps,rs);
 			}
 			return member;
 		}
@@ -236,13 +234,7 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 			finally {
-				try {
-					if(rs != null) rs.close();
-					if(ps != null) ps.close();
-					if(con != null)con.close();
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
+				close(con,ps,rs);
 			}
 			return member;
 		}
@@ -260,13 +252,7 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 			finally {
-				try {
-					if(rs != null) rs.close();
-					if(ps != null) ps.close();
-					if(con != null)con.close();
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
+				close(con,ps);
 			}
 			return result;
 		}
@@ -292,5 +278,60 @@ public class MemberDAO {
 				}
 			}
 			return exist;
+		}
+		
+		public ArrayList<Member> getList(int page){
+			ArrayList<Member> list = new ArrayList<Member>();
+			Member member = null;
+			int start = page * 10 -9;
+			int end = page * 10;
+			sql = "SELECT no, id, name, type FROM" +
+					"(SELECT ROWNUM rn, tt.* FROM "
+					+ "(SELECT * FROM Member ORDER BY no DESC) tt)"
+					+ " WHERE rn >= ?  AND rn <= ?";
+			try {
+				con = ds.getConnection();
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, start);
+				ps.setInt(2, end);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					member = new Member();
+					member.setNo(rs.getInt("no"));
+					member.setId(rs.getString("id"));
+					member.setName(rs.getString("name"));
+					member.setType(rs.getInt("type"));
+					list.add(member);	
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		finally {
+			close(con,ps,rs);
+		}
+		return list.isEmpty() ? null : list;
+			
+		}
+		
+		public int getTotalPage() {
+			int total = 0;
+			sql = "SELECT COUNT(*) FROM Member";
+			try{
+				con = ds.getConnection();
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					total = rs.getInt("COUNT(*)");
+				}
+			
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		finally {
+			close(con,ps,rs);
+		}
+			return (total-1)/10 +1;
 		}
 }

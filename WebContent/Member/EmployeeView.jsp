@@ -14,7 +14,7 @@
 	</jsp:include>
 <div class="container">
 	<div class = "main-menu">
-		<form class="menu" action = "" method = "post">
+		<form class="menu" action = "MemberList.manageMem?page=1" method = "post">
 			<button class="menu menu-submit" type="submit">회원 관리</button>
 		</form>
 		<form class="menu" action = "" method = "post">

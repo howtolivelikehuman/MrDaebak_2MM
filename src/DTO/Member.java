@@ -2,6 +2,8 @@ package DTO;
 
 public class Member {
 	private int no;
+	private int type;
+	
 	private String id;
 	private String pw;
 	private String name;
@@ -13,6 +15,12 @@ public class Member {
 	}
 	public void setNo(int no) {
 		this.no = no;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
 	}
 	public String getId() {
 		return id;
