@@ -9,9 +9,18 @@
 		<link rel="stylesheet" type="text/css" href="../layout/layout.css?after">
 </head>
 <body>
-<jsp:include page = "/layout/header.jsp">
-			<jsp:param name="title" value="로그인"/>
-		</jsp:include>
+
+
+	<jsp:include page = "/layout/header.jsp">
+				<jsp:param name="title" value="로그인"/>
+	</jsp:include>
+	
+	<c:if test = "${requestScope.altmsg != null}">
+		<script>
+			alert( "${requestScope.altmsg}");
+		</script>
+	</c:if>	
+		
 	<div class="container">
 		<form class="form-login" action = "Logic.login" method = "post">
 			<c:choose>

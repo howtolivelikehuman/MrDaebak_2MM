@@ -1,0 +1,12 @@
+CREATE TABLE stock (
+   no   NUMBER   PRIMARY KEY,
+   name VARCHAR2(20)   NOT NULL,
+    amount NUMBER DEFAULT 0,
+    nextSupplyDate DATE DEFAULT SYSDATE,
+    price NUMBER DEFAULT 0
+);
+
+CREATE SEQUENCE stock_seq;
+
+
+INSERT INTO stock VALUES(stock_seq.NEXTVAL, '샴페인', 14, '2020-12-01', 20000);

@@ -22,15 +22,15 @@ public class EditMyProfileService extends Service{
 		String mobile = request.getParameter("user_mobile");
 		String address= request.getParameter("user_address");
 		
-		Member dto = new Member();
-		dto.setNo(no);
-		dto.setPw(password);
-		dto.setName(name);
-		dto.setAddress(address);
-		dto.setMobile(mobile);
+		Member member = new Member();
+		member.setNo(no);
+		member.setPw(password);
+		member.setName(name);
+		member.setAddress(address);
+		member.setMobile(mobile);
 		
 		MemberDAO dao = MemberDAO.getInstance();
-		boolean result = dao.update(dto);
+		boolean result = dao.update(member);
 		
 		if(result) {
 			request.setAttribute("altmsg", "수정에 성공하였습니다.");

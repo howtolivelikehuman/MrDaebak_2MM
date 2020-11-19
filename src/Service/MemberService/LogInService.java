@@ -25,8 +25,8 @@ public class LogInService extends Service{
 		ActionForward nextAction = new ActionForward();
 		if(member == null) {
 			request.setAttribute("state", "failed");
-			request.setAttribute("altmsg", "로그인에 실패하였습니다.");
-			nextAction.setNextPath("ResultView.login");
+			request.setAttribute("altmsg", "아이디 비밀번호를 다시 확인해주세요.");
+			nextAction.setNextPath("LoginView.login");
 			nextAction.setRedirect(false);
 		}
 		else {
@@ -39,26 +39,22 @@ public class LogInService extends Service{
 			
 			session.setAttribute("Name", member.getName());
 			session.setAttribute("Id",member.getId());
+			session.setAttribute("Type", member.getType());
 			
 			if(member instanceof Customer) {
 				session.setAttribute("type", "Customer");
-				request.setAttribute("altmsg", "로그인에 성공하였습니다.");
+				request.setAttribute("altmsg", member.getName() + "님 환영합니다.");
 				nextAction.setNextPath("Customer.login");
 				nextAction.setRedirect(false);
 			}
 			else {
 				session.setAttribute("type", "Employee");
-				request.setAttribute("altmsg", "로그인에 성공하였습니다.");
+				request.setAttribute("altmsg", member.getName() + "님 환영합니다.");
 				nextAction.setNextPath("Employee.login");
 				nextAction.setRedirect(false);
 			}
 			
-		}
-		
-//		ActionForward nextAction = new ActionForward();
-//		nextAction.setNextPath("ResultView.login");
-//		nextAction.setRedirect(false);
-//		
+		}		
 		return nextAction;
 		
 	}

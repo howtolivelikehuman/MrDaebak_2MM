@@ -15,8 +15,8 @@ import Service.MemberService.SignUpService;
 @WebServlet("*.signup") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
 
 public class SignUpController extends HttpServlet{
-	ActionForward nextAction = null; 
-	Service action = null;
+	ActionForward nextAction = new ActionForward();
+	SignUpService service = new SignUpService();
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,19 +28,16 @@ public class SignUpController extends HttpServlet{
 		
 		try {
 			if(requestPage.equals("signUpView.signup")) { //회원가입 창요청
-				nextAction = new ActionForward();
 				nextAction.setNextPath("signUpView.jsp");
 				nextAction.setRedirect(false);
 			}
 			
 			else if(requestPage.equals("CheckIdLogic.signup")) { //아이디 확인
-				action = new SignUpService();
-				nextAction = ((SignUpService)action).CheckID(request, response);
+				nextAction = service.CheckID(request, response);
 			}
 			
 			else if(requestPage.equals("signUpLogic.signup")) { //회원가입 실행
-				action = new SignUpService();
-				nextAction = ((SignUpService)action).SignUp(request, response);
+				nextAction = service.SignUp(request, response);
 			}
 			
 			

@@ -18,6 +18,14 @@
 					<a class="top-menu" href = "/MrDaebak_2MM/Member/signUpView.jsp"> JOIN  </a>
 				</c:when>
 				<c:otherwise>
+				<c:choose>
+					<c:when test = "${sessionScope.Type == 0}">
+						<form class="top-menu" action = "Customer.login" method = "post"> <input id="logout" type = "submit" value = "MAIN"> </form>
+					</c:when>
+					<c:otherwise>
+						<form class="top-menu" action = "Employee.login" method = "post"> <input id="logout" type = "submit" value = "MAIN"> </form>
+					</c:otherwise>
+				</c:choose>
 					<form class="top-menu" action = "Logic.logout" method = "post"> <input id="logout" type = "submit" value = "LOGOUT"> </form>
 				</c:otherwise>
 			</c:choose>

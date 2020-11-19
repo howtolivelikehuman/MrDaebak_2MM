@@ -10,23 +10,21 @@
 </head>
 <body>
 <jsp:include page = "/layout/header.jsp">
-	<jsp:param name="title" value="개인정보 확인"/>
+	<jsp:param name="title" value="회원정보 확인"/>
 </jsp:include>
 <div class="container">
 <c:set var = "dto" value = "${requestScope.member}" scope = "page"/>
 <c:remove var ="dto" scope = "request"/>
-
 	<c:if test = "${dto == null }">
 		<script>
 			alert("오류가 발생하였습니다");
 			history.back();
 		</script>
 	</c:if>
-	
 <div>
-	<form action = "Update.myprofile" method = "post">
+	<form action = "MemberEdit.manageMem" method = "post">
 		<input type = "hidden" name = "user_no" value = "${dto.no}">
-
+		<input type = "hidden" name = "user_type" value = "${dto.type}">
 		<table border = "0">
 			<tr>
 				<th>ID</th>
@@ -59,26 +57,24 @@
 			<c:choose>
 				<c:when test = "${dto.type == 1}">
 					<th>직책</th>
-					<td><input class="input" type = "text" name = "user_position" value = "${dto.position }" required></td>
+					<td><input class="input" type = "text" name = "user_position" value = "${dto.position}" required></td>
 				</c:when>
 				<c:otherwise>
 					<th>단골고객</th>
-					<td>${dto.vip}</td>
+					<td><input class="input" type = "text" name = "user_isVip" value = "${dto.vip}" required></td>
 				</c:otherwise>
 			</c:choose>
-			
-				
 		</table>
 		<button class="btn" type = "submit" >수정</button>
 		</form>
 		
 		
-		<form action = "Delete.myprofile" style="margin-top:3px; margin-bottom:3px;"  method = "post">  
+		<form action = "MemberDelete.manageMem" style="margin-top:3px; margin-bottom:3px;"  method = "post">  
 			<input type = "hidden" name = "user_no" value = "${dto.no}">
 			<button class="btn" type = "submit" >삭제</button> 
 		</form>
 		
-		<form action = "Check.myprofile" method = "post"> <button class="btn" type = "submit" >확인</button> </form>
+		<form action = "Check.manageMem" method = "post"> <button class="btn" type = "submit" >확인</button> </form>
 	</div>
 	</div>
 <jsp:include page = "/layout/footer.jsp"/>

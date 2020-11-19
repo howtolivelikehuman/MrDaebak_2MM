@@ -1,14 +1,14 @@
 package DTO;
 
 public class Customer extends Member{
-	private boolean isVip;
+	private boolean vip;
 	private int type = 0;
 
 	public boolean isVip() {
-		return isVip;
+		return vip;
 	}
 
 	public void setVip(boolean isVip) {
-		this.isVip = isVip;
+		this.vip = isVip;
 	}
 }

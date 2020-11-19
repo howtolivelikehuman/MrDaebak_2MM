@@ -11,7 +11,7 @@ import Service.Service;
 import Service.ActionForward;
 
 public class SignUpService extends Service{
-	boolean result;
+
 	
 	public ActionForward SignUp(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -40,7 +40,7 @@ public class SignUpService extends Service{
 		
 		
 		MemberDAO dao = MemberDAO.getInstance();
-		result = dao.insert(dto);
+		boolean result = dao.insert(dto);
 		
 		nextAction = new ActionForward();
 		nextAction.setNextPath("signUpResultView.jsp?result="+result);
@@ -55,7 +55,7 @@ public class SignUpService extends Service{
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		MemberDAO dao = MemberDAO.getInstance();
-		result = dao.isExistID(id);
+		boolean result = dao.isExistID(id);
 		
 		nextAction = new ActionForward();
 		nextAction.setNextPath("CheckIdView.jsp?id=" + id + "&result=" + result);

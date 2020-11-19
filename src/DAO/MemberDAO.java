@@ -62,7 +62,15 @@ public class MemberDAO {
 		}
 
 		public boolean update(Member member) {
-			sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ? WHERE no = ?";
+			
+				sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ? WHERE no = ?";
+				
+			if(member instanceof Customer) {				
+				sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ?, vip = ? WHERE no = ?";
+			}			
+			else if(member instanceof Employee) {
+				sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ?, position = ? WHERE no = ?";
+			}
 			boolean result = false;
 			
 			try {
@@ -72,7 +80,18 @@ public class MemberDAO {
 				ps.setString(2, member.getName());
 				ps.setString(3, member.getMobile());
 				ps.setString(4, member.getAddress());
-				ps.setInt(5, member.getNo());
+							
+				if(member instanceof Customer) {
+					ps.setInt(5,((Customer)member).isVip() ? 1 : 0);
+					ps.setInt(6, member.getNo());
+					
+				}else if(member instanceof Employee) {
+					ps.setString(5, ((Employee)member).getPosition());
+					ps.setInt(6, member.getNo());
+					
+				}else {
+					ps.setInt(5, member.getNo());
+				}
 				result = 1 == ps.executeUpdate();
 				
 			}catch (Exception e) {
@@ -87,9 +106,8 @@ public class MemberDAO {
 				}
 			}
 			return result;
-
 		}
-		
+
 		public boolean insert(Member member) {
 			sql = "INSERT INTO member VALUES(member_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, default, default)";
 			boolean result = false;
@@ -239,6 +257,63 @@ public class MemberDAO {
 			return member;
 		}
 		
+		public Member select(int no) {
+			Member member = null;
+			sql = "SELECT * FROM member WHERE no = ?";
+			try {
+				con = ds.getConnection();
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, no);
+				rs = ps.executeQuery();
+				 
+				if(rs.next()) {
+					
+					int type = rs.getInt("type");
+					
+					switch (type) {
+					
+					case 0: //customer
+						member = new Customer();
+						member.setNo(rs.getInt("no"));
+						member.setId(rs.getString("id"));
+						member.setPw(rs.getString("pw"));
+						member.setName(rs.getString("name"));
+						member.setMobile(rs.getString("phone"));
+						member.setAddress(rs.getString("address"));
+						member.setType(rs.getInt("type"));
+						
+						if(rs.getInt("vip") == 0) {
+							((Customer)member).setVip(false);
+						}
+						else {
+							((Customer)member).setVip(true);
+						}
+						break;
+						
+					case 1: //employee
+						member = new Employee();
+						member.setNo(rs.getInt("no"));
+						member.setId(rs.getString("id"));
+						member.setPw(rs.getString("pw"));
+						member.setName(rs.getString("name"));
+						member.setMobile(rs.getString("phone"));
+						member.setAddress(rs.getString("address"));
+						member.setType(rs.getInt("type"));
+						((Employee)member).setPosition(rs.getString("position"));
+						break;
+						
+					default:
+						break;
+					}
+				}		
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				close(con,ps,rs);
+			}
+			return member;
+		}
 		
 		public boolean delete(int no) {
 			boolean result = false;
@@ -287,7 +362,7 @@ public class MemberDAO {
 			int end = page * 10;
 			sql = "SELECT no, id, name, type FROM" +
 					"(SELECT ROWNUM rn, tt.* FROM "
-					+ "(SELECT * FROM Member ORDER BY no DESC) tt)"
+					+ "(SELECT * FROM Member ORDER BY no ASC) tt)"
 					+ " WHERE rn >= ?  AND rn <= ?";
 			try {
 				con = ds.getConnection();
