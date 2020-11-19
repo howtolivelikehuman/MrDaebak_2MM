@@ -37,14 +37,9 @@ public class LogInController extends HttpServlet{
 				action = new LogInService();
 				nextAction = ((LogInService)action).LogIn(request, response);
 			}
-			else if(requestPage.equals("Customer.login")) { //회원 창요청
+			else if(requestPage.equals("Result.login")) { //회원 창요청
 				nextAction = new ActionForward();
-				nextAction.setNextPath("CustomerView.jsp");
-				nextAction.setRedirect(false);
-			}
-			else if(requestPage.equals("Employee.login")) { //멤버 창요청
-				nextAction = new ActionForward();
-				nextAction.setNextPath("EmployeeView.jsp");
+				nextAction.setNextPath("MainView.jsp");
 				nextAction.setRedirect(false);
 			}
 			

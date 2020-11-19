@@ -157,40 +157,41 @@ public class MemberDAO {
 				if(rs.next()) {
 					
 					int type = rs.getInt("type");
-					
 					switch (type) {
 					
-					case 0: //customer
-						member = new Customer();
-						member.setNo(rs.getInt("no"));
-						member.setId(rs.getString("id"));
-						member.setPw(rs.getString("pw"));
-						member.setName(rs.getString("name"));
-						member.setMobile(rs.getString("phone"));
-						member.setAddress(rs.getString("address"));
-						
-						if(rs.getInt("vip") == 0) {
-							((Customer)member).setVip(false);
+						case 0: //customer
+							member = new Customer();
+							member.setNo(rs.getInt("no"));
+							member.setId(rs.getString("id"));
+							member.setPw(rs.getString("pw"));
+							member.setName(rs.getString("name"));
+							member.setMobile(rs.getString("phone"));
+							member.setAddress(rs.getString("address"));
+							member.setType(type);
+							
+							if(rs.getInt("vip") == 0) {
+								((Customer)member).setVip(false);
+							}
+							else {
+								((Customer)member).setVip(true);
+							}
+							break;
+							
+						case 1: //employee
+							member = new Employee();
+							member.setNo(rs.getInt("no"));
+							member.setId(rs.getString("id"));
+							member.setPw(rs.getString("pw"));
+							member.setName(rs.getString("name"));
+							member.setMobile(rs.getString("phone"));
+							member.setAddress(rs.getString("address"));
+							member.setType(type);
+							((Employee)member).setPosition(rs.getString("position"));
+							break;
+							
+						default:
+							break;
 						}
-						else {
-							((Customer)member).setVip(true);
-						}
-						break;
-						
-					case 1: //employee
-						member = new Employee();
-						member.setNo(rs.getInt("no"));
-						member.setId(rs.getString("id"));
-						member.setPw(rs.getString("pw"));
-						member.setName(rs.getString("name"));
-						member.setMobile(rs.getString("phone"));
-						member.setAddress(rs.getString("address"));
-						((Employee)member).setPosition(rs.getString("position"));
-						break;
-						
-					default:
-						break;
-					}
 				}		
 			}catch(Exception e) {
 				e.printStackTrace();

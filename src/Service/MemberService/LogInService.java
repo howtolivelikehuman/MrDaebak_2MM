@@ -41,18 +41,9 @@ public class LogInService extends Service{
 			session.setAttribute("Id",member.getId());
 			session.setAttribute("Type", member.getType());
 			
-			if(member instanceof Customer) {
-				session.setAttribute("type", "Customer");
-				request.setAttribute("altmsg", member.getName() + "님 환영합니다.");
-				nextAction.setNextPath("Customer.login");
-				nextAction.setRedirect(false);
-			}
-			else {
-				session.setAttribute("type", "Employee");
-				request.setAttribute("altmsg", member.getName() + "님 환영합니다.");
-				nextAction.setNextPath("Employee.login");
-				nextAction.setRedirect(false);
-			}
+			request.setAttribute("altmsg", member.getName() + "님 환영합니다.");
+			nextAction.setNextPath("Result.login");
+			nextAction.setRedirect(false);
 			
 		}		
 		return nextAction;

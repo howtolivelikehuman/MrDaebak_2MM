@@ -27,8 +27,6 @@
 		<button class="menu" type="button" onclick="location.href='/MrDaebak_2MM/Member/signUpView.jsp'">주문하기</button>
 		<button class="menu" type="button" onclick="location.href='/MrDaebak_2MM/Order/Order.jsp'">주문기록 확인</button>
 	</div>
-	
-		
 </div>
 
 <jsp:include page = "/layout/footer.jsp"/>
