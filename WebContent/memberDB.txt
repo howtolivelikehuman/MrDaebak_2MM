@@ -17,4 +17,4 @@ CREATE TABLE member (
 CREATE SEQUENCE member_seq;
 
 
-INSERT INTO member VALUES(member_seq.NEXTVAL, 'aa', '123', 'asd', '010-4545-4545', 'dsas784-15, aas', null, null, null);
+INSERT INTO member VALUES(member_seq.NEXTVAL, 'admin', '1234', 'asd', '010-4545-4545', 'dsas784-15, aas', 1, null, null);
