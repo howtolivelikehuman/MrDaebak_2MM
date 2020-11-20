@@ -35,26 +35,21 @@
 					<th>다음 입고일</th>
 					<th colspan="2"></th>
 				</tr>
-
-				<c:forEach var = "dto" items = "${ requestScope.list }" varStatus="status">
-				<tr align = "center">
-						<td>${status.index+1}<input type = "hidden" name = "now-input" value = "${dto.no}"></td>
-						<td><input class="input" type = "text" name = "now-input" value = "${dto.name }" required></td>
-						<td><input class="input" type = "text" name = "now-input" value = "${dto.price }" required></td>
-						<td><input class="input" type = "text" name = "now-input" value = "${dto.amount }" required></td>
-						<td><input class="input" type = "text" name = "now-input" value = "${dto.nextSupplyDate }" required></td>
-						<td><button class="delete" onclick="clickDelete(${dto.no})"><img src="/MrDaebak_2MM/layout/delete.png" height=20px></button></td>
+				<tbody id = "table_body">
+					<c:forEach var = "dto" items = "${ requestScope.list }" varStatus="status">
+					<tr align = "center">
+							<td>${status.index+1}<input type = "hidden" name = "now-input" value = "${dto.no}"></td>
+							<td><input class="input" type = "text" name = "now-input" value = "${dto.name }" required></td>
+							<td><input class="input" type = "text" name = "now-input" value = "${dto.price }" required></td>
+							<td><input class="input" type = "text" name = "now-input" value = "${dto.amount }" required></td>
+							<td><input class="input" type = "text" name = "now-input" value = "${dto.nextSupplyDate }" required></td>
+							<td><button class="delete" onclick="clickDelete_row(this)"><img src="/MrDaebak_2MM/layout/delete.png" height=20px></button></td>
+					</tr>
+					</c:forEach>
+				</tbody>
+				<tr><td colspan="5"><button class="btn" onclick="clickCheck()">저장하기</button></td>
+				<td><button class="check" onclick="clickAdd_row()" ><img src="/MrDaebak_2MM/layout/check.png" height=20px></button></td>
 				</tr>
-				</c:forEach>
-				<tr align = "center">
-					<td></td>
-					<td><input class="input" type = "text" name = "new-input" value = "" required></td>
-					<td><input class="input" type = "text" name = "new-input" value = "" required></td>
-					<td><input class="input" type = "text" name = "new-input" value = "" required></td>
-					<td><input class="input" type = "text" name = "new-input" value = "" required></td>
-					<td><button class="check" onclick="clickAdd()" ><img src="/MrDaebak_2MM/layout/check.png" height=20px></button></td>
-				</tr>
-				<tr><td colspan="6"><button class="btn" onclick="clickCheck()">저장하기</button></td></tr>
 			</table>
 	
 		</c:otherwise>
