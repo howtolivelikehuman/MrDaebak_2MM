@@ -5,11 +5,11 @@ CREATE TABLE member (
    id    VARCHAR2(20)   NOT NULL UNIQUE,
    pw VARCHAR2(20)   NOT NULL,
    name VARCHAR2(20)   NOT NULL,
-    phone VARCHAR2(20)   NOT NULL,
-    address VARCHAR2(80)   NOT NULL,
-    type NUMBER DEFAULT 0,
-    vip NUMBER DEFAULT 0,
-    position VARCHAR2(20) DEFAULT 'Customer'
+   phone VARCHAR2(20)   NOT NULL,
+   address VARCHAR2(80)   NOT NULL,
+   type NUMBER DEFAULT 0,
+   vip NUMBER DEFAULT 0,
+   position VARCHAR2(20) DEFAULT 'Customer'
 );
 
 
