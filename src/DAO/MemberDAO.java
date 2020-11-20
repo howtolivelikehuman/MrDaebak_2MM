@@ -14,9 +14,10 @@ import DTO.Employee;
 import DTO.Member;
 
 public class MemberDAO {
-		//private String db_url = "jdbc:oracle:thin:@localhost:1521:orcl";
-		//private String db_username = "mrdaebak";
-		//private String db_password = "1234";
+		//private static String db_url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		//private static String db_username = "mrdaebak";
+		//private static String db_password = "1234";
+		//private static String class_name = "oracle.jdbc.driver.OracleDriver";
 	
 		private static MemberDAO dao;
 		private Connection con;

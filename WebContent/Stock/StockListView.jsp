@@ -19,6 +19,7 @@
 		</script>
 </c:if>
 <div class="container">
+
 	<c:choose>
 		<c:when test = "${ requestScope.list == null}"> <%-- 회원이 한명이라도 없을 경우 --%>
 			<H2>재고가 없습니다.</H2>
@@ -34,6 +35,7 @@
 					<th>수량</th>
 					<th>다음 입고일</th>
 				</tr>
+
 				<c:forEach var = "dto" items = "${ requestScope.list }">
 				<tr align = "center">
 					<td>${dto.no }</td>
@@ -45,9 +47,10 @@
 				</c:forEach>
 			</table>
 				<button class="btn" type = "submit">수정</button>
-			</form>
+		</form>
 		</c:otherwise>
 	</c:choose>
+
 	
 	<!--추가-->
 	<form action = "StockAdd.stock" method = "post">
