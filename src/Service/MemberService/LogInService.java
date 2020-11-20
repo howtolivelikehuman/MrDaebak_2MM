@@ -40,7 +40,6 @@ public class LogInService extends Service{
 			session.setAttribute("Name", member.getName());
 			session.setAttribute("Id",member.getId());
 			session.setAttribute("Type", member.getType());
-			
 			request.setAttribute("altmsg", member.getName() + "님 환영합니다.");
 			nextAction.setNextPath("Result.login");
 			nextAction.setRedirect(false);
