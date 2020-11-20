@@ -27,14 +27,14 @@
 	<c:otherwise> <%-- 회원이 한명이라도 있을경우 --%>
 		<table>
 			<tr align = "center">
-				<th>회원 번호</th>
+				<th>순번</th>
 				<th>회원 ID</th>
 				<th>회원 명</th>
 				<th>회원 분류</th>
 			</tr>
-			<c:forEach var = "dto" items = "${ requestScope.list }">
+			<c:forEach var = "dto" items = "${ requestScope.list }"  varStatus="status">
 			<tr align = "center">
-				<th>${dto.no }</th>
+				<th>${currentpage*10 +status.index - 9 }</th>
 				<th width="47%" align = "left"><a href = "MemberRead.manageMem?MemNo=${dto.no}">${dto.id }</a></th>
 				<th>${dto.name }</th>
 				

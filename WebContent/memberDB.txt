@@ -1,4 +1,3 @@
-//SQL�뿉�꽌 MEMBER TABLE 留뚮뱾湲�
 
 CREATE TABLE member (
    no   NUMBER   PRIMARY KEY,

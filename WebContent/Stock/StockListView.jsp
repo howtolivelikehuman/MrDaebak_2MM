@@ -36,9 +36,9 @@
 					<th>다음 입고일</th>
 				</tr>
 
-				<c:forEach var = "dto" items = "${ requestScope.list }">
+				<c:forEach var = "dto" items = "${ requestScope.list }" varStatus="status">
 				<tr align = "center">
-					<td>${dto.no }</td>
+					<td>${status.index+1}<input type = "hidden" name = "stock_no" value = "${dto.no}"></td>
 					<td><input class="input" type = "text" name = "stock_name" value = "${dto.name }" required></td>
 					<td><input class="input" type = "text" name = "stock_price" value = "${dto.price }" required></td>
 					<td><input class="input" type = "text" name = "stock_amount" value = "${dto.amount }" required></td>

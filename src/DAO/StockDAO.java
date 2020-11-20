@@ -168,4 +168,48 @@ public class StockDAO{
 		
 		return list.isEmpty() ? null : list;
 	}
+
+	public boolean setAvailable() throws Exception{
+		boolean result = false;
+		sql = "UPDATE MENU SET AVAILABLE = 1";
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			result = 1 == ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+			}
+	
+		finally {
+			close(con,ps,rs);
+		}
+		return result;
+		}
+
+	public boolean setUnAvailable(ArrayList<Integer> stockidx) throws Exception{
+		boolean result = false;
+		sql = "UPDATE MENU SET available = 0 " 
+		+ "WHERE MENU.NO IN (SELECT menuno FROM MENUWITHSTOCK WHERE MENUWITHSTOCK.stockno  IN ("; 
+		
+		for(int i=0; i < stockidx.size()-1; i++) {
+			sql = sql + stockidx.get(i) + ",";
+		}
+		sql = sql+stockidx.get(stockidx.size()-1) + "))";
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			result = 1 == ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+			}
+	
+		finally {
+			close(con,ps,rs);
+		}
+		return result;
+		}
 }

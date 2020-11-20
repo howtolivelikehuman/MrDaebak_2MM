@@ -1,0 +1,33 @@
+//ORDER 
+
+Create table orders(
+     no   NUMBER   PRIMARY KEY,
+     name    VARCHAR2(20)   NOT NULL,
+     phone VARCHAR2(20)   NOT NULL,
+   address VARCHAR2(80)   NOT NULL,
+   totalprice NUMBER NOT NULL,
+   cardnum VARCHAR2(20),
+   isdicounted NUMBER,
+   datetime date,
+   deliverydatetime date,
+   status NUMBER,
+   memberID VARCHAR2(20),
+   memberNO NUMBER,
+   info VARCHAR2(200),
+
+    CONSTRAINT member_no FOREIGN KEY(memberNO)
+    REFERENCES MEMBER(NO) ON DELETE CASCADE
+);
+
+CREATE SEQUENCE orders_seq;
+
+CREATE TABLE OrderedMenu (
+    orderNo number not null, 
+    menu varchar2(20),
+    style varchar2(20),
+    ADDITIONAL varchar(400),
+    price number,
+    
+    CONSTRAINT ORDER_NO FOREIGN KEY(orderNO)
+    REFERENCES orders(NO) ON DELETE CASCADE
+);
