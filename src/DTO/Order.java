@@ -3,7 +3,6 @@ package DTO;
 import java.util.ArrayList;
 
 public class Order {
-
 	private int no; //DB에넣을때자동 (필요없음)
 	private String name; //주문자이름
 	private String mobile; //

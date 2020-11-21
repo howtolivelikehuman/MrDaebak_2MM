@@ -1,9 +1,9 @@
 //ORDER 
 
 Create table orders(
-     no   NUMBER   PRIMARY KEY,
-     name    VARCHAR2(20)   NOT NULL,
-     phone VARCHAR2(20)   NOT NULL,
+   no   NUMBER   PRIMARY KEY,
+   name    VARCHAR2(20)   NOT NULL,
+   phone VARCHAR2(20)   NOT NULL,
    address VARCHAR2(80)   NOT NULL,
    totalprice NUMBER NOT NULL,
    cardnum VARCHAR2(20),
@@ -25,7 +25,6 @@ CREATE TABLE OrderedMenu (
     style varchar2(20),
     ADDITIONAL varchar(400),
     price number,
-    
     CONSTRAINT ORDER_NO FOREIGN KEY(orderNO)
     REFERENCES orders(NO) ON DELETE CASCADE
 );

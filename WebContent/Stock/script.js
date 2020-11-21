@@ -20,8 +20,9 @@ function clickCheck(){
 	hiddenField.setAttribute("value", JSON.stringify(stockArray));
 	console.log(hiddenField.getAttribute("value"));
 	form.appendChild(hiddenField);
+	console.log(hiddenField.getAttribute("value"));
 	document.body.appendChild(form);
-	form.submit();
+	//form.submit();
 }
 function clickDelete(num){
 	var form = document.createElement("form");
