@@ -43,7 +43,7 @@
 							<td><input class="input" type = "text" name = "now-input" value = "${dto.price }" required></td>
 							<td><input class="input" type = "text" name = "now-input" value = "${dto.amount }" required></td>
 							<td><input class="input" type = "text" name = "now-input" value = "${dto.nextSupplyDate }" required></td>
-							<td><button class="delete" onclick="clickDelete_row(this)"><img src="/MrDaebak_2MM/layout/delete.png" height=20px></button></td>
+							<td><button class="delete" onclick="clickDelete_row(this, ${dto.no})"><img src="/MrDaebak_2MM/layout/delete.png" height=20px></button></td>
 					</tr>
 					</c:forEach>
 				</tbody>

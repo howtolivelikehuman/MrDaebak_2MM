@@ -36,10 +36,7 @@ public class ManageStockController extends HttpServlet{
 			} else if(requestPage.equals("StockEdit.stock")) { //재고 수정 -DB
 				nextAction = service.EditStock(request, response);
 				
-			} else if (requestPage.equals("Result.stock")) { //확인 뷰
-				nextAction.setNextPath("");
-				nextAction.setRedirect(false);
-			} 
+			}
 			
 			
 			if(nextAction != null) { //리다이렉트 방식으로 nextPath
