@@ -8,13 +8,11 @@ Create table orders(
    totalprice NUMBER NOT NULL,
    cardnum VARCHAR2(20),
    isdicounted NUMBER,
-   datetime date,
    deliverydatetime date,
    status NUMBER,
    memberID VARCHAR2(20),
    memberNO NUMBER,
    info VARCHAR2(200),
-
     CONSTRAINT member_no FOREIGN KEY(memberNO)
     REFERENCES MEMBER(NO) ON DELETE CASCADE
 );

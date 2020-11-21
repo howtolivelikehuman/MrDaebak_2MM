@@ -1,4 +1,3 @@
-
 CREATE TABLE member (
    no   NUMBER   PRIMARY KEY,
    id    VARCHAR2(20)   NOT NULL UNIQUE,
@@ -11,9 +10,6 @@ CREATE TABLE member (
    position VARCHAR2(20) DEFAULT 'Customer'
 );
 
-
-
 CREATE SEQUENCE member_seq;
-
 
 INSERT INTO member VALUES(member_seq.NEXTVAL, 'admin', '1234', 'asd', '010-4545-4545', 'dsas784-15, aas', 1, null, null);
