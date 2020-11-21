@@ -19,7 +19,24 @@ function clickCheck(){
     hiddenField.setAttribute("name", "stockArray"); //stockArray 의 value에 스트링 형식으로 저장
 	hiddenField.setAttribute("value", JSON.stringify(stockArray));
 	console.log(hiddenField.getAttribute("value"));
+	
 	form.appendChild(hiddenField);
+	
+	const deletestockArray = {"deletestock" : []};
+	
+	for(var i=0; i<document.getElementsByName("deletestock").length; i++){
+		var no = document.getElementsByName("deletestock")[i].value;
+		console.log(no);
+		deletestockArray.deletestock.push({'no':no})
+	}
+	
+	var hiddenField2 = document.createElement("input");
+    hiddenField2.setAttribute("type", "hidden");
+    hiddenField2.setAttribute("name", "deletestockArray"); //stockArray 의 value에 스트링 형식으로 저장
+	hiddenField2.setAttribute("value", JSON.stringify(deletestockArray));
+	console.log(hiddenField2.getAttribute("value"));
+	form.appendChild(hiddenField2);
+	
 	document.body.appendChild(form);
 	form.submit();
 }
@@ -31,7 +48,7 @@ function clickAdd_row(){
 	var cell = new Array();
 	
 	cell[0] = row.insertCell(0);
-	var cell0 = "<p id = 'index'>"+(table_body.rows.length)+"</p>"+"<input type = 'hidden' name = 'now-input' value = '-1'>";
+	var cell0 = "+<input type = 'hidden' name = 'now-input' value = '-1'>";
 	cell[0].innerHTML = cell0;
 	
 	for(var i=1; i<5; i++){
@@ -45,12 +62,12 @@ function clickAdd_row(){
 function clickDelete_row(obj, num){
      var tr = obj.parentNode.parentNode;
      if(num != -1){
-    	 console.log(num);
 	 var hiddenField2 = document.createElement("input");
 	     hiddenField2.setAttribute("type", "hidden");
-	     hiddenField.setAttribute("name", "deletestockArray");
-	     hiddenField.setAttribute("value", num);
+	     hiddenField2.setAttribute("name", "deletestock");
+	     hiddenField2.setAttribute("value", num);
 	     console.log(hiddenField2.getAttribute("value"));
+	     document.body.appendChild(hiddenField2);
      }
      tr.parentNode.removeChild(tr); 
 }

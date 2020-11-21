@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>재고</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?aftdder">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after12">
 		<script type ="text/javascript" src = "/MrDaebak_2MM/Stock/script.js?assfstesr"></script>
 </head>
 <jsp:include page="/layout/header.jsp">
@@ -43,12 +43,12 @@
 							<td><input class="input" type = "text" name = "now-input" value = "${dto.price }" required></td>
 							<td><input class="input" type = "text" name = "now-input" value = "${dto.amount }" required></td>
 							<td><input class="input" type = "text" name = "now-input" value = "${dto.nextSupplyDate }" required></td>
-							<td><button class="delete" onclick="clickDelete_row(this, ${dto.no})"><img src="/MrDaebak_2MM/layout/delete.png" height=20px></button></td>
+							<td><button class="delete" onclick="clickDelete_row(this, ${dto.no})"><img src="/MrDaebak_2MM/layout/delete.png" width = "25px"></button></td>
 					</tr>
 					</c:forEach>
 				</tbody>
 				<tr><td colspan="5"><button class="btn" onclick="clickCheck()">저장하기</button></td>
-				<td><button class="check" onclick="clickAdd_row()" ><img src="/MrDaebak_2MM/layout/check.png" height=20px></button></td>
+				<td><button class="check" onclick="clickAdd_row()" ><img src="/MrDaebak_2MM/layout/check.png" height=25px></button></td>
 				</tr>
 			</table>
 	

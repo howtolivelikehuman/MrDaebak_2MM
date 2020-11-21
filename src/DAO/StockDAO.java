@@ -54,6 +54,68 @@ public class StockDAO{
 				close(con,ps,null);
 			}
 
+	public boolean delete(int[] no) {
+		boolean result = false;
+		sql = "DELETE FROM stock WHERE no In (";
+		try {
+			con = ds.getConnection();
+			
+			
+			for(int i=0; i<no.length-1; i++) {
+				sql = sql + no[i] + ",";
+			}
+			sql = sql + no[no.length-1] + ")";
+			
+			ps = con.prepareStatement(sql);
+			result = 1 ==ps.executeUpdate();	
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			close(con,ps);
+		}
+		return result;
+	}
+	
+	public boolean merge(Stock stock) throws Exception{
+		sql = "MERGE INTO stock USING dual ON (no = ?)"
+				+ "WHEN MATCHED THEN "
+				+ "UPDATE SET NAME = ?, AMOUNT = ? , NEXTSUPPLYDATE = ? , PRICE = ? "
+				+ "WHEN NOT MATCHED THEN "
+				+ "INSERT VALUES(STOCK_SEQ.NEXTVAL, ?,?,?,?)";
+		
+		boolean result = false;
+		
+		try {
+			con = ds.getConnection();
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, stock.getNo());
+			//update
+			ps.setString(2, stock.getName());
+			ps.setInt(3, stock.getAmount());
+			ps.setString(4, stock.getNextSupplyDate());
+			ps.setInt(5, stock.getPrice());
+			//insert
+			ps.setString(6, stock.getName());
+			ps.setInt(7, stock.getAmount());
+			ps.setString(8, stock.getNextSupplyDate());
+			ps.setInt(9, stock.getPrice());
+			result = 1 == ps.executeUpdate();			
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}finally {
+			try {
+				close(con,ps);
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+				throw e;
+			}
+		}
+		return result;
+	}
+	
 	public boolean update(Stock stock) throws Exception{
 		sql = "UPDATE stock SET name = ?, amount = ?, nextSupplyDate = ?, price = ? WHERE no = ?";
 		boolean result = false;

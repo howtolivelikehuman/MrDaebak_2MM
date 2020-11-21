@@ -19,8 +19,8 @@ body{
 
 .container{
 	display: flex;
-	width:45vw;
-	height:87vh;
+	width:50vw;
+	height:90vh;
 	background-color: aliceblue;
 	flex-direction: column;
 	text-align: center;
@@ -71,7 +71,7 @@ th, td{
 	justify-content: flex-end;
 }
 .top-menu{
-	font-size: 2.2vh;
+	font-size: 2.6vh;
 	font-weight: 400;
 	color:black;
 	/* margin:3%; */
@@ -201,10 +201,10 @@ a{
 	height:100%;
 }
 .check{
-	
+	background-color: rgba(255,255,255,0.75);
 }
 .delete{
-	
+	background-color: rgba(255,255,255,0.75);
 }
 /*.header, .footer {
 	width: 80%;

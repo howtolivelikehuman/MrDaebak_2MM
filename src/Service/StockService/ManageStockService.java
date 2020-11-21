@@ -41,31 +41,34 @@ public class ManageStockService extends Service{
 			//parsing
 			String str = request.getParameter("stockArray");
 			str = str.substring(str.indexOf(':')+1, str.length()-1);
-			System.out.println(str);		
-			JsonParser jsonParser = new JsonParser();
-			JsonArray jsonArray = (JsonArray) jsonParser.parse(str);
-			JsonObject object;
-			Stock s;
 			
-			ArrayList<Stock> newlist = new ArrayList<Stock>();
-			ArrayList<Stock> pastlist = new ArrayList<Stock>();
+			String str2 = request.getParameter("deletestockArray");
+			str2 = str2.substring(str2.indexOf(':')+1, str2.length()-1);
 			
-			for (int i = 0; i < jsonArray.size(); i++) {
-				object = (JsonObject) jsonArray.get(i);
-				s = new Stock();
-				s.setNo(object.get("no").getAsInt());
-				s.setName(object.get("name").getAsString());
-				s.setAmount(object.get("amount").getAsInt());
-				s.setPrice(object.get("price").getAsInt());
-				s.setNextSupplyDate(object.get("nextSupplyDate").getAsString());
-				newlist.add(s);
-				System.out.println(s.getNo() + " " + s.getName() + " " + s.getPrice() + " " + s.getNextSupplyDate());
-			}
+			ArrayList<Stock> newlist = ParseNewList(str);
+			int[] deletelist = ParseDeleteList(str2);
+			boolean result = true;
+			boolean result2 = true;
 			
 			StockDAO dao = StockDAO.getInstance();
-			pastlist = dao.getList();
 			
-			int size=pastlist.size();
+			if(deletelist != null)
+				//삭제 먼저 수행
+				result = dao.delete(deletelist);
+		
+			if(newlist != null) {
+				for(int i=0; i<newlist.size(); i++) {
+					if(newlist.get(i).getName().length() > 0) //적어도 이름은 있나 한번 더 체크
+						result2 = dao.merge(newlist.get(i));
+				}
+			}
+			
+			
+			if(result == false || result2 == false) {
+				request.setAttribute("altmsg", "재고를 업데이트 하는 도중 요류가 발생하였습니다.");
+			}else {
+				request.setAttribute("altmsg", "재고를 성공적으로 업데이트하였습니다.");
+			}
 			
 			
 		}catch (Exception e) {
@@ -79,5 +82,39 @@ public class ManageStockService extends Service{
 		}
 		
 		return nextAction;
+	}
+	public ArrayList<Stock> ParseNewList(String s){
+		JsonParser jsonParser = new JsonParser();
+		JsonArray jsonArray = (JsonArray) jsonParser.parse(s);
+		JsonObject object;
+		ArrayList<Stock> list = new ArrayList<Stock>();
+		Stock stock;
+		
+		for (int i = 0; i < jsonArray.size(); i++) {
+			object = (JsonObject) jsonArray.get(i);
+			stock = new Stock();
+			stock.setNo(object.get("no").getAsInt());
+			stock.setName(object.get("name").getAsString());
+			stock.setAmount(object.get("amount").getAsInt());
+			stock.setPrice(object.get("price").getAsInt());
+			stock.setNextSupplyDate(object.get("nextSupplyDate").getAsString());
+			list.add(stock);
+		}
+		return list.size() > 0 ? list : null;
+	}
+	
+	public int[] ParseDeleteList(String s){
+		JsonParser jsonParser = new JsonParser();
+		JsonArray jsonArray = (JsonArray) jsonParser.parse(s);
+		JsonObject object;
+		if(jsonArray.size() > 0) {
+			int [] list = new int[jsonArray.size()];
+			for (int i = 0; i < jsonArray.size(); i++) {
+				object = (JsonObject) jsonArray.get(i);
+				list[i] = object.get("no").getAsInt();
+			}
+			return list;
+		}
+		return null;
 	}
 }
