@@ -5,8 +5,8 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?afterss">
-		<script type ="text/javascript" src = "script.js"></script>
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?aftedrd">
+		<script type ="text/javascript" src = "script.js?sd"></script>
 </head>
 <body>
 
@@ -16,22 +16,40 @@
 <div class="container">
 	<div id="order">
 		<div id="dinners">
-			<h3>Dinner</h3>
-			<input type="radio" name="dinner" value="HTML" onclick="click_dinner(this.value)">1
-			<input type="radio" name="dinner" value="CSS" onclick="click_dinner(this.value)">2
-			<input type="radio" name="dinner" value="웹디자인" onclick="click_dinner(this.value)">3
+			<div align="center" class="text">Dinner</div>
+			<div class="sub-container">
+				<p id="dinner-info">원하는 디너를 선택하세요.</p>
+				<div>
+					<input type="radio" name="dinner-radio" value="french" onclick="click_dinner(this.value)">프렌치
+					<input type="radio" name="dinner-radio" value="english" onclick="click_dinner(this.value)">잉글리시
+					<input type="radio" name="dinner-radio" value="champagne" onclick="click_dinner(this.value)">샴페인
+				</div>
+			</div>
 		</div>
 		<div id="styles">
-			<h3>Style</h3>
-			<input type="radio" name="style" value="HTML" onclick="click_style(this.value)">4
-			<input type="radio" name="style" value="CSS"  onclick="click_style(this.value)">5
-			<input type="radio" name="style" value="웹디자인" onclick="click_style(this.value)">6
+			<div align="center" class="text">Styles</div>
+			<div class="sub-container">
+				<p id="style-info">원하는 스타일을 선택하세요. </p>
+				<div>
+					<input type="radio" class="valentine" name="style-radio" value="valentine" onclick="click_style(this.value)"><label class="valentine" for="valentine">발렌타인</label>
+					<input type="radio" class="simple" name="style-radio" value="simple"  onclick="click_style(this.value)"><label class="simple" for="simple">심플</label>
+					<input type="radio" name="style-radio" value="grand" onclick="click_style(this.value)">그랜드
+					<input type="radio" name="style-radio" value="deluxe" onclick="click_style(this.value)">딜럭스
+				</div>
+			</div>
 		</div>
 		<div id="details">
-			<h3>Detail</h3>
-			<input type="radio" name="detail" value="HTML">7
-			<input type="radio" name="detail" value="CSS">8
-			<input type="radio" name="detail" value="웹디자인">9
+			<div align="center" class="text">Details</div>
+			<div id="detail-box">
+				<div class="detail">
+					<div class="detail-name">와인</div>
+					<input class="num-box" type="number" value="0" min="0" />
+				</div>
+				<div class="detail">
+					<div class="detail-name">와인</div>
+					<input class="num-box" type="number" value="0" min="0" />
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

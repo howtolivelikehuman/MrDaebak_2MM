@@ -141,19 +141,59 @@ a{
 	background-color:aquamarine;
 	font-size: 3vh;
 }
-h3{
-	width: 100%;
-	margin-bottom: 5%;
+.text{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	width: 33%;
+	height: 100%;
+	border-right: 1px solid gray;
+	font-size: 3vh;
+}
+.sub-container{
+	display: grid;
+	width: 66%;
+	height: 100%;
+	grid-template-rows: 2fr 1fr;
+}
+#dinner-info, #style-info{
+	text-align: center;
+	margin-top:5%;
 }
 #dinners, #styles, #details{
-	margin-top: 3%;
+	width:100%;
+	height: 15%;
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
+	border-bottom: 1px solid gray;
+	font-size:1vh;
 }
 #styles, #details{
-	display: none;
+	/* display: none; */
+}
+#details{
+	height:30%;
+}
+#detail-box{
+	width:66%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+.detail{
+	width:47%;
+	height:15%;
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.detail-name{
+	width: 66%;
+}
+.num-box{
+	width:33%;
 }
 .check, .delete{
 	background: transparent;
