@@ -3,19 +3,19 @@ package DTO;
 import java.util.ArrayList;
 
 public class Order {
-	private int no;
-	private String name;
-	private String mobile;
-	private String address;
-	private int totalPrice;	
-	private String cardNum;
-	private int isDiscounted;
-	private String dateTime;
-	private String deliverydateTime;
+	private int no; 
+	private String name; //
+	private String mobile; //
+	private String address; //
+	private int totalPrice;	//+ºº¿œ
+	private String cardNum; //
+	private int isDiscounted; //
+	private String dateTime; 
+	private String deliverydateTime; // 
 	private int status;
-	private String memberID;
-	private String info;
-	private ArrayList<OrderedMenu> cart = null;
+	private String memberID; 
+	private String info; //
+	private ArrayList<OrderedMenu> cart = null; //
 	
 	public int getNo() {
 		return no;

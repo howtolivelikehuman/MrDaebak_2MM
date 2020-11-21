@@ -6,7 +6,7 @@ function clickCheck(){
 		var name=document.getElementsByName("now-input")[i+1].value;
 		var price=document.getElementsByName("now-input")[i+2].value;
 		var amount=document.getElementsByName("now-input")[i+3].value;
-		var nextSupplyDay=document.getElementsByName("now-input")[i+34].value;
+		var nextSupplyDay=document.getElementsByName("now-input")[i+4].value;
 		stockArray.stock.push({'key':i/4,'name':name,'price':Number(price),'amount':Number(amount),'nextSupplyDay':nextSupplyDay});
 	}
 	 var form = document.createElement("form");
@@ -19,8 +19,9 @@ function clickCheck(){
     hiddenField.setAttribute("name", "stockArray"); //stockArray 의 value에 스트링 형식으로 저장
 	hiddenField.setAttribute("value", JSON.stringify(stockArray));
 	form.appendChild(hiddenField);
+	console.log(hiddenField.getAttribute("value"));
 	document.body.appendChild(form);
-	form.submit();
+	//form.submit();
 }
 function clickDelete(num){
 	var form = document.createElement("form");
