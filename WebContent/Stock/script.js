@@ -7,6 +7,20 @@ function clickCheck(){
 		var price=document.getElementsByName("now-input")[i+2].value;
 		var amount=document.getElementsByName("now-input")[i+3].value;
 		var nextSupplyDay=document.getElementsByName("now-input")[i+4].value;
+		if(name==''){
+			document.getElementsByName("now-input")[i+1].focus();
+			return;
+		}else if(price==''){
+			document.getElementsByName("now-input")[i+2].focus();
+			return;
+		}else if(amount==''){
+			document.getElementsByName("now-input")[i+3].focus();
+			return;
+		}else if(nextSupplyDay==''){
+			document.getElementsByName("now-input")[i+4].focus();
+			return;
+		}
+		
 		stockArray.stock.push({'no':no,'name':name,'price':Number(price),'amount':Number(amount),'nextSupplyDate':nextSupplyDay});
 	}
 	 var form = document.createElement("form");

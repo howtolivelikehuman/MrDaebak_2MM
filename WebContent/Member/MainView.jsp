@@ -3,6 +3,7 @@
   <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%request.setCharacterEncoding("UTF-8"); %>
 <head>
+	  <link rel="icon" type="image/png" href="http://example.com/myicon.png">
       <meta charset="UTF-8">
       <title>환영합니다!</title>
       <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after">

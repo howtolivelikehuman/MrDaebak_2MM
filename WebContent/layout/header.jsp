@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>MrDaebak_2MM : ${param.title != null ? param.title : "나의 페이지!" }</title>
-		<link rel="stylesheet" type="text/css" href="./layout.css?after">
+		<link rel="stylesheet" type="text/css" href="./layout.css?ssss">
 	</head>
 	<body>
 		<div class = "header">

@@ -65,7 +65,7 @@ th, td{
 	background-color: aquamarine ;
 }
 .header{
-	width:45vw;
+	width:50vw;
 	display:flex;
 	flex-direction: row;
 	justify-content: flex-end;

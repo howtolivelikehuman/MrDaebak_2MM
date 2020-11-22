@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<title>재고</title>
 		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after12">
-		<script type ="text/javascript" src = "/MrDaebak_2MM/Stock/script.js?assfstesr"></script>
+		<script type ="text/javascript" src = "/MrDaebak_2MM/Stock/script.js?adssr"></script>
 </head>
 <jsp:include page="/layout/header.jsp">
 	<jsp:param name = "title" value = "재고" />
