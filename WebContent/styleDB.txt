@@ -15,12 +15,12 @@ Create table MENUWITHSTYLE(
     REFERENCES STYLE(NO) ON DELETE CASCADE
 );
 
-insert into style values (1 , '심플', 0, 
-'심플 스타일은 상자 접시에 냅킨, 플라스틱 쟁반과 플라스틱 잔에 디너를 서비스하는 스타일입니다.');
-insert into style values (2 , '그랜드', 10000,
-'그랜드 스타일은 도자기 접시와 컵, 흰색 면 냅킨, 나무 쟁반으로 디너를 서비스하는 스타일입니다.');
-insert into style values (3, '딜럭스', 20000, 
-'딜럭스 스타일은 은 쟁반에 작은 꽃병, 도자기 접시와 린넨 냅킨으로 디너를 서비스하는 스타일입니다');
+insert into style values (1 , '�떖�뵆', 0, 
+'�떖�뵆 �뒪���씪�� �긽�옄 �젒�떆�뿉 �깄�궓, �뵆�씪�뒪�떛 �웳諛섍낵 �뵆�씪�뒪�떛 �옍�뿉 �뵒�꼫瑜� �꽌鍮꾩뒪�븯�뒗 �뒪���씪�엯�땲�떎.');
+insert into style values (2 , '洹몃옖�뱶', 10000,
+'洹몃옖�뱶 �뒪���씪�� �룄�옄湲� �젒�떆�� 而�, �씛�깋 硫� �깄�궓, �굹臾� �웳諛섏쑝濡� �뵒�꼫瑜� �꽌鍮꾩뒪�븯�뒗 �뒪���씪�엯�땲�떎.');
+insert into style values (3, '�뵜�윮�뒪', 20000, 
+'�뵜�윮�뒪 �뒪���씪�� �� �웳諛섏뿉 �옉�� 苑껊퀝, �룄�옄湲� �젒�떆�� 由곕꽙 �깄�궓�쑝濡� �뵒�꼫瑜� �꽌鍮꾩뒪�븯�뒗 �뒪���씪�엯�땲�떎');
 CREATE SEQUENCE style_seq  start with 3;
 insert into menuwithstyle select menu.no, style.no from menu, style
-delete from menuwithstyle where menuno = 3 and styleno = 1;
+delete from menuwithstyle where menuno = 3 and styleno = 1; 
