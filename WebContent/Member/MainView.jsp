@@ -28,10 +28,9 @@
             <form class="menu" action = "Read.myprofile" method = "post">
                <button class="menu menu-submit" type="submit">내 정보 확인</button>
             </form>
-            <!-- <form class="menu" action = "" method = "post">
+           <form class="menu" action = "GetOrderForm.order" method = "post">
                <button class="menu menu-submit" type="submit">주문하기</button>
-            </form> --><!-- 나중에 이걸로 바꿔야함 아래버튼 -->
-            <button class="menu" type="button" onclick="location.href='/MrDaebak_2MM/Order/OrderView.jsp'">주문하기</button>
+            </form>
             <button class="menu" type="button" onclick="location.href='/MrDaebak_2MM/Order/Order.jsp'">주문기록 확인</button>
          </div>
       </div>

@@ -10,7 +10,9 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.Menu;
+import DTO.MenuDetail;
 import DTO.Stock;
+import DTO.Style;
 
 public class OrderDAO {
 	private static OrderDAO dao;
@@ -61,8 +63,7 @@ public class OrderDAO {
 		Menu menu = null;
 		
 		sql = "SELECT no, name, available, price, info "
-				+ " FROM menu "
-				+ " WHERE type = 0 ";
+				+ " FROM menu ";
 		
 		try {
 			con = ds.getConnection();
@@ -73,7 +74,6 @@ public class OrderDAO {
 				menu = new Menu();
 				menu.setNo(rs.getInt("no"));
 				menu.setName(rs.getString("name"));
-				menu.setType(0);
 				menu.setAvailable(rs.getInt("available"));
 				menu.setPrice(rs.getInt("price"));
 				menu.setInfo(rs.getString("info"));
@@ -90,13 +90,47 @@ public class OrderDAO {
 		
 	}
 	
-	public ArrayList<Stock> getStocklist(int menuNo){
-		ArrayList<Stock> list = new ArrayList<Stock>();
-		Stock stock = null;
+	public ArrayList<Style> getStylelist(){
+		ArrayList<Style> list = new ArrayList<Style>();
+		Style style = null;
 		
-		sql = "SELECT no, name, amount, PRICE FROM STOCK, MENUWITHSTOCK "
-				+ "WHERE MENUWITHSTOCK.MENUNO = ? "
-				+ "AND STOCK.NO = MENUWITHSTOCK.STOCKNO ";
+		sql = "SELECT no, name, price, info "
+				+ " FROM style ";
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				style = new Style();
+				style.setNo(rs.getInt("no"));
+				style.setName(rs.getString("name"));
+				style.setPrice(rs.getInt("price"));
+				style.setInfo(rs.getString("info"));
+				list.add(style);	
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	finally {
+		close(con,ps,rs);
+	}
+	return list.isEmpty() ? null : list;
+		
+	}
+	
+	public ArrayList<MenuDetail> getMenuDetaillist(int menuNo){
+		ArrayList<MenuDetail> list = new ArrayList<MenuDetail>();
+		MenuDetail menuDetail = null;
+		
+		sql = "select MENU.NO, MENUWITHSTOCK.ea, STOCK.NAME, STOCK.PRICE, STOCK.AMOUNT, STOCK.NO AS STOCKNO "
+				+ "FROM MENU, menuwithstock, STOCK "
+				+ "WHERE MENU.NO  = ? "
+				+ "AND menuwithstock.menuno = MENU.NO "
+				+ "AND menuwithstock.stockno = STOCK.NO "
+				+ "AND STOCK.NO = STOCK.NO";
 		
 		try {
 			con = ds.getConnection();
@@ -105,12 +139,80 @@ public class OrderDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				stock = new Stock();
-				stock.setNo(rs.getInt("no"));
-				stock.setName(rs.getString("name"));
-				stock.setAmount(rs.getInt("amount"));
-				stock.setPrice(rs.getInt("price"));
-				list.add(stock);	
+				menuDetail = new MenuDetail();
+				menuDetail.setMenuNo(rs.getInt("no"));
+				menuDetail.setEa(rs.getInt("ea"));
+				menuDetail.setName(rs.getString("name"));
+				menuDetail.setPrice(rs.getInt("price"));
+				menuDetail.setStockAmount(rs.getInt("amount"));
+				menuDetail.setStockNo(rs.getInt("stockno"));
+				list.add(menuDetail);	
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	finally {
+		close(con,ps,rs);
+	}
+	return list.isEmpty() ? null : list;
+		
+	}
+	
+	public ArrayList<MenuDetail> getExtraDetaillist(int menuNo){
+		ArrayList<MenuDetail> list = new ArrayList<MenuDetail>();
+		MenuDetail menuDetail = null;
+		
+		sql = "select STOCK.NAME, STOCK.PRICE, STOCK.AMOUNT, STOCK.NO AS STOCKNO " + 
+				"FROM MENU, menuwithstock, STOCK WHERE " + 
+				"menuwithstock.menuno = MENU.NO " + 
+				"AND menuwithstock.stockno = STOCK.NO " + 
+				"MINUS " + 
+				"select STOCK.NAME, STOCK.PRICE, STOCK.AMOUNT, STOCK.NO AS STOCKNO " + 
+				"FROM MENU, menuwithstock, STOCK WHERE MENU.NO  = ? " + 
+				"AND menuwithstock.menuno = MENU.NO " + 
+				"AND menuwithstock.stockno = STOCK.NO " + 
+				"AND STOCK.NO = STOCK.NO";
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, menuNo);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				menuDetail = new MenuDetail();
+				menuDetail.setMenuNo(0);
+				menuDetail.setEa(0);
+				menuDetail.setName(rs.getString("name"));
+				menuDetail.setPrice(rs.getInt("price"));
+				menuDetail.setStockAmount(rs.getInt("amount"));
+				menuDetail.setStockNo(rs.getInt("stockno"));
+				list.add(menuDetail);	
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	finally {
+		close(con,ps,rs);
+	}
+	return list.isEmpty() ? null : list;
+		
+	}
+	
+	public ArrayList<Integer> getAvailableStyle(int menuNo){
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		sql = "SELECT STYLENO FROM MENUWITHSTYLE WHERE MENUNO = ?";
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, menuNo);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				list.add(rs.getInt("styleno"));
 			}
 			
 		}catch(Exception e) {
@@ -123,4 +225,6 @@ public class OrderDAO {
 		
 	}
 
+	
+	
 }

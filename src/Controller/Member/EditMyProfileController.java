@@ -36,7 +36,7 @@ public class EditMyProfileController extends HttpServlet{
 				nextAction.setRedirect(false);
 			}
 			else if(requestPage.equals("Check.myprofile")) { //회원정보 받아오기 (뷰)
-				nextAction.setNextPath("/Member/CustomerView.jsp"); //맞는 회원 뷰로 바꿔야함.
+				nextAction.setNextPath("/Member/MainView.jsp"); //맞는 회원 뷰로 바꿔야함.
 				nextAction.setRedirect(false);
 			}
 			else if(requestPage.equals("Update.myprofile")) { //회원정보 업데이트
@@ -46,7 +46,7 @@ public class EditMyProfileController extends HttpServlet{
 				nextAction = service.DeleteMyProfile(request, response);
 			}
 			else if(requestPage.equals("Result.myprofile")) { //결과
-				nextAction.setNextPath("/Member/CustomerView.jsp");  //맞는 회원 뷰로 바꿔야함.
+				nextAction.setNextPath("/Member/MainView.jsp");  //맞는 회원 뷰로 바꿔야함.
 				nextAction.setRedirect(false);
 			}
 			

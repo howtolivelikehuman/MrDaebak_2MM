@@ -16,7 +16,6 @@ body{
 	flex-direction: column;
 	justify-content: center;
 }
-
 .container{
 	display: flex;
 	width:50vw;
@@ -26,6 +25,7 @@ body{
 	text-align: center;
 	justify-content: center;
 	align-items: center;
+	overflow: auto;
 }
 table{
 	margin-top:2%;

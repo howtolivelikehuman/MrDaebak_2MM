@@ -3,14 +3,22 @@ package DTO;
 import java.util.ArrayList;
 
 public class Menu {
+	
 	private int no;
 	private String name;
-	private int type;
 	private int available;
 	private int price;
 	private String info;
+	private ArrayList<Integer> availableStyle;
 	private ArrayList<MenuDetail> menuDetailList = null;
+	private ArrayList<MenuDetail> extraDetailList = null;
 	
+	public ArrayList<MenuDetail> getExtraDetailList() {
+		return extraDetailList;
+	}
+	public void setExtraDetailList(ArrayList<MenuDetail> extraDetailList) {
+		this.extraDetailList = extraDetailList;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -22,12 +30,6 @@ public class Menu {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public int getType() {
-		return type;
-	}
-	public void setType(int type) {
-		this.type = type;
 	}
 	public int getAvailable() {
 		return available;
@@ -52,5 +54,11 @@ public class Menu {
 	}
 	public void setMenuDetailList(ArrayList<MenuDetail> menuDetailList) {
 		this.menuDetailList = menuDetailList;
+	}
+	public ArrayList<Integer> getAvailableStyle() {
+		return availableStyle;
+	}
+	public void setAvailableStyle(ArrayList<Integer> availableStyle) {
+		this.availableStyle = availableStyle;
 	}
 }
