@@ -13,6 +13,7 @@ import DTO.Employee;
 import DTO.Menu;
 import DTO.MenuDetail;
 import DTO.Order;
+import DTO.OrderedMenu;
 import DTO.Stock;
 import DTO.Style;
 
@@ -222,9 +223,9 @@ public class OrderDAO {
 		
 	}
 
-	public boolean InsertOrder(Order order) {
+	public int InsertOrder(Order order) {
 		sql = "INSERT INTO Orders VALUES(0,?,?,?,?,?,?,?,?,?,?,?)";
-		boolean result = false;
+		int Orderno = -1;
 		
 		try{
 			con = ds.getConnection();
@@ -241,9 +242,37 @@ public class OrderDAO {
 			ps.setString(9, order.getMemberID());
 			ps.setInt(10, order.getMemberNo());
 			ps.setString(11, order.getInfo());
+			ps.executeUpdate();
 			
+			sql = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'orders' and table_schema =  DATABASE()";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			Orderno = rs.getInt(1);
 			
-			result = ps.executeUpdate() == 1;	
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		finally {  // 닫는건 예외처리 상관없이 실행되어야 함으로.
+			close(con,ps);
+		}
+		return Orderno; 
+	}
+	
+	public boolean InsertOrderedMenu(OrderedMenu orderedmenu, int Orderno) {
+		boolean result = false;
+		sql = "INSERT INTO ORDEREDMENU VALUES (?,?,?,?,?)";
+		
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1 , Orderno);
+			ps.setString(2, orderedmenu.getMenu());
+			ps.setString(3, orderedmenu.getStyle());
+			ps.setString(4, orderedmenu.getOrderedDetailList());
+			ps.setInt(5, orderedmenu.getPrice());
+			result = ps.executeUpdate() == 1;
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -253,6 +282,6 @@ public class OrderDAO {
 			close(con,ps);
 		}
 		return result; 
+		
 	}
-	
 }

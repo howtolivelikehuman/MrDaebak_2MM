@@ -63,7 +63,7 @@ public class OrderService extends Service{
 	
 	public ActionForward DoOrder(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("UTF-8");
-		
+		boolean result = true;
 		try {
 			String str = (String) request.getParameter("order");
 			Order order = new Order();
@@ -78,8 +78,16 @@ public class OrderService extends Service{
 			
 			
 			OrderDAO orderDAO = OrderDAO.getInstance();
+			int orderno = orderDAO.InsertOrder(order);
+			for(int i=0; i<order.getCart().size(); i++) {
+				result = orderDAO.InsertOrderedMenu(order.getCart().get(i),orderno);
+			}
 			
-			
+			if(result == false) {
+				throw new Exception();
+			}else {
+				request.setAttribute("altmsg", "주문이 성공적으로 완료되었습니다.");
+			}
 		}catch (Exception e) {
 			request.setAttribute("altmsg", "주문을 위한 정보를 불러오는 도중 요류가 발생하였습니다.");
 		}
