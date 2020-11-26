@@ -5,9 +5,37 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12">
-		<script type ="text/javascript" src = "script.js?sd"></script>
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12s">
+		<script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?asfdsdgsr"></script>
 </head>
+<script>
+var member={"id":${requestScope.member.id},"name":'${requestScope.member.name}',"mobile":'${requestScope.member.mobile}',"address":'${requestScope.member.address}'}
+var menu={"info":[],"availableStyle":[],"available":[],"menuDetailListNo":[],"menuDetailListEa":[],"extraDetailListNo":[]};
+var style={"name":[],"price":[],"info":[]};
+<c:forEach var = "menu" items = "${ requestScope.menulist }" varStatus="status">
+	menu.info.push('${menu.info}');
+	menu.available.push('${menu.available}');
+	var temp=[];
+	var tempEa=[];
+	<c:forEach var = "item" items = "${ menu.menuDetailList }" varStatus="status">
+		temp.push('${item.stockNo}');
+		tempEa.push('${item.ea}');
+	</c:forEach>
+	menu.menuDetailListNo.push(temp);
+	menu.menuDetailListEa.push(tempEa);
+	var temp2=[];
+	<c:forEach var = "item" items = "${ menu.extraDetailList }" varStatus="status">
+		temp2.push('${item.stockNo}');
+	</c:forEach>
+	menu.extraDetailListNo.push(temp2);
+	menu.availableStyle.push(${menu.availableStyle});
+</c:forEach>
+<c:forEach var = "style" items = "${ requestScope.stylelist }" varStatus="status">
+	style.name.push('${style.name}');
+	style.info.push('${style.info}');
+	style.price.push('${style.price}');
+</c:forEach>
+</script>
 <body>
 
 <c:if test = "${requestScope.altmsg != null}">
@@ -27,43 +55,62 @@
 			<div class="sub-container">
 				<p id="dinner-info">원하는 디너를 선택하세요.</p>
 				<div>
-					
-					<input type="radio" name="dinner-radio" value="french" onclick="click_dinner(this.value)">프렌치
-					<input type="radio" name="dinner-radio" value="english" onclick="click_dinner(this.value)">잉글리시
-					<input type="radio" name="dinner-radio" value="champagne" onclick="click_dinner(this.value)">샴페인
+					<c:forEach var = "menu" items = "${ requestScope.menulist }" varStatus="status">
+						<input type="radio" name="dinner-radio" value="${menu.no}" onclick="click_dinner(this.value)">${menu.name}
+					</c:forEach>	
 				</div>
 			</div>
 		</div>
 		<div id="styles">
-			<div align="center" class="text">Styles</div>
+			<div align="center" class="text">Style</div>
 			<div class="sub-container">
 				<p id="style-info">원하는 스타일을 선택하세요. </p>
-				<div>
-					<input type="radio" class="valentine" name="style-radio" value="valentine" onclick="click_style(this.value)"><label class="valentine" for="valentine">발렌타인</label>
-					<input type="radio" class="simple" name="style-radio" value="simple"  onclick="click_style(this.value)"><label class="simple" for="simple">심플</label>
-					<input type="radio" name="style-radio" value="grand" onclick="click_style(this.value)">그랜드
-					<input type="radio" name="style-radio" value="deluxe" onclick="click_style(this.value)">딜럭스
+				<div id="style-check">
 				</div>
 			</div>
 		</div>
 		<div id="details">
-			<div align="center" class="text">Details</div>
+			<div align="center" class="text">Detail</div>
 			
 			<div id="detail-box">
-				<div class="detail">
-					<div class="detail-name">와인</div>
-					<input class="num-box" type="number" value="0" min="0" />
-				</div>
-				<div class="detail">
-					<div class="detail-name">와인</div>
-					<input class="num-box" type="number" value="0" min="0" />
-				</div>
+				<c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
+					<div class="detail">
+						<div class="detail-name">${detailMenu.name}</div>
+						<input class="num-box" name='${detailMenu.stockNo}' type="number" value="0" min="0" max="${detailMenu.ea}"/>
+					</div>
+				</c:forEach>
+				<c:forEach var = "extraMenu" items = "${ requestScope.menulist[0].extraDetailList }" varStatus="status">
+					<div class="detail">
+						<div class="detail-name">${extraMenu.name}</div>
+						<input class="num-box" id='${extraMenu.stockNo }' type="number" value="0" min="0" max="${extraMenu.ea}"/>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
-	</div>
-	
+		<div id="buttons">
+		<button class="btn" id="border-right" onclick="click_cart()">장바구니 담기</button>
+		<button class="btn" onclick="click_order()">선택 완료</button>
+		</div>
+		<div id="texts">
+		<p class="text-info">장바구니:</p>
+		<p class="text-info" id='cart-num'></p>
+		<p class="text-info">가격:</p>
+		<p class="text-info" id='total-price'></p>
+		</div>
+		<div id="final-box">
+			<div id="user-inputs">
+				<p class="text-info">주문자 이름:</p>
+				<input type = "text" class="input" id = "name" placeholder="${requestScope.member.name}">
+				<p class="text-info">전화번호:</p>
+				<input type = "text" class="input" id = "mobile" placeholder="${requestScope.member.mobile}">
+				<p class="text-info">배달 주소:</p>
+				<input type = "text" class="input" id = "address" placeholder="${requestScope.member.address}">
+			</div>
+				<button class="btn" id='order-btn' onclick="do_order()">주문 완료 </button>
+			</div>
+		</div>
 	<!--  request로 넘어온 결과 확인용 -->		
-	<div>
+	  <%-- <div>
 		<c:forEach var = "menu" items = "${ requestScope.menulist }" varStatus="status">
 						<p>${menu.name} ${menu.price} ${menu.info} </p>
 					</c:forEach>
@@ -82,10 +129,10 @@
 		</c:forEach>
 		
 		<p> ${requestScope.member.id} ${requestScope.member.name} ${requestScope.member.mobile} ${requestScope.member.address} </p>
-	</div>
+	</div>   --%>
 
-<jsp:include page = "/layout/footer.jsp"/>		
+
 </div>
-
+<jsp:include page = "/layout/footer.jsp"/>		
 
 </body>
