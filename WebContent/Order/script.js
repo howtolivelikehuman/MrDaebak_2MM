@@ -43,14 +43,7 @@ function click_style(data){
       document.getElementsById('num-box')[i].value=0;
    }
    for(var i=0;i<menu.menuDetailListNo[dinnerIdx].length;i++){
-      if(menu.menuDetailListEa[dinnerIdx][i]==null){
-         document.getElementById(menu.menuDetailListNo[dinnerIdx][i]).value=0;
-      }
-      try{
-         document.getElementById(menu.menuDetailListNo[dinnerIdx][i]).value=menu.menuDetailListEa[dinnerIdx][i];
-      }catch{
-         document.getElementById(menu.menuDetailListNo[dinnerIdx][i]).value=0;
-      }
+      document.getElementById(menu.menuDetailListNo[dinnerIdx][i]).value=menu.menuDetailListEa[dinnerIdx][i];
    }
 }
 function push_cart(){
