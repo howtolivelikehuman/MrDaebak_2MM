@@ -22,7 +22,6 @@ function resetVar(){
 }
 function click_dinner(data){
    dinnerIdx=data-1;
-   console.log(dinnerIdx);
    var temp=document.getElementById('dinner-info');
    temp.innerText=menu.info[data-1];
    var tag="";
@@ -145,6 +144,7 @@ function do_order(){
    for(var i=0;i<document.getElementsByName('card-num').length;i++){
       temp+=document.getElementsByName('card-num')[i].value;
    }
+   order.totalPrice=totalPrice;
    order.cardNum=temp;
    order.info=document.getElementById('extra-info').value;
    order.deliverydateTime=document.getElementById('hope-time').value;
