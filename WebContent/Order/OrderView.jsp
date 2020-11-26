@@ -6,11 +6,12 @@
       <meta charset="UTF-8">
       <title>Mr.Daebak</title>
       <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12dds">
-      <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?dgdsr"></script>
+      <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?dgdddssr"></script>
 </head>
 <script>
-var member={"id":'${requestScope.member.id}',"name":'${requestScope.member.name}',"mobile":'${requestScope.member.mobile}',"address":'${requestScope.member.address}'}
-var menu={"name":[],"info":[],"availableStyle":[],"available":[],"menuDetailListNo":[],"menuDetailListEa":[],"extraDetailListNo":[]};
+var member={"id":'${requestScope.member.id}',"name":'${requestScope.member.name}',"mobile":'${requestScope.member.mobile}',
+		"address":'${requestScope.member.address}',"isVip":${requestScope.member.vip}};
+var menu={"name":[],"info":[],"availableStyle":[],"available":[],"menuDetailListNo":[],"menuDetailListEa":[],"extraDetailListNo":[],"extraDetailListEa":[]};
 var style={"name":[],"price":[],"info":[]};
 var detailPrice={};
 <c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
@@ -32,8 +33,10 @@ var detailPrice={};
    menu.menuDetailListNo.push(temp);
    menu.menuDetailListEa.push(tempEa);
    var temp2=[];
+   var tempEa2=[];
    <c:forEach var = "item" items = "${ menu.extraDetailList }" varStatus="status">
       temp2.push('${item.stockNo}');
+      tempEa2.push('${item.ea}');
    </c:forEach>
    menu.extraDetailListNo.push(temp2);
    menu.availableStyle.push(${menu.availableStyle});
@@ -55,7 +58,6 @@ var detailPrice={};
 <jsp:include page = "/layout/header.jsp">
       <jsp:param name="title" value="주문하기"/>
 </jsp:include>
-
 <div class="container">
    <div id="order">
       <div id="dinners">
@@ -84,7 +86,7 @@ var detailPrice={};
             <c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
                <div class="detail">
                   <div class="detail-name">${detailMenu.name}</div>
-                  <input class="num-box" name='${detailMenu.stockNo}' type="number" value="0" min="0" max="${detailMenu.ea}"/>
+                  <input class="num-box" id='${detailMenu.stockNo}' type="number" value="0" min="0" max="${detailMenu.ea}"/>
                </div>
             </c:forEach>
             <c:forEach var = "extraMenu" items = "${ requestScope.menulist[0].extraDetailList }" varStatus="status">
@@ -103,17 +105,37 @@ var detailPrice={};
       <div id="texts">
       <p class="text-info">장바구니:</p>
       <p class="text-info" id='cart-num'></p>
-      <p class="text-info">가격:</p>
-      <p class="text-info" id='total-price'></p>
+      <c:choose>
+   		 <c:when test = "${requestScope.member.vip==true}">
+   		 	<p class="text-info">가격(-10%):</p>
+      		<p class="text-info" id='total-price'></p>
+   	  	 </c:when>
+   		 <c:otherwise>
+   		 	<p class="text-info">가격:</p>
+      		<p class="text-info" id='total-price'></p>	
+  		 </c:otherwise>
+	  </c:choose>
       </div>
       <div id="final-box">
          <div id="user-inputs">
+         <c:choose>
+   		 <c:when test = "${requestScope.member==null}">
             <p class="text-info">주문자 이름:</p>
+            <input type = "text" class="input" id = "name">
+            <p class="text-info">전화번호:</p>
+            <input type = "text" class="input" id = "mobile">
+            <p class="text-info">배달 주소:</p>
+            <input type = "text" class="input" id = "address">
+         </c:when>
+   		 <c:otherwise>   
+   		 	<p class="text-info">주문자 이름:</p>
             <input type = "text" class="input" id = "name" value="${requestScope.member.name}">
             <p class="text-info">전화번호:</p>
             <input type = "text" class="input" id = "mobile" value="${requestScope.member.mobile}">
             <p class="text-info">배달 주소:</p>
             <input type = "text" class="input" id = "address" value="${requestScope.member.address}">
+   		 </c:otherwise>
+	 	 </c:choose>
             <p class="text-info">카드 번호:</p>
             <div id=card-inputs>
                <input type = "text" class="input" name = "card-num" maxlength="4">
@@ -127,34 +149,11 @@ var detailPrice={};
             <p class="text-info">요청사항:</p>
             <input type = "text" class="input" id = "extra-info" placeholder="요청사항">
             <p class="text-info">배달 희망 시간:</p>
-            <input type = "text" class="input" id = "hope-time" placeholder="ex)22:00">
+            <input type = "text" class="input" id = "hope-time" placeholder="ex)22:00, 배달시간 미정시 접수시간 배정">
          </div>
             <button class="btn" id='order-btn' onclick="do_order()">주문 완료 </button>
          </div>
       </div>
-   <!--  request로 넘어온 결과 확인용 -->      
-     <%-- <div>
-      <c:forEach var = "menu" items = "${ requestScope.menulist }" varStatus="status">
-                  <p>${menu.name} ${menu.price} ${menu.info} </p>
-               </c:forEach>
-            
-               <c:forEach var = "style" items = "${ requestScope.stylelist }" varStatus="status">
-                  <p>${style.name} ${style.price} ${style.info}</p>
-               </c:forEach>
-               
-               세부항목
-               <c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
-                  <p>${detailMenu.name} ${detailMenu.ea} </p>
-               </c:forEach>
-               기타항목
-               <c:forEach var = "extraMenu" items = "${ requestScope.menulist[0].extraDetailList }" varStatus="status">
-                  <p>${extraMenu.name} ${extraMenu.ea} </p>
-      </c:forEach>
-      
-      <p> ${requestScope.member.id} ${requestScope.member.name} ${requestScope.member.mobile} ${requestScope.member.address} </p>
-   </div>   --%>
-
-
 </div>
 <jsp:include page = "/layout/footer.jsp"/>      
 
