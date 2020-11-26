@@ -163,16 +163,11 @@ public class OrderDAO {
 		ArrayList<MenuDetail> list = new ArrayList<MenuDetail>();
 		MenuDetail menuDetail = null;
 		
-		sql = "select STOCK.NAME, STOCK.PRICE, STOCK.AMOUNT, STOCK.NO AS STOCKNO " + 
-				"FROM MENU, menuwithstock, STOCK WHERE " + 
-				"menuwithstock.menuno = MENU.NO " + 
-				"AND menuwithstock.stockno = STOCK.NO " + 
-				"MINUS " + 
-				"select STOCK.NAME, STOCK.PRICE, STOCK.AMOUNT, STOCK.NO AS STOCKNO " + 
-				"FROM MENU, menuwithstock, STOCK WHERE MENU.NO  = ? " + 
-				"AND menuwithstock.menuno = MENU.NO " + 
-				"AND menuwithstock.stockno = STOCK.NO " + 
-				"AND STOCK.NO = STOCK.NO";
+		sql = "Select DISTINCT STOCK.NAME, STOCK.PRICE, STOCK.AMOUNT, STOCK.NO AS STOCKNO "
+				+ " FROM MENU, menuwithstock, STOCK "
+				+  "WHERE  ( STOCK.NAME, STOCK.PRICE, STOCK.AMOUNT, STOCK.NO ) "
+				+ " NOT IN (select STOCK.NAME, STOCK.PRICE, STOCK.AMOUNT, STOCK.NO FROM MENU, menuwithstock, STOCK "
+				+ " WHERE MENU.NO  = ? AND menuwithstock.menuno = MENU.NO AND menuwithstock.stockno = STOCK.NO AND STOCK.NO = STOCK.NO)";
 		
 		try {
 			con = ds.getConnection();
