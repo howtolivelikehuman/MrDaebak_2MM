@@ -6,10 +6,10 @@ public class Menu {
 	
 	private int no;
 	private String name;
-	private int available;
+	private int available; //만약 얘가 속한 재고가 0이면 주문 못하게.
 	private int price;
 	private String info;
-	private ArrayList<Integer> availableStyle;
+	private ArrayList<Integer> availableStyle; //1,2,3
 	private ArrayList<MenuDetail> menuDetailList = null;
 	private ArrayList<MenuDetail> extraDetailList = null;
 	

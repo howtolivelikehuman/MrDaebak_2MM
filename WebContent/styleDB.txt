@@ -1,19 +1,20 @@
 Create table STYLE(
-no NUMBER PRIMARY KEY,
-NAME VARCHAR2(20) NOT NULL,
-PRICE NUMBER,
-INFO VARCHAR2(400)
+no int auto_increment PRIMARY KEY,
+NAME VARCHAR(20) NOT NULL,
+PRICE int,
+INFO VARCHAR(400)
 );
 
 //MENU WITH STYLE 
 Create table MENUWITHSTYLE(
-    MENUNO NUMBER NOT NULL,
-    STYLENO NUMBER NOT NULL,
+    MENUNO int NOT NULL,
+    STYLENO int NOT NULL,
     CONSTRAINT MENU_N FOREIGN KEY(MENUNO)
     REFERENCES MENU(NO) ON DELETE CASCADE,  
     CONSTRAINT STYLE_N FOREIGN KEY(STYLENO)
     REFERENCES STYLE(NO) ON DELETE CASCADE
 );
+
 
 insert into style values (1 , '심플', 0, 
 '심플 스타일은 상자 접시에 냅킨, 플라스틱 쟁반과 플라스틱 잔에 디너를 서비스하는 스타일입니다.');
@@ -21,6 +22,6 @@ insert into style values (2 , '그랜드', 10000,
 '그랜드 스타일은 도자기 접시와 컵, 흰색 면 냅킨, 나무 쟁반으로 디너를 서비스하는 스타일입니다.');
 insert into style values (3, '딜럭스', 20000, 
 '딜럭스 스타일은 은 쟁반에 작은 꽃병, 도자기 접시와 린넨 냅킨으로 디너를 서비스하는 스타일입니다');
-CREATE SEQUENCE style_seq  start with 3;
-insert into menuwithstyle select menu.no, style.no from menu, style
+
+insert into menuwithstyle select menu.no, style.no from menu, style;
 delete from menuwithstyle where menuno = 3 and styleno = 1;

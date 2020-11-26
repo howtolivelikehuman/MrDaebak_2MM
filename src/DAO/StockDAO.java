@@ -24,7 +24,7 @@ public class StockDAO{
 		try {
 			System.out.println("start DBCP!");
 			Context context = new InitialContext();
-			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
+			ds = (DataSource) context.lookup("java:comp/env/jdbc/mysql");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -78,11 +78,10 @@ public class StockDAO{
 	}
 	
 	public boolean merge(Stock stock) throws Exception{
-		sql = "MERGE INTO stock USING dual ON (no = ?)"
-				+ "WHEN MATCHED THEN "
-				+ "UPDATE SET NAME = ?, AMOUNT = ? , NEXTSUPPLYDATE = ? , PRICE = ? "
-				+ "WHEN NOT MATCHED THEN "
-				+ "INSERT VALUES(STOCK_SEQ.NEXTVAL, ?,?,?,?)";
+		sql = "INSERT INTO STOCK (no, NAME, AMOUNT, NEXTSUPPLYDATE, PRICE)"
+				+ "VALUES (?, ?, ?, ?, ?) "
+				+ "ON DUPLICATE KEY UPDATE "
+				+ "NAME = ?, AMOUNT = ?, NEXTSUPPLYDATE = ?, PRICE = ?";
 		
 		boolean result = false;
 		
@@ -215,7 +214,7 @@ public class StockDAO{
 				stock.setNo(rs.getInt("no"));
 				stock.setName(rs.getString("name"));
 				stock.setAmount(rs.getInt("amount"));
-				stock.setNextSupplyDate(rs.getDate("nextSupplyDate").toString());
+				stock.setNextSupplyDate(rs.getString("nextSupplyDate"));
 				stock.setPrice(rs.getInt("price"));
 				list.add(stock);
 			}

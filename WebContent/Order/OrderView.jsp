@@ -39,7 +39,6 @@
 			<div class="sub-container">
 				<p id="style-info">원하는 스타일을 선택하세요. </p>
 				<div>
-				
 					<input type="radio" class="valentine" name="style-radio" value="valentine" onclick="click_style(this.value)"><label class="valentine" for="valentine">발렌타인</label>
 					<input type="radio" class="simple" name="style-radio" value="simple"  onclick="click_style(this.value)"><label class="simple" for="simple">심플</label>
 					<input type="radio" name="style-radio" value="grand" onclick="click_style(this.value)">그랜드
@@ -74,12 +73,12 @@
 					</c:forEach>
 					
 					세부항목
-					<c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
-						<p>${detailMenu.name} ${detailMenu.ea} </p>
+					<c:forEach var = "detailMenu" items = "${ requestScope.menulist[1].menuDetailList }" varStatus="status">
+						<p>메뉴항목 : ${detailMenu.menuNo} ${detailMenu.name} ${detailMenu.ea} </p>
 					</c:forEach>
 					기타항목
-					<c:forEach var = "extraMenu" items = "${ requestScope.menulist[0].extraDetailList }" varStatus="status">
-						<p>${extraMenu.name} ${extraMenu.ea} </p>
+					<c:forEach var = "extraMenu" items = "${ requestScope.menulist[1].extraDetailList }" varStatus="status">
+						<p>기타항목 : ${extraMenu.menuNo} ${extraMenu.name} ${extraMenu.ea} </p>
 		</c:forEach>
 		
 		<p> ${requestScope.member.id} ${requestScope.member.name} ${requestScope.member.mobile} ${requestScope.member.address} </p>
