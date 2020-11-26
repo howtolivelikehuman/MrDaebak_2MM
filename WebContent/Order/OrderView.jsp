@@ -5,14 +5,22 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12s">
-		<script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?asfdsdgsr"></script>
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12dds">
+		<script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?dgdsr"></script>
 </head>
 <script>
-var member={"id":${requestScope.member.id},"name":'${requestScope.member.name}',"mobile":'${requestScope.member.mobile}',"address":'${requestScope.member.address}'}
-var menu={"info":[],"availableStyle":[],"available":[],"menuDetailListNo":[],"menuDetailListEa":[],"extraDetailListNo":[]};
+var member={"id":'${requestScope.member.id}',"name":'${requestScope.member.name}',"mobile":'${requestScope.member.mobile}',"address":'${requestScope.member.address}'}
+var menu={"name":[],"info":[],"availableStyle":[],"available":[],"menuDetailListNo":[],"menuDetailListEa":[],"extraDetailListNo":[]};
 var style={"name":[],"price":[],"info":[]};
+var detailPrice={};
+<c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
+	detailPrice['${detailMenu.name}']=${detailMenu.price};
+</c:forEach>
+<c:forEach var = "extraMenu" items = "${ requestScope.menulist[0].extraDetailList }" varStatus="status">
+	detailPrice['${extraMenu.name}']=${extraMenu.price};
+</c:forEach>
 <c:forEach var = "menu" items = "${ requestScope.menulist }" varStatus="status">
+	menu.name.push('${menu.name}');
 	menu.info.push('${menu.info}');
 	menu.available.push('${menu.available}');
 	var temp=[];
@@ -89,6 +97,7 @@ var style={"name":[],"price":[],"info":[]};
 		</div>
 		<div id="buttons">
 		<button class="btn" id="border-right" onclick="click_cart()">장바구니 담기</button>
+		<button class="btn" id="border-right" onclick="click_cart_delete()">장바구니 빼기</button>
 		<button class="btn" onclick="click_order()">선택 완료</button>
 		</div>
 		<div id="texts">
@@ -100,11 +109,25 @@ var style={"name":[],"price":[],"info":[]};
 		<div id="final-box">
 			<div id="user-inputs">
 				<p class="text-info">주문자 이름:</p>
-				<input type = "text" class="input" id = "name" placeholder="${requestScope.member.name}">
+				<input type = "text" class="input" id = "name" value="${requestScope.member.name}">
 				<p class="text-info">전화번호:</p>
-				<input type = "text" class="input" id = "mobile" placeholder="${requestScope.member.mobile}">
+				<input type = "text" class="input" id = "mobile" value="${requestScope.member.mobile}">
 				<p class="text-info">배달 주소:</p>
-				<input type = "text" class="input" id = "address" placeholder="${requestScope.member.address}">
+				<input type = "text" class="input" id = "address" value="${requestScope.member.address}">
+				<p class="text-info">카드 번호:</p>
+				<div id=card-inputs>
+					<input type = "text" class="input" name = "card-num" maxlength="4">
+					<p>-</p>
+					<input type = "text" class="input" name = "card-num" maxlength="4">
+					<p>-</p>
+					<input type = "text" class="input" name = "card-num" maxlength="4">
+					<p>-</p>
+					<input type = "text" class="input" name = "card-num" maxlength="4">
+				</div>
+				<p class="text-info">요청사항:</p>
+				<input type = "text" class="input" id = "extra-info" placeholder="요청사항">
+				<p class="text-info">배달 희망 시간:</p>
+				<input type = "text" class="input" id = "hope-time" placeholder="ex)22:00">
 			</div>
 				<button class="btn" id='order-btn' onclick="do_order()">주문 완료 </button>
 			</div>

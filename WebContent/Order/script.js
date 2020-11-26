@@ -2,6 +2,25 @@ var dinnerIdx=0;
 var styleIdx=0;
 var totalPrice=0;
 var cartNum=0;
+var order={ "name":"",
+			"mobile":"",
+			"address":"",
+			"totalPrice":0,
+			"cardNum":"",
+			"isDiscounted":"",
+			"deliverydateTime":"",
+			"info":"",
+			"cart":[/* {
+				"menu":"",
+				"style":"",
+				"orderedDetailList":[],
+				"price":0
+        	} */]
+		}
+function resetVar(){
+	dinnerIdx=-1;
+	styleIdx=-1;
+}
 function click_dinner(data){
 	dinnerIdx=data-1;
 	var temp=document.getElementById('dinner-info');
@@ -28,8 +47,29 @@ function click_style(data){
 		document.getElementById(menu.menuDetailListNo[dinnerIdx][i]).value=menu.menuDetailListEa[dinnerIdx][i];
 	}
 }
-
+function push_cart(){
+	var temp={"menu":"",
+				"style":"",
+				"orderedDetailList":[],
+				"price":0};
+	temp.menu=menu.name[dinnerIdx];
+	temp.style=style.name[styleIdx];
+	var temp2=document.getElementsByClassName('detail-name');
+	var temp3=document.getElementsByClassName('num-box');
+	for(var i=0;i<temp2.length;i++){
+		var eachDetail={};
+		eachDetail['name']=temp2[i].textContent;
+		eachDetail['ea']=Number(temp3[i].value);
+		temp.orderedDetailList.push(eachDetail);
+		temp.price+=(detailPrice[eachDetail['name']])*(eachDetail.ea);
+	}
+	temp.price+=Number(style.price[styleIdx]);
+	totalPrice+=Number(temp.price);
+	order.cart.push(temp);
+	document.getElementById('total-price').innerHTML=totalPrice;
+}
 function click_cart(){
+	push_cart();
 	var radio1=document.getElementsByName('dinner-radio');
 	for(var i=0;i<radio1.length;i++){
 		if(radio1[i].checked==true){
@@ -43,10 +83,32 @@ function click_cart(){
 	for(var i=0;i<document.getElementsByClassName('num-box').length;i++){
 		document.getElementsByClassName('num-box')[i].value=0;
 	}
-	cartNum+=1;
-	document.getElementById('cart-num').innerHTML=cartNum;
+	document.getElementById('cart-num').innerHTML=order.cart.length;
+	document.getElementById('total-price').innerHTML=totalPrice;
 }
-
+function click_cart_delete(){
+	if(order.cart.length==0){
+		return;
+	}else{
+		var temp=order.cart.pop();
+		totalPrice-=Number(temp.price);
+	}
+	document.getElementById('total-price').innerHTML=totalPrice;
+	document.getElementById('cart-num').innerHTML=order.cart.length;
+}
 function click_order(){
+	push_cart();
 	document.getElementById('final-box').style.display='inline';
+}
+function do_order(){
+	order.name=document.getElementById('name').value;
+	order.mobile=document.getElementById('mobile').value;
+	order.address=document.getElementById('address').value;
+	var temp="";
+	for(var i=0;i<document.getElementsByName('card-num').length;i++){
+		temp+=document.getElementsByName('card-num')[i].value;
+	}
+	order.cardNum=temp;
+	order.info=document.getElementById('extra-info').value;
+	order.deliverydateTime=document.getElementById('hope-time').value;
 }
