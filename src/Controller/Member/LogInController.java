@@ -30,7 +30,7 @@ public class LogInController extends HttpServlet{
 		try {
 			if(requestPage.equals("LoginView.login")) { //로그인 창요청
 				nextAction = new ActionForward();
-				nextAction.setNextPath("loginView.jsp");
+				nextAction.setNextPath("/Member/loginView.jsp");
 				nextAction.setRedirect(false);
 			}
 			else if(requestPage.equals("Logic.login")) { //로그인 논리 요청

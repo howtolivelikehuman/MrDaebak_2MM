@@ -35,7 +35,7 @@ public class OrderController extends HttpServlet{
 				nextAction = service.DoOrder(request, response);
 				
 			}else if(requestPage.equals("ResultView.order")) { //Àç°í ¿Ï·á ºä
-				nextAction.setNextPath("/Order/OrderView.jsp");
+				nextAction.setNextPath("/MainView.jsp");
 				nextAction.setRedirect(false);
 			}
 
@@ -55,7 +55,7 @@ public class OrderController extends HttpServlet{
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		doPost(request, response);
 	}
 
 }

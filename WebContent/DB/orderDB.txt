@@ -9,6 +9,7 @@ Create table orders(
    cardnum VARCHAR(20),
    isdicounted int,
    deliverydatetime VARCHAR(20),
+   orderdatetime DATETIME DEFAULT CURRENT_TIMESTAMP,
    status int,
    memberID VARCHAR(20),
    memberNO int,

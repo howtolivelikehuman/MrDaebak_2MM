@@ -40,13 +40,18 @@ public class OrderService extends Service{
 				//기타 항목
 				menulist.get(i).setExtraDetailList(dao.getExtraDetaillist(mno));
 			}
+			
 			HttpSession session = request.getSession();
-			int memberno = (int)session.getAttribute("No");
-			
-			MemberDAO mdao = MemberDAO.getInstance();
-			Member customer = mdao.select(memberno);
-			
-			request.setAttribute("member", customer);
+			if(session.getAttribute("No") != null) {
+				
+				int memberno = (int)session.getAttribute("No");
+				MemberDAO mdao = MemberDAO.getInstance();
+				Member customer = mdao.select(memberno);
+				request.setAttribute("member", customer);
+			}
+			else {
+				request.setAttribute("member", null);
+			}
 			request.setAttribute("menulist", menulist);
 			request.setAttribute("stylelist", stylelist);
 			
@@ -73,6 +78,10 @@ public class OrderService extends Service{
 			if(session.getAttribute("No") != null) {
 				order.setMemberNo((int)session.getAttribute("No"));
 				order.setMemberID((String)session.getAttribute("Id"));
+			}
+			else {
+				order.setMemberNo(-1);
+				order.setMemberID("비회원"); //비회원주문용
 			}
 			
 			
@@ -113,8 +122,7 @@ public class OrderService extends Service{
 		order.setAddress(jsonObject.get("address").getAsString());
 		order.setTotalPrice(jsonObject.get("totalPrice").getAsInt());
 		order.setCardNum(jsonObject.get("cardNum").getAsString());
-		order.setIsDiscounted(jsonObject.get("isVip").getAsBoolean());
-		order.setDeliverydateTime(jsonObject.get("deliverydateTime").getAsString());
+		order.setDiscounted(jsonObject.get("isVip").getAsBoolean());
 		order.setInfo(jsonObject.get("info").getAsString());
 		
 		jA = jsonObject.getAsJsonArray("cart");

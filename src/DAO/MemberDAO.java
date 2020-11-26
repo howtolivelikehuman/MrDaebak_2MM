@@ -360,8 +360,8 @@ public class MemberDAO {
 		public ArrayList<Member> getList(int page){
 			ArrayList<Member> list = new ArrayList<Member>();
 			Member member = null;
-			int start = page * 10 -10;
-			int end = page * 10 -1;
+			int start = page * 10 -9;
+			int end = page * 10;
 			sql = "SELECT no, id, name, type FROM MEMBER LIMIT ?, ?";
 			try {
 				con = ds.getConnection();

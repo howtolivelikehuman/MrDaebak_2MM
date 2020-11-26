@@ -9,8 +9,15 @@
       <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?dgdddssr"></script>
 </head>
 <script>
-var member={"id":'${requestScope.member.id}',"name":'${requestScope.member.name}',"mobile":'${requestScope.member.mobile}',
-      "address":'${requestScope.member.address}',"isVip":${requestScope.member.vip}};
+
+if('$requestCope.member' != null){
+	var member={"id":'${requestScope.member.id}',"name":'${requestScope.member.name}',
+			"mobile":'${requestScope.member.mobile}',"address":'${requestScope.member.address}',"isVip":'${requestScope.member.vip}'};
+}
+else{
+	var member = {"id":'',"name":'',"mobile":'',"address":'',"isVip":false}
+}
+
 var menu={"name":[],"info":[],"availableStyle":[],"available":[],"menuDetailListNo":[],"menuDetailListEa":[],"extraDetailListNo":[],"extraDetailListEa":[]};
 var style={"name":[],"price":[],"info":[]};
 var detailPrice={};

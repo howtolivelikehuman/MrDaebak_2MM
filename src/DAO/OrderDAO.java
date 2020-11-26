@@ -10,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.Employee;
+import DTO.Member;
 import DTO.Menu;
 import DTO.MenuDetail;
 import DTO.Order;
@@ -224,7 +225,7 @@ public class OrderDAO {
 	}
 
 	public int InsertOrder(Order order) {
-		sql = "INSERT INTO Orders VALUES(0,?,?,?,?,?,?,?,?,?,?,?)";
+		sql = "INSERT INTO Orders VALUES(0,?,?,?,?,?,?,default,?,?,?,?)";
 		int Orderno = -1;
 		
 		try{
@@ -237,17 +238,20 @@ public class OrderDAO {
 			ps.setInt(4, order.getTotalPrice());
 			ps.setString(5, order.getCardNum());
 			ps.setBoolean(6, order.getIsDiscounted());
-			ps.setString(7, order.getDeliverydateTime());
-			ps.setInt(8,0); //status == 0 (Preparing)
-			ps.setString(9, order.getMemberID());
-			ps.setInt(10, order.getMemberNo());
-			ps.setString(11, order.getInfo());
+			ps.setInt(7,0); //status == 0 (Preparing)
+			ps.setString(8, order.getMemberID());
+			ps.setInt(9, order.getMemberNo());
+			ps.setString(10, order.getInfo());
 			ps.executeUpdate();
 			
 			sql = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'orders' and table_schema =  DATABASE()";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			Orderno = rs.getInt(1);
+			
+			while(rs.next()) {
+				Orderno = rs.getInt("AUTO_INCREMENT")-1;
+			}
+			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -284,4 +288,216 @@ public class OrderDAO {
 		return result; 
 		
 	}
+
+	public int getTotalPage() {
+		int total = 0;
+		sql = "SELECT COUNT(*) FROM ORDERS";
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				total = rs.getInt("COUNT(*)");
+			}
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	finally {
+		close(con,ps,rs);
+	}
+		return (total-1)/10 +1;
+	}
+
+	public int getTotalPage(int no) {
+		int total = 0;
+		sql = "SELECT COUNT(*) FROM ORDERS WHERE memberNo = ?";
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				total = rs.getInt("COUNT(*)");
+			}
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	finally {
+		close(con,ps,rs);
+	}
+		return (total-1)/10 +1;
+	}
+
+	public ArrayList<Order> getList(int page){
+		ArrayList<Order> list = new ArrayList<Order>();
+		Order order = null;
+		int start = page * 10 -10;
+		int end = page * 10 -1;
+		sql = "SELECT no, name, totalPrice, memberID, status, ordertime FROM ORDERS LIMIT ?, ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, end);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				order = new Order();
+				order.setNo(rs.getInt("no"));
+				order.setName(rs.getString("name"));
+				order.setTotalPrice(rs.getInt("totalPrice"));
+				order.setMemberID(rs.getString("memberID"));
+				order.setOrderTime(rs.getString("ordertime"));
+				order.setStatus(rs.getInt("status"));
+				list.add(order);	
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	finally {
+		close(con,ps,rs);
+	}
+	return list.isEmpty() ? null : list;
+		
+	}
+	
+	public ArrayList<Order> getList(int page, int memberno){
+		ArrayList<Order> list = new ArrayList<Order>();
+		Order order = null;
+		int start = page * 10 -10;
+		int end = page * 10 -1;
+		sql = "SELECT no, name, totalPrice, memberID, status, ordertime "
+				+ " FROM ORDERS WHERE memberNo = ? LIMIT ?, ? ";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, memberno);
+			ps.setInt(2, start);
+			ps.setInt(3, end);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				order = new Order();
+				order.setNo(rs.getInt("no"));
+				order.setName(rs.getString("name"));
+				order.setTotalPrice(rs.getInt("totalPrice"));
+				order.setMemberID(rs.getString("memberID"));
+				order.setOrderTime(rs.getString("ordertime"));
+				order.setStatus(rs.getInt("status"));
+				list.add(order);	
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	finally {
+		close(con,ps,rs);
+	}
+	return list.isEmpty() ? null : list;
+		
+	}
+
+	public Order selectOrder(int no) throws Exception {
+		Order order = null;
+		sql = "SELECT * FROM ORDERS WHERE no = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				order = new Order();
+				order.setNo(rs.getInt("no"));
+				order.setName(rs.getString("name"));
+				order.setAddress(rs.getString("address"));
+				order.setMobile(rs.getString("phone"));
+				order.setTotalPrice(rs.getInt("totalPrice"));
+				order.setCardNum(rs.getString("cardnum"));
+				order.setDiscounted(rs.getBoolean("isdiscounted"));
+				order.setOrderTime(rs.getString("ordertime"));
+				order.setStatus(rs.getInt("status"));
+				order.setMemberID(rs.getString("memberID"));
+				order.setMemberNo(rs.getInt("memberNo"));
+				order.setInfo(rs.getString("info"));
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new Exception();
+		}finally {
+			close(con,ps,rs);
+		}
+		return order;
+	}
+	
+	public ArrayList<OrderedMenu> selectOrderedMenu(int ordno) throws Exception{
+		ArrayList<OrderedMenu> list = new ArrayList<OrderedMenu>();
+		OrderedMenu ordMenu = null;
+		sql = "SELECT * FROM ORDEREDMENU WHERE orderNo = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, ordno);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ordMenu = new OrderedMenu();
+				ordMenu.setOrderNo(ordno);
+				ordMenu.setMenu(rs.getString("menu"));
+				ordMenu.setStyle(rs.getString("style"));
+				ordMenu.setOrderedDetailList(rs.getString("additional"));
+				ordMenu.setPrice(rs.getInt("price"));
+				list.add(ordMenu);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new Exception();
+		}finally {
+			close(con,ps,rs);
+		}
+		return list.isEmpty() ? null : list;
+	}
+
+	public boolean delete(int no) throws Exception{
+		boolean result = false;
+		sql = "DELETE FROM ORDERS WHERE no = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			result = 1 == ps.executeUpdate();	
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new Exception();
+		}
+		finally {
+			close(con,ps);
+		}
+		return result;
+	}
+
+	public boolean update(int no, int status) throws Exception{
+		boolean result = false;
+		sql = "UPDATE ORDERS SET status = ? WHERE no = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, status);
+			ps.setInt(2, no);
+			result = 1 == ps.executeUpdate();	
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new Exception();
+		}
+		finally {
+			close(con,ps);
+		}
+		return result;
+	}
+
 }

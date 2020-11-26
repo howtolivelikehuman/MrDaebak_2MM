@@ -28,7 +28,7 @@ public class SignUpController extends HttpServlet{
 		
 		try {
 			if(requestPage.equals("signUpView.signup")) { //회원가입 창요청
-				nextAction.setNextPath("signUpView.jsp");
+				nextAction.setNextPath("/Member/signUpView.jsp");
 				nextAction.setRedirect(false);
 			}
 			

@@ -30,14 +30,14 @@ public class ManageMemberController extends HttpServlet{
 				nextAction = service.ListMember(request, response);
 
 			} else if(requestPage.equals("MemberListView.manageMem")) { //회원 목록 - View
-				nextAction.setNextPath("MemberListView.jsp");
+				nextAction.setNextPath("/Member/MemberListView.jsp");
 				nextAction.setRedirect(false);
 				
 			} else if(requestPage.equals("MemberRead.manageMem")) { //회원 조회 - DB
 				nextAction = service.ReadMember(request, response);
 				
 			} else if(requestPage.equals("MemberReadView.manageMem")) { //회원 조회 - View
-				nextAction.setNextPath("EditMemberView.jsp");
+				nextAction.setNextPath("/Member/EditMemberView.jsp");
 				nextAction.setRedirect(false);
 				
 			} else if(requestPage.equals("MemberEdit.manageMem")) { //회원 수정 - DB
