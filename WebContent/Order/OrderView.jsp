@@ -10,7 +10,7 @@
 </head>
 <script>
 var member={"id":'${requestScope.member.id}',"name":'${requestScope.member.name}',"mobile":'${requestScope.member.mobile}',"address":'${requestScope.member.address}'}
-var menu={"name":[],"info":[],"availableStyle":[],"available":[],"menuDetailListNo":[],"menuDetailListEa":[],"extraDetailListNo":[]};
+var menu={"name":[],"info":[],"availableStyle":[],"available":[],"menuDetailListNo":[],"menuDetailListEa":[],"extraDetailListNo":[],"extraDetailListEa":[]};
 var style={"name":[],"price":[],"info":[]};
 var detailPrice={};
 <c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
@@ -32,10 +32,13 @@ var detailPrice={};
    menu.menuDetailListNo.push(temp);
    menu.menuDetailListEa.push(tempEa);
    var temp2=[];
+   var tempEa2 = [];
    <c:forEach var = "item" items = "${ menu.extraDetailList }" varStatus="status">
       temp2.push('${item.stockNo}');
+      tempEa2.push('${item.ea}');
    </c:forEach>
    menu.extraDetailListNo.push(temp2);
+   menu.extraDetailListEa.push(tempEa2);
    menu.availableStyle.push(${menu.availableStyle});
 </c:forEach>
 <c:forEach var = "style" items = "${ requestScope.stylelist }" varStatus="status">
@@ -84,7 +87,7 @@ var detailPrice={};
             <c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
                <div class="detail">
                   <div class="detail-name">${detailMenu.name}</div>
-                  <input class="num-box" name='${detailMenu.stockNo}' type="number" value="0" min="0" max="${detailMenu.ea}"/>
+                  <input class="num-box" id='${detailMenu.stockNo}' type="number" value="0" min="0" max="${detailMenu.ea}"/>
                </div>
             </c:forEach>
             <c:forEach var = "extraMenu" items = "${ requestScope.menulist[0].extraDetailList }" varStatus="status">

@@ -13,7 +13,7 @@
 		<span id="logo">Mr.Daebak</span>
 			<c:choose>
 				<c:when test = "${sessionScope.Name == null}" >
-					<a class="top-menu" href = "/MrDaebak_2MM/index.jsp"> Main </a>
+					<a class="top-menu" href = "/MrDaebak_2MM/MainView.jsp"> Main </a>
 					<a class="top-menu" href = "/MrDaebak_2MM/Member/loginView.jsp"> LOGIN </a>
 					<a class="top-menu" href = "/MrDaebak_2MM/Member/signUpView.jsp"> JOIN  </a>
 				</c:when>

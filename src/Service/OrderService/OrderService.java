@@ -32,6 +32,10 @@ public class OrderService extends Service{
 				menulist.get(i).setExtraDetailList(dao.getExtraDetaillist(mno));
 			}
 			
+			for(int i=0; i<menulist.get(1).getMenuDetailList().size(); i++) {
+				System.out.println(menulist.get(1).getMenuDetailList().get(i).getStockNo());
+			}
+			
 			HttpSession session = request.getSession();
 			int memberno = (int)session.getAttribute("No");
 			

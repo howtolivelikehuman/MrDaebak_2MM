@@ -35,8 +35,8 @@
          </div>
       </div>
    </c:when>
-   <c:otherwise>
-      <div class="container">
+   <c:when test = "${sessionScope.Type == 1}">
+   <div class="container">
          <div class = "main-menu">
             <form class="menu" action = "MemberList.manageMem?page=1" method = "post">
                <button class="menu menu-submit" type="submit">회원 관리</button>
@@ -49,6 +49,15 @@
             </form>      
          </div>
       </div>
+   </c:when>
+   <c:otherwise>
+      <div class="container">
+	<div class = "main-menu">
+		<button class="menu" type="button" onclick="location.href='/MrDaebak_2MM/Member/loginView.jsp'">로그인</button>
+		<button class="menu" type="button" onclick="location.href='/MrDaebak_2MM/Member/signUpView.jsp'">회원가입</button>
+		<button class="menu" type="button" onclick="location.href='/MrDaebak_2MM/Order/Order.jsp'">비회원 주문</button>
+	</div>
+	</div>
    </c:otherwise>
 </c:choose>
 

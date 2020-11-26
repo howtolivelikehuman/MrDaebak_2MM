@@ -39,7 +39,7 @@ public class LogInController extends HttpServlet{
 			}
 			else if(requestPage.equals("Result.login")) { //회원 창요청
 				nextAction = new ActionForward();
-				nextAction.setNextPath("/Member/MainView.jsp");
+				nextAction.setNextPath("/MainView.jsp");
 				nextAction.setRedirect(false);
 			}
 			

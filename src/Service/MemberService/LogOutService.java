@@ -23,7 +23,7 @@ public class LogOutService extends Service{
 		session.removeAttribute("Id");
 		session.invalidate();
 		
-		nextAction.setNextPath("/index.jsp");
+		nextAction.setNextPath("/MainView.jsp");
 		nextAction.setRedirect(false);
 		
 		return nextAction;
