@@ -59,6 +59,9 @@ function push_cart(){
       var eachDetail={};
       eachDetail['name']=temp2[i].textContent;
       eachDetail['ea']=Number(temp3[i].value);
+      if(eachDetail['ea']==0&&-1===menu.menuDetailListNo[dinnerIdx].findIndex((e) => e === temp3[i].getAttribute('id'))){
+         continue;
+      }
       temp.orderedDetailList.push(eachDetail);
       temp.price+=(detailPrice[eachDetail['name']])*(eachDetail.ea);
    }
