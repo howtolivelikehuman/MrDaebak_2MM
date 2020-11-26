@@ -32,7 +32,7 @@ public class MemberDAO {
 			try {
 				System.out.println("start DBCP!");
 				Context context = new InitialContext();
-				ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
+				ds = (DataSource) context.lookup("java:comp/env/jdbc/mysql");
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -110,7 +110,7 @@ public class MemberDAO {
 		}
 
 		public boolean insert(Member member) {
-			sql = "INSERT INTO member VALUES(member_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, default, default)";
+			sql = "INSERT INTO member VALUES(0, ?, ?, ?, ?, ?, ?, default, default)";
 			boolean result = false;
 			
 			try{
@@ -360,12 +360,9 @@ public class MemberDAO {
 		public ArrayList<Member> getList(int page){
 			ArrayList<Member> list = new ArrayList<Member>();
 			Member member = null;
-			int start = page * 10 -9;
-			int end = page * 10;
-			sql = "SELECT no, id, name, type FROM" +
-					"(SELECT ROWNUM rn, tt.* FROM "
-					+ "(SELECT * FROM Member ORDER BY no ASC) tt)"
-					+ " WHERE rn >= ?  AND rn <= ?";
+			int start = page * 10 -10;
+			int end = page * 10 -1;
+			sql = "SELECT no, id, name, type FROM MEMBER LIMIT ?, ?";
 			try {
 				con = ds.getConnection();
 				ps = con.prepareStatement(sql);

@@ -1,0 +1,9 @@
+CREATE DATABASE mrdaebak;
+use mrdaebak;
+
+CREATE USER 'daebak'@'localhost' identified by '1234';
+
+GRANT ALL PRIVILEGES ON *.* TO 'daebak'@'localhost';
+GRANT GRANT OPTION ON *.* TO 'daebak'@'localhost';
+
+ALTER USER 'daebak'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';

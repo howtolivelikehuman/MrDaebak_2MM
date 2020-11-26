@@ -62,7 +62,7 @@ function clickAdd_row(){
 	var cell = new Array();
 	
 	cell[0] = row.insertCell(0);
-	var cell0 = "+<input type = 'hidden' name = 'now-input' value = '-1'>";
+	var cell0 = "+<input type = 'hidden' name = 'now-input' value = '0'>";
 	cell[0].innerHTML = cell0;
 	
 	for(var i=1; i<5; i++){
@@ -70,12 +70,12 @@ function clickAdd_row(){
 		cell[i].innerHTML = "<input class='input' type = 'text' name = 'now-input' value = '' required>";
 	}
 	cell[5] = row.insertCell(5);
-	cell[5].innerHTML = "<button class='delete' onclick='clickDelete_row(this, -1)'><img src='/MrDaebak_2MM/layout/delete.png' height=20px></button>"
+	cell[5].innerHTML = "<button class='delete' onclick='clickDelete_row(this, 0)'><img src='/MrDaebak_2MM/layout/delete.png' height=20px></button>"
 }
 
 function clickDelete_row(obj, num){
      var tr = obj.parentNode.parentNode;
-     if(num != -1){
+     if(num != 0){
 	 var hiddenField2 = document.createElement("input");
 	     hiddenField2.setAttribute("type", "hidden");
 	     hiddenField2.setAttribute("name", "deletestock");

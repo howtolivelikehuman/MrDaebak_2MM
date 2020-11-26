@@ -1,21 +1,21 @@
 Create table MENU(
-     no   NUMBER   PRIMARY KEY,
-     name    VARCHAR2(20)   NOT NULL,
-     AVAILABLE NUMBER DEFAULT 1,
-     PRICE NUMBER,
-     INFO VARCHAR2(400)
+     no   int auto_increment   PRIMARY KEY,
+     name    VARCHAR(20)   NOT NULL,
+     AVAILABLE int DEFAULT 1,
+     PRICE int,
+     INFO VARCHAR(400)
 );
 
 
 //MENU WITH STOCK, 
 Create table MENUWITHSTOCK(
-    MENUNO NUMBER NOT NULL,
-    STOCKNO NUMBER NOT NULL,
-    EA NUMBER DEFAULT 1 NOT NULL,
+    MENUNO int NOT NULL,
+    STOCKNO int NOT NULL,
+    EA int DEFAULT 1 NOT NULL,
     CONSTRAINT MENU_NO FOREIGN KEY(MENUNO)
-    REFERENCES MENU(NO) ON DELETE CASCADE,  
+    REFERENCES menu(NO) ON DELETE CASCADE,  
     CONSTRAINT STOCK_NO FOREIGN KEY(STOCKNO)
-    REFERENCES STOCK(NO) ON DELETE CASCADE
+    REFERENCES stock(NO) ON DELETE CASCADE
 );
 
 insert into menu values (1, '프렌치 디너', 1, 15000, 
@@ -23,5 +23,5 @@ insert into menu values (1, '프렌치 디너', 1, 15000,
 insert into menu values (2, '잉글리시 디너', 1, 20000, 
 '잉글리시 디너는 에그 스크램블, 베이컨, 빵, 스테이크가 제공됩니다.');
 insert into menu values (3, '샴페인 축제 디너',1 , 50000, 
-'샴페인 축제 디너는 2인 식사입니다.\n샴페인 한 병, 4개의 바게트빵, 커피 한포트가 제공됩니다.');
-CREATE SEQUENCE menu_seq start with 3;
+'샴페인 축제 디너는 2인 식사입니다. 샴페인 한 병, 4개의 바게트빵, 커피 한포트가 제공됩니다.');
+

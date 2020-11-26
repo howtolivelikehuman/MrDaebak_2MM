@@ -28,7 +28,7 @@ public class OrderDAO {
 		try {
 			System.out.println("start DBCP!");
 			Context context = new InitialContext();
-			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
+			ds = (DataSource) context.lookup("java:comp/env/jdbc/mysql");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

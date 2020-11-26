@@ -47,18 +47,27 @@ public class ManageStockService extends Service{
 			
 			ArrayList<Stock> newlist = ParseNewList(str);
 			int[] deletelist = ParseDeleteList(str2);
+			
+			
 			boolean result = true;
 			boolean result2 = true;
 			
 			StockDAO dao = StockDAO.getInstance();
 			
-			if(deletelist != null)
+			if(deletelist != null) {
 				//삭제 먼저 수행
 				result = dao.delete(deletelist);
+				for(int i=0; i<deletelist.length; i++) {
+					System.out.println(deletelist[i]);
+				}
+			}
+				
+			
 		
 			if(newlist != null) {
 				for(int i=0; i<newlist.size(); i++) {
 					if(newlist.get(i).getName().length() > 0) //적어도 이름은 있나 한번 더 체크
+						System.out.println(newlist.get(i).getNo() + " " + newlist.get(i).getName());
 						result2 = dao.merge(newlist.get(i));
 				}
 			}

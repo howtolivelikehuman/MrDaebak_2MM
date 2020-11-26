@@ -4,8 +4,8 @@ public class MenuDetail {
 	private int menuNo;
 	private String name;
 	private int price;
-	private int ea;
-	private int stockAmount;	
+	private int ea; //이거는 이 메뉴에서 필요한 개수
+	private int stockAmount; //이게 0이면 더 추가 못하게?	
 	private int stockNo;
 	
 	public int getStockNo() {

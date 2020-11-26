@@ -1,12 +1,11 @@
 CREATE TABLE stock (
-   no   NUMBER   PRIMARY KEY,
-   name VARCHAR2(20)   NOT NULL,
-    amount NUMBER DEFAULT 0,
-    nextSupplyDate DATE DEFAULT SYSDATE,
-    price NUMBER DEFAULT 0
+   no   int AUTO_INCREMENT   PRIMARY KEY,
+   name VARCHAR(20)   NOT NULL,
+    amount int DEFAULT 0,
+    nextSupplyDate VARCHAR(20),
+    price int DEFAULT 0
 );
 
-CREATE SEQUENCE stock_seq start with 13;
 
 INSERT INTO stock VALUES(1, '샴페인', 4, '2020-12-01', 24000);
 INSERT INTO stock VALUES(2, '커피(잔)', 9999, '2020-12-01', 3500);
