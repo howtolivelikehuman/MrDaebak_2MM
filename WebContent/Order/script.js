@@ -40,7 +40,7 @@ function click_style(data){
    var temp=document.getElementById('style-info');
    temp.innerText=style.info[data-1];
    for(var i=0;i<document.getElementsByClassName('num-box').length;i++){
-      document.getElementsById('num-box')[i].value=0;
+      document.getElementsByClassName('num-box')[i].value=0;
    }
    for(var i=0;i<menu.menuDetailListNo[dinnerIdx].length;i++){
       document.getElementById(menu.menuDetailListNo[dinnerIdx][i]).value=menu.menuDetailListEa[dinnerIdx][i];
@@ -71,8 +71,8 @@ function push_cart(){
    document.getElementById('total-price').innerHTML=totalPrice;
 }
 function check_info(){
-		var name=document.getElementById("name").value;
-		var mobile=document.getElementById("mobile").value;
+      var name=document.getElementById("name").value;
+      var mobile=document.getElementById("mobile").value;
       var address=document.getElementById("address").value;
       if(name==''){
          alert('주문자 이름을 입력해주세요');
@@ -151,17 +151,17 @@ function do_order(){
 }
 function do_post(){
    var form = document.createElement("form");
-	 form.setAttribute("charset", "UTF-8");
+    form.setAttribute("charset", "UTF-8");
      form.setAttribute("method", "Post");  //Post 방식
-     form.setAttribute("action", ""); //요청 보낼 주소 채워넣으면 댐
+     form.setAttribute("action", "DoOrder.order"); //요청 보낼 주소 채워넣으면 댐
 
-	var hiddenField = document.createElement("input");
+   var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
     hiddenField.setAttribute("name", "order"); //stockArray 의 value에 스트링 형식으로 저장
-	hiddenField.setAttribute("value", JSON.stringify(order));
-	console.log(hiddenField.getAttribute("value"));
-	
-	form.appendChild(hiddenField);
-	document.body.appendChild(form);
-	form.submit();
+   hiddenField.setAttribute("value", JSON.stringify(order));
+   console.log(hiddenField.getAttribute("value"));
+   
+   form.appendChild(hiddenField);
+   document.body.appendChild(form);
+   form.submit();
 }

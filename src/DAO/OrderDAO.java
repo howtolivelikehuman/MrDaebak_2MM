@@ -9,8 +9,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import DTO.Employee;
 import DTO.Menu;
 import DTO.MenuDetail;
+import DTO.Order;
 import DTO.Stock;
 import DTO.Style;
 
@@ -220,6 +222,37 @@ public class OrderDAO {
 		
 	}
 
-	
+	public boolean InsertOrder(Order order) {
+		sql = "INSERT INTO Orders VALUES(0,?,?,?,?,?,?,?,?,?,?,?)";
+		boolean result = false;
+		
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, order.getName());
+			ps.setString(2, order.getMobile());
+			ps.setString(3, order.getAddress());
+			ps.setInt(4, order.getTotalPrice());
+			ps.setString(5, order.getCardNum());
+			ps.setBoolean(6, order.getIsDiscounted());
+			ps.setString(7, order.getDeliverydateTime());
+			ps.setInt(8,0); //status == 0 (Preparing)
+			ps.setString(9, order.getMemberID());
+			ps.setInt(10, order.getMemberNo());
+			ps.setString(11, order.getInfo());
+			
+			
+			result = ps.executeUpdate() == 1;	
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		finally {  // 닫는건 예외처리 상관없이 실행되어야 함으로.
+			close(con,ps);
+		}
+		return result; 
+	}
 	
 }

@@ -31,7 +31,14 @@ public class OrderController extends HttpServlet{
 				nextAction.setNextPath("/Order/OrderView.jsp");
 				nextAction.setRedirect(false);
 				
+			} else if(requestPage.equals("DoOrder.order")) { //재고 로직
+				nextAction = service.DoOrder(request, response);
+				
+			}else if(requestPage.equals("ResultView.order")) { //재고 완료 뷰
+				nextAction.setNextPath("/Order/OrderView.jsp");
+				nextAction.setRedirect(false);
 			}
+
 			
 			
 			if(nextAction != null) { //리다이렉트 방식으로 nextPath

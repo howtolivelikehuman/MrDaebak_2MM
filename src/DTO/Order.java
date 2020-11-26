@@ -9,7 +9,7 @@ public class Order {
 	private String address;
 	private int totalPrice;	//(cart의 개별 가격의 합) if (단골 = 세일)
 	private String cardNum;
-	private int isDiscounted;
+	private boolean isDiscounted;
 	private String deliverydateTime; //원하는 예약 날짜, 시간
 	private int status; //상태(얘는 필요없음) 무조건 처음 주문때는 0
 	private int memberNo; //세션 (얘는 필요없음)
@@ -53,10 +53,10 @@ public class Order {
 	public void setCardNum(String cardNum) {
 		this.cardNum = cardNum;
 	}
-	public int getIsDiscounted() {
+	public boolean getIsDiscounted() {
 		return isDiscounted;
 	}
-	public void setIsDiscounted(int isDiscounted) {
+	public void setIsDiscounted(boolean isDiscounted) {
 		this.isDiscounted = isDiscounted;
 	}
 	public String getDeliverydateTime() {
