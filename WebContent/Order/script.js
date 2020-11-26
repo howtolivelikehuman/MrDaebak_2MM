@@ -40,7 +40,7 @@ function click_style(data){
    var temp=document.getElementById('style-info');
    temp.innerText=style.info[data-1];
    for(var i=0;i<document.getElementsByClassName('num-box').length;i++){
-      document.getElementsById('num-box')[i].value=0;
+      document.getElementsByClassName('num-box')[i].value=0;
    }
    for(var i=0;i<menu.menuDetailListNo[dinnerIdx].length;i++){
       document.getElementById(menu.menuDetailListNo[dinnerIdx][i]).value=menu.menuDetailListEa[dinnerIdx][i];
