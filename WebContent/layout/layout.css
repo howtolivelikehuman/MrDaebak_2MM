@@ -228,6 +228,10 @@ a{
    display:grid;
    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+#card-inputs{
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
 /*.header, .footer {
    width: 80%;
    padding: 1em;
