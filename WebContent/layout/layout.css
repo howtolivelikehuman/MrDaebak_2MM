@@ -3,239 +3,243 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap");
 *{
-	margin:0px;
-	padding:0px;
-	font-family: "Noto Sans KR", sans-serif;
+   margin:0px;
+   padding:0px;
+   font-family: "Noto Sans KR", sans-serif;
 }
 
 body{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   justify-content: center;
 }
 .container{
-	display: flex;
-	width:50vw;
-	height:90vh;
-	background-color: aliceblue;
-	flex-direction: column;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-	overflow: auto;
+   display: flex;
+   width:50vw;
+   height:90vh;
+   background-color: aliceblue;
+   flex-direction: column;
+   text-align: center;
+   justify-content: center;
+   align-items: center;
+   overflow: auto;
 }
 table{
-	margin-top:2%;
-	margin-bottom: auto;
-	background-color: white;
-	border:1px solid #444444;
-	border-collapse: collapse;
+   margin-top:2%;
+   margin-bottom: auto;
+   background-color: white;
+   border:1px solid #444444;
+   border-collapse: collapse;
 }
 #addStock{
-	margin-bottom: auto;
+   margin-bottom: auto;
 }
 th, td{
-	font-weight: 400;
-	border:1px solid #444444;
+   font-weight: 400;
+   border:1px solid #444444;
 }
 .main-menu{
-	width: 100%;
-	height: 100%;
-	display:flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+   width: 100%;
+   height: 100%;
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
 }
 .menu{
-	width: 100%;
-	height: 33%;
-	background-color: aliceblue;
-	color:black;
-	text-align: center;
-	font-size: 5vh;
+   width: 100%;
+   height: 33%;
+   background-color: aliceblue;
+   color:black;
+   text-align: center;
+   font-size: 5vh;
 }
 .menu-submit{
-	height: 100%;
+   height: 100%;
 }
 .menu:hover{
-	background-color: aquamarine ;
+   background-color: aquamarine ;
 }
 .header{
-	width:50vw;
-	display:flex;
-	flex-direction: row;
-	justify-content: flex-end;
+   width:50vw;
+   display:flex;
+   flex-direction: row;
+   justify-content: flex-end;
 }
 .top-menu{
-	font-size: 2.6vh;
-	font-weight: 400;
-	color:black;
-	/* margin:3%; */
-	border:transparent;
-	margin-right: 1%;
+   font-size: 2.6vh;
+   font-weight: 400;
+   color:black;
+   /* margin:3%; */
+   border:transparent;
+   margin-right: 1%;
 }
 button{
-	cursor: pointer;
-	outline:0;
-	border:0;
+   cursor: pointer;
+   outline:0;
+   border:0;
 }
 #logo{
-	margin-right: auto;
+   margin-right: auto;
 
 }
 #footer{
-	font-size: 1vh;
+   font-size: 1vh;
 }
 #logout{
-	cursor: pointer;
-	outline:0;
-	border:0;
-	background: transparent;
+   cursor: pointer;
+   outline:0;
+   border:0;
+   background: transparent;
 }
 .form-login {
-	width:50%;
-	height: 100%;
-	display:flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+   width:50%;
+   height: 100%;
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
 .form-signUp{
-	width:50%;
-	height: 100%;
-	display:flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+   width:50%;
+   height: 100%;
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
 a{
-	text-decoration: none;
+   text-decoration: none;
 }
 .input{
-	font-weight: 400;
-	display:block;
-	width: 100%;
-	color:#495057;
-	background-color: white;
-	background-clip: padding-box;
-	border:1px solid #ced4da;
-	border-radius: .25rem;
-	font-size: 3vh;
+   font-weight: 400;
+   display:block;
+   width: 100%;
+   color:#495057;
+   background-color: white;
+   background-clip: padding-box;
+   border:1px solid #ced4da;
+   border-radius: .25rem;
+   font-size: 3vh;
 }
 #order{
-	width: 100%;
-	height: 100%;
-	margin-top:2%;
-	margin-bottom: auto;
+   width: 100%;
+   height: 100%;
+   margin-top:2%;
+   margin-bottom: auto;
 }
 .btn{
-	font-weight: 400;
-	text-align: center;
-	vertical-align: middle;
-	border:1px solid transparent;
-	width:100%;
-	background-color:aquamarine;
-	font-size: 3vh;
+   font-weight: 400;
+   text-align: center;
+   vertical-align: middle;
+   border:1px solid transparent;
+   width:100%;
+   background-color:aquamarine;
+   font-size: 3vh;
 }
 .text{
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	width: 33%;
-	height: 100%;
-	border-right: 1px solid gray;
-	font-size: 3vh;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   width: 33%;
+   height: 100%;
+   border-right: 1px solid gray;
+   font-size: 3vh;
 }
 .sub-container{
-	display: grid;
-	width: 66%;
-	height: 100%;
-	grid-template-rows: 2fr 1fr;
+   display: grid;
+   width: 66%;
+   height: 100%;
+   grid-template-rows: 2fr 1fr;
 }
 #dinner-info, #style-info{
-	text-align: center;
-	margin-top:5%;
+   text-align: center;
+   margin-top:5%;
 }
 #dinners, #styles, #details, #buttons, #texts{
-	width:100%;
-	height: 15%;
-	display: flex;
-	flex-direction: row;
-	border-bottom: 1px solid gray;
-	font-size:1vh;
+   width:100%;
+   height: 15%;
+   display: flex;
+   flex-direction: row;
+   border-bottom: 1px solid gray;
+   font-size:1vh;
 }
 #buttons, #texts{
-	height: 6%;
+   height: 6%;
 }
 #texts{
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 #border-right{
-	border-right: 1px solid gray;
+   border-right: 1px solid gray;
 }
 .text-info{
-	font-size:2vh;
-	padding-top: 5%;
+   font-size:2vh;
+   padding-top: 5%;
 }
 #details{
-	height:30%;
+   height:30%;
 }
 #detail-box{
-	width:66%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+   width:66%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
 }
 .detail{
-	width:47%;
-	height:15%;
-	display:flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+   width:47%;
+   height:15%;
+   display:flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
 }
 .detail-name{
-	width: 66%;
+   width: 66%;
 }
 .num-box{
-	width:33%;
+   width:33%;
 }
 #user-inputs{
-	display: grid;
-	grid-template-columns: 1fr 5fr;
+   display: grid;
+   grid-template-columns: 1fr 5fr;
 }
 .check, .delete{
-	background: transparent;
-	width:100%;
-	height:100%;
+   background: transparent;
+   width:100%;
+   height:100%;
 }
 .check{
-	background-color: rgba(255,255,255,0.75);
+   background-color: rgba(255,255,255,0.75);
 }
 .delete{
-	background-color: rgba(255,255,255,0.75);
+   background-color: rgba(255,255,255,0.75);
 }
 #final-box{
-	display:none;
+   display:none;
+}
+#card-inputs{
+   display:grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 /*.header, .footer {
-	width: 80%;
-	padding: 1em;
-	background: #968f8f;
-	color: #ffffff;
-	font: sans-serif;
-	font-weight: bold;
+   width: 80%;
+   padding: 1em;
+   background: #968f8f;
+   color: #ffffff;
+   font: sans-serif;
+   font-weight: bold;
 }
 
 /* .top-menu{
-	padding: 5%;
-	margin-left: 5%;
-	background-color: black;
-	color: white;
+   padding: 5%;
+   margin-left: 5%;
+   background-color: black;
+   color: white;
 } 
