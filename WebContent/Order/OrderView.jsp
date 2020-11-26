@@ -10,7 +10,7 @@
 </head>
 <script>
 var member={"id":'${requestScope.member.id}',"name":'${requestScope.member.name}',"mobile":'${requestScope.member.mobile}',
-		"address":'${requestScope.member.address}',"isVip":${requestScope.member.vip}};
+      "address":'${requestScope.member.address}',"isVip":${requestScope.member.vip}};
 var menu={"name":[],"info":[],"availableStyle":[],"available":[],"menuDetailListNo":[],"menuDetailListEa":[],"extraDetailListNo":[],"extraDetailListEa":[]};
 var style={"name":[],"price":[],"info":[]};
 var detailPrice={};
@@ -107,20 +107,20 @@ var detailPrice={};
       <p class="text-info">장바구니:</p>
       <p class="text-info" id='cart-num'></p>
       <c:choose>
-   		 <c:when test = "${requestScope.member.vip==true}">
-   		 	<p class="text-info">가격(-10%):</p>
-      		<p class="text-info" id='total-price'></p>
-   	  	 </c:when>
-   		 <c:otherwise>
-   		 	<p class="text-info">가격:</p>
-      		<p class="text-info" id='total-price'></p>	
-  		 </c:otherwise>
-	  </c:choose>
+          <c:when test = "${requestScope.member.vip==true}">
+             <p class="text-info">가격(-10%):</p>
+            <p class="text-info" id='total-price'></p>
+            </c:when>
+          <c:otherwise>
+             <p class="text-info">가격:</p>
+            <p class="text-info" id='total-price'></p>   
+         </c:otherwise>
+     </c:choose>
       </div>
       <div id="final-box">
          <div id="user-inputs">
          <c:choose>
-   		 <c:when test = "${requestScope.member==null}">
+          <c:when test = "${requestScope.member==null}">
             <p class="text-info">주문자 이름:</p>
             <input type = "text" class="input" id = "name">
             <p class="text-info">전화번호:</p>
@@ -128,15 +128,15 @@ var detailPrice={};
             <p class="text-info">배달 주소:</p>
             <input type = "text" class="input" id = "address">
          </c:when>
-   		 <c:otherwise>   
-   		 	<p class="text-info">주문자 이름:</p>
+          <c:otherwise>   
+             <p class="text-info">주문자 이름:</p>
             <input type = "text" class="input" id = "name" value="${requestScope.member.name}">
             <p class="text-info">전화번호:</p>
             <input type = "text" class="input" id = "mobile" value="${requestScope.member.mobile}">
             <p class="text-info">배달 주소:</p>
             <input type = "text" class="input" id = "address" value="${requestScope.member.address}">
-   		 </c:otherwise>
-	 	 </c:choose>
+          </c:otherwise>
+        </c:choose>
             <p class="text-info">카드 번호:</p>
             <div id=card-inputs>
                <input type = "text" class="input" name = "card-num" maxlength="4">
