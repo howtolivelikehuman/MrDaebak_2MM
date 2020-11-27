@@ -173,14 +173,14 @@ a{
 }
 #texts{
    display: grid;
-   grid-template-columns: 1fr 1fr 1fr 1fr;
+   grid-template-columns: 2fr 4fr 1fr 1fr;
 }
 #border-right{
    border-right: 1px solid gray;
 }
 .text-info{
    font-size:2vh;
-   padding-top: 5%;
+   padding-top: 1vh;
 }
 #details{
    height:30%;
@@ -232,6 +232,9 @@ a{
 #card-inputs{
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+#each-cart{
+   border-bottom: 1px solid gray;
 }
 /*.header, .footer {
    width: 80%;

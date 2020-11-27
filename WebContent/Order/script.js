@@ -7,7 +7,6 @@ var order={ "name":"",
          "totalPrice":0,
          "cardNum":"",
          "isVip":false,
-         "deliverydateTime":"",
          "info":"",
          "cart":[/* {
             "menu":"",
@@ -70,7 +69,6 @@ function push_cart(){
    }
    totalPrice+=Number(temp.price);
    order.cart.push(temp);
-   document.getElementById('total-price').innerHTML=totalPrice;
 }
 function check_info(){
       var name=document.getElementById("name").value;
@@ -109,8 +107,7 @@ function click_cart(){
    for(var i=0;i<document.getElementsByClassName('num-box').length;i++){
       document.getElementsByClassName('num-box')[i].value=0;
    }
-   document.getElementById('cart-num').innerHTML=order.cart.length;
-   document.getElementById('total-price').innerHTML=totalPrice;
+   post_cart();
    resetVar();
 }
 function click_cart_delete(){
@@ -118,20 +115,41 @@ function click_cart_delete(){
       return;
    }else{
       var temp=order.cart.pop();
+      if(order.cart.length==0){
+         document.getElementById('final-box').style.display='none';
+      }
       totalPrice-=Number(temp.price);
    }
-   document.getElementById('total-price').innerHTML=totalPrice;
-   document.getElementById('cart-num').innerHTML=order.cart.length;
+   post_cart();
 }
 function click_order(){
-   if(styleIdx==-1||dinnerIdx==-1){
+   if(order.cart.length==0&&(styleIdx==-1||dinnerIdx==-1)){
       alert("디너와 스타일을 선택해주세요.");
+      return;
+   }else if(order.cart.length>0&&(styleIdx==-1||dinnerIdx==-1)){
+      document.getElementById('final-box').style.display='inline';
+      document.getElementById('cart-num').innerHTML=order.cart.length;
+      resetVar();
       return;
    }
    push_cart();
    document.getElementById('final-box').style.display='inline';
-   document.getElementById('cart-num').innerHTML=order.cart.length;
+   post_cart();
    resetVar();
+}
+function post_cart(){
+   var str="";
+   for(var i=0;i<order.cart.length;i++){
+      str+="<p id='each-cart'>"+"디너: "+order.cart[i].menu+ "<br> 스타일: "+order.cart[i].style+"<br> 메뉴: ";
+      var tmp=order.cart[i].orderedDetailList;
+      for(var j=0;j<tmp.length;j++){
+         str+='('+tmp[j].name+" "+tmp[j].ea+')';
+      }
+      str+="</p>"
+   }
+   document.getElementById('cart-num').innerHTML=order.cart.length;
+   document.getElementById('cart-info').innerHTML=str;
+   document.getElementById('total-price').innerHTML=totalPrice;
 }
 function do_order(){
    if(!check_info()){
@@ -147,7 +165,6 @@ function do_order(){
    order.totalPrice=totalPrice;
    order.cardNum=temp;
    order.info=document.getElementById('extra-info').value;
-   order.deliverydateTime=document.getElementById('hope-time').value;
    order.isVip=member.isVip;
 
    do_post();
