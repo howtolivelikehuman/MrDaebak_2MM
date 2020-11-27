@@ -20,7 +20,9 @@ insert into style values (1 , '심플', 0,
 insert into style values (2 , '그랜드', 10000,
 '그랜드 스타일은 도자기 접시와 컵, 흰색 면 냅킨, 나무 쟁반으로 디너를 서비스하는 스타일입니다.');
 insert into style values (3, '딜럭스', 20000, 
-'딜럭스 스타일은 은 쟁반에 작은 꽃병, 도자기 접시와 린넨 냅킨으로 디너를 서비스하는 스타일입니다');
+'딜럭스 스타일은 은 쟁반에 작은 꽃병, 도자기 접시와 린넨 냅킨으로 디너를 서비스하는 스타일입니다.');
+insert into style values (4, '발렌타인', 10000, 
+'발렌타인 스타일은 작은 하트 모양과 큐피드가 장식된 접시에 냅킨과 함께 디너를 서비스하는 스타일입니다.');
 
 insert into menuwithstyle select menu.no, style.no from menu, style;
 delete from menuwithstyle where menuno = 3 and styleno = 1;
