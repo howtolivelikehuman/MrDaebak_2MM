@@ -5,8 +5,8 @@
 <head>
       <meta charset="UTF-8">
       <title>Mr.Daebak</title>
-      <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12dds">
-      <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?dgdddssr"></script>
+      <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12fss">
+      <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?zdssr"></script>
 </head>
 <script>
 
@@ -112,7 +112,9 @@ var detailPrice={};
       </div>
       <div id="texts">
       <p class="text-info">장바구니:</p>
+      <div style="overflow:auto;">
       <p class="text-info" id='cart-num'></p>
+      </div>
       <c:choose>
           <c:when test = "${requestScope.member.vip==true}">
              <p class="text-info">가격(-10%):</p>
@@ -123,6 +125,8 @@ var detailPrice={};
             <p class="text-info" id='total-price'></p>   
          </c:otherwise>
      </c:choose>
+      </div>
+      <div id="cart-info">
       </div>
       <div id="final-box">
          <div id="user-inputs">
@@ -156,8 +160,6 @@ var detailPrice={};
             </div>
             <p class="text-info">요청사항:</p>
             <input type = "text" class="input" id = "extra-info" placeholder="요청사항">
-            <p class="text-info">배달 희망 시간:</p>
-            <input type = "text" class="input" id = "hope-time" placeholder="ex)22:00, 배달시간 미정시 접수시간 배정">
          </div>
             <button class="btn" id='order-btn' onclick="do_order()">주문 완료 </button>
          </div>
