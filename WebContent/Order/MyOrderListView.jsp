@@ -39,11 +39,11 @@
 			<tr align = "center">
 				<th>${currentpage*10 +status.index - 9 }</th>
 				
-				<th width="37%" align = "left"><a href = "ReadOrder.orderlist?OrdNo=${dto.no}">${dto.name }</a></th>
-				<th>${dto.orderTime }</th>
+				<th width="20%" align = "left"><a href = "ReadMyOrder.myorderlist?OrdNo=${dto.no}">${dto.name }</a></th>
+				<th style="font-size:0.7rem;">${dto.orderTime }</th>
 				<th>${dto.status }</th>
-				<th>${dto.totalPrice }</th>
-				<th>${dto.memberID }</th>
+				<th style="font-size:0.8rem;">${dto.totalPrice }</th>
+				<th style="font-size:0.8rem;">${dto.memberID }</th>
 				
 			</tr>	
 			</c:forEach>

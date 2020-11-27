@@ -35,11 +35,12 @@ public class CheckOrderListController extends HttpServlet{
 			} else if(requestPage.equals("ReadOrder.orderlist")) { //주문 조회 - DB
 				nextAction = service.ReadOrder(request, response);
 				
-			} else if(requestPage.equals("ReadOrderView.orderlist")) { //주문 조회 - View
+			}
+			else if(requestPage.equals("ReadOrderView.orderlist")) { //주문 조회 - View
 				nextAction.setNextPath("/Order/OrderDetailView.jsp");
 				nextAction.setRedirect(false);
 				
-			} else if(requestPage.equals("UpdateOrder.orderlist")) { //주문 수정 - DB
+			}else if(requestPage.equals("UpdateOrder.orderlist")) { //주문 수정 - DB
 				nextAction = service.UpdateOrder(request, response);
 				
 			} else if(requestPage.equals("DeleteOrder.orderlist")) { //주문 삭제 - DB

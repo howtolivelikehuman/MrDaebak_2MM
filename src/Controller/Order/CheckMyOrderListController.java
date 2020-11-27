@@ -29,14 +29,14 @@ public class CheckMyOrderListController extends HttpServlet{
 				nextAction = service.ListMyOrder(request, response);
 
 			} else if(requestPage.equals("MyOrderListView.myorderlist")) { //주문 목록 - View
-				nextAction.setNextPath("/Order/OrderListView.jsp");
+				nextAction.setNextPath("/Order/MyOrderListView.jsp");
 				nextAction.setRedirect(false);
 				
 			} else if(requestPage.equals("ReadMyOrder.myorderlist")) { //주문 조회 - DB
 				nextAction = service.ReadMyOrder(request, response);
 				
 			} else if(requestPage.equals("ReadMyOrderView.myorderlist")) { //주문 조회 - View
-				nextAction.setNextPath("/Order/OrderDetailView.jsp");
+				nextAction.setNextPath("/Order/MyOrderDetailView.jsp");
 				nextAction.setRedirect(false);
 				
 			} else if(requestPage.equals("Result.myorderlist")) { //결과

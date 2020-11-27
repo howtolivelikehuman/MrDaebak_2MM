@@ -55,7 +55,11 @@
 			</tr>
 			<tr> <!-- 주문사항 0,1,2,3,4에 따라서 준비중, 준비완료, 배달중, 취소, 배달완료 -->
 				<th>상태</th>
-				<td>${dto.status }</td>
+				<td><c:if test="${dto.status == 0}">준비중</c:if>
+					<c:if test="${dto.status == 1}">준비완료</c:if>
+					<c:if test="${dto.status == 2}">배달중</c:if>
+					<c:if test="${dto.status == 3}">취소</c:if>
+					<c:if test="${dto.status == 4}">배달완료</c:if></td>
 			</tr>
 			<tr>
 				<th>단골 할인</th>
@@ -70,7 +74,7 @@
 			<c:forEach var = "dto_list" items = "${ dto.cart }"  varStatus="status">
 			
 			<tr align = "center">
-			<td colspan =2> .</td>
+			<td colspan =2> -</td>
 			</tr>
 			
 			<tr align = "center">

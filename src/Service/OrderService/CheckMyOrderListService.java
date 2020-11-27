@@ -53,7 +53,7 @@ public class CheckMyOrderListService extends Service{
 			request.setAttribute("altmsg", "내 주문 세부정보를 불러오는 도중 요류가 발생하였습니다.");
 		}finally {
 			nextAction = new ActionForward();
-			nextAction.setNextPath("ReadMyOrderView.orderlist");
+			nextAction.setNextPath("ReadMyOrderView.myorderlist");
 			nextAction.setRedirect(false);
 		}
 		return nextAction;
