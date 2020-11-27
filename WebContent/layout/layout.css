@@ -28,6 +28,7 @@ body{
    overflow: auto;
 }
 table{
+   width: 100%;
    margin-top:2%;
    margin-bottom: auto;
    background-color: white;

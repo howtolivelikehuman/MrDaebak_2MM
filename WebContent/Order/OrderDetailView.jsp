@@ -8,6 +8,11 @@
 		<title>Mr.Daebak</title>
 		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
 </head>
+<script>
+	function setStatus(value){
+		document.getElementsByName('order_status')[0].value=document.getElementById(value).value;
+	}
+</script>
 <body>
 <jsp:include page = "/layout/header.jsp">
 	<jsp:param name="title" value="주문정보 확인"/>
@@ -57,7 +62,14 @@
 			</tr>
 			<tr> <!-- 주문사항 0,1,2,3,4에 따라서 준비중, 준비완료, 배달중, 취소, 배달완료 -->
 				<th>상태</th>
-				<td> <input class="input" name = "order_status" value = "${dto.status }" required></td>
+				<td> <input style="display:none;" class="input" name = "order_status" value = "${dto.status }" required>
+				<select onchange="setStatus(this.value)" id="status">
+					    <option id='0' value='0' <c:if test="${dto.status == 0}">selected</c:if>>준비중</option>
+					    <option id='1' value='1' <c:if test="${dto.status == 1}">selected</c:if>>준비완료</option>
+					    <option id='2' value='2' <c:if test="${dto.status == 2}">selected</c:if>>배달중</option>
+					    <option id='3' value='3' <c:if test="${dto.status == 3}">selected</c:if>>취소</option>
+					    <option id='4' value='4' <c:if test="${dto.status == 4}">selected</c:if>>배달완료</option>
+					</select></td>
 			</tr>
 			<tr>
 				<th>단골 할인</th>
@@ -72,7 +84,7 @@
 			<c:forEach var = "dto_list" items = "${ dto.cart }"  varStatus="status">
 			
 			<tr align = "center">
-			<td colspan =2> .</td>
+			<td colspan =2> -</td>
 			</tr>
 			
 			<tr align = "center">

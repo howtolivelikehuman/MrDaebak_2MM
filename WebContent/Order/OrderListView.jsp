@@ -5,13 +5,17 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after1">
 </head>
 <jsp:include page="/layout/header.jsp">
 	<jsp:param name = "title" value = "주문 목록" />
 </jsp:include>
 
-
+<script>
+	var status=[];
+	<c:forEach var = "dto" items = "${ requestScope.list }"  varStatus="status">
+	</c:forEach>
+</script>
 <body>
 <c:if test = "${requestScope.altmsg != null}">
 		<script>
@@ -38,11 +42,28 @@
 			<tr align = "center">
 				<th>${currentpage*10 +status.index - 9 }</th>
 				
-				<th width="37%" align = "left"><a href = "ReadOrder.orderlist?OrdNo=${dto.no}">${dto.name }</a></th>
-				<th>${dto.orderTime }</th>
-				<th>${dto.status }</th>
-				<th>${dto.totalPrice }</th>
-				<th>${dto.memberID }</th>
+				<th width="20%" align = "left"><a href = "ReadOrder.orderlist?OrdNo=${dto.no}">${dto.name }</a></th>
+				<th style="font-size:0.7rem;">${dto.orderTime }</th>
+				<th>
+					<c:if test="${dto.status==0}">
+					준비중
+					</c:if>
+					
+					<c:if test="${dto.status ==1}">
+					준비완료
+					</c:if>
+					<c:if test="${dto.status ==2}">
+					배달중
+					</c:if>
+					<c:if test="${dto.status ==3}">
+					취소
+					</c:if>
+					<c:if test="${dto.status ==4}">
+					배달완료
+					</c:if>
+				</th>
+				<th style="font-size:0.8rem;">${dto.totalPrice }</th>
+				<th style="font-size:0.8rem;">${dto.memberID }</th>
 				
 			</tr>	
 			</c:forEach>

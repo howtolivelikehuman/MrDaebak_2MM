@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after1">
 </head>
 <jsp:include page="/layout/header.jsp">
 	<jsp:param name = "title" value = "회원 목록" />
