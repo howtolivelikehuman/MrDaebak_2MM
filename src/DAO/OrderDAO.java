@@ -62,7 +62,7 @@ public class OrderDAO {
 		close(con,ps,null);
 	}
 			
-	public ArrayList<Menu> getMenulist(){
+	public ArrayList<Menu> getMenulist()throws Exception{
 		ArrayList<Menu> list = new ArrayList<Menu>();
 		Menu menu = null;
 		
@@ -86,6 +86,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}
 	finally {
 		close(con,ps,rs);
@@ -94,7 +95,7 @@ public class OrderDAO {
 		
 	}
 	
-	public ArrayList<Style> getStylelist(){
+	public ArrayList<Style> getStylelist()throws Exception{
 		ArrayList<Style> list = new ArrayList<Style>();
 		Style style = null;
 		
@@ -117,6 +118,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}
 	finally {
 		close(con,ps,rs);
@@ -125,7 +127,7 @@ public class OrderDAO {
 		
 	}
 	
-	public ArrayList<MenuDetail> getMenuDetaillist(int menuNo){
+	public ArrayList<MenuDetail> getMenuDetaillist(int menuNo)throws Exception{
 		ArrayList<MenuDetail> list = new ArrayList<MenuDetail>();
 		MenuDetail menuDetail = null;
 		
@@ -155,6 +157,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}
 	finally {
 		close(con,ps,rs);
@@ -163,7 +166,7 @@ public class OrderDAO {
 		
 	}
 	
-	public ArrayList<MenuDetail> getExtraDetaillist(int menuNo){
+	public ArrayList<MenuDetail> getExtraDetaillist(int menuNo)throws Exception{
 		ArrayList<MenuDetail> list = new ArrayList<MenuDetail>();
 		MenuDetail menuDetail = null;
 		
@@ -192,6 +195,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}
 	finally {
 		close(con,ps,rs);
@@ -200,7 +204,7 @@ public class OrderDAO {
 		
 	}
 	
-	public ArrayList<Integer> getAvailableStyle(int menuNo){
+	public ArrayList<Integer> getAvailableStyle(int menuNo)throws Exception{
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		sql = "SELECT STYLENO FROM MENUWITHSTYLE WHERE MENUNO = ?";
 		
@@ -216,6 +220,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}
 	finally {
 		close(con,ps,rs);
@@ -224,7 +229,7 @@ public class OrderDAO {
 		
 	}
 
-	public int InsertOrder(Order order) {
+	public int InsertOrder(Order order)  throws Exception{
 		sql = "INSERT INTO Orders VALUES(0,?,?,?,?,?,?,default,?,?,?,?)";
 		int Orderno = -1;
 		
@@ -255,6 +260,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 			
 		}
 		finally {  // 닫는건 예외처리 상관없이 실행되어야 함으로.
@@ -263,7 +269,7 @@ public class OrderDAO {
 		return Orderno; 
 	}
 	
-	public boolean InsertOrderedMenu(OrderedMenu orderedmenu, int Orderno) {
+	public boolean InsertOrderedMenu(OrderedMenu orderedmenu, int Orderno) throws Exception{
 		boolean result = false;
 		sql = "INSERT INTO ORDEREDMENU VALUES (?,?,?,?,?)";
 		
@@ -280,6 +286,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 			
 		}
 		finally {  // 닫는건 예외처리 상관없이 실행되어야 함으로.
@@ -289,7 +296,7 @@ public class OrderDAO {
 		
 	}
 
-	public int getTotalPage() {
+	public int getTotalPage() throws Exception{
 		int total = 0;
 		sql = "SELECT COUNT(*) FROM ORDERS";
 		try{
@@ -302,6 +309,7 @@ public class OrderDAO {
 		
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}
 	finally {
 		close(con,ps,rs);
@@ -309,7 +317,7 @@ public class OrderDAO {
 		return (total-1)/10 +1;
 	}
 
-	public int getTotalPage(int no) {
+	public int getTotalPage(int no) throws Exception{
 		int total = 0;
 		sql = "SELECT COUNT(*) FROM ORDERS WHERE memberNo = ?";
 		try{
@@ -323,6 +331,7 @@ public class OrderDAO {
 		
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}
 	finally {
 		close(con,ps,rs);
@@ -330,7 +339,7 @@ public class OrderDAO {
 		return (total-1)/10 +1;
 	}
 
-	public ArrayList<Order> getList(int page){
+	public ArrayList<Order> getList(int page)throws Exception{
 		ArrayList<Order> list = new ArrayList<Order>();
 		Order order = null;
 		int start = page * 10 -10;
@@ -356,6 +365,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}
 	finally {
 		close(con,ps,rs);
@@ -364,7 +374,7 @@ public class OrderDAO {
 		
 	}
 	
-	public ArrayList<Order> getList(int page, int memberno){
+	public ArrayList<Order> getList(int page, int memberno)throws Exception{
 		ArrayList<Order> list = new ArrayList<Order>();
 		Order order = null;
 		int start = page * 10 -10;
@@ -392,6 +402,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception();
 		}
 	finally {
 		close(con,ps,rs);

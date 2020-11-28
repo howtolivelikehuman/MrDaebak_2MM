@@ -15,39 +15,50 @@ public class SignUpService extends Service{
 	
 	public ActionForward SignUp(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		request.setCharacterEncoding("UTF-8");
-		
-		String id = request.getParameter("user_id");
-		String password = request.getParameter("user_password");
-		String name = request.getParameter("user_name");
-		String mobile = request.getParameter("user_mobile");
-		String address= request.getParameter("user_address");
-		String code = request.getParameter("user_code");
-		
-		Member dto;
-		
-		if(code.contentEquals("2mm") ) {
-			 dto = new Employee();
-		}else {
-			 dto = new Member();
+		request.setCharacterEncoding("UTF-8");		
+		try {
+			String id = request.getParameter("user_id");
+			String password = request.getParameter("user_password");
+			String name = request.getParameter("user_name");
+			String mobile = request.getParameter("user_mobile");
+			String address= request.getParameter("user_address");
+			String code = request.getParameter("user_code");
+			
+			Member dto;
+			
+			if(code.contentEquals("2mm") ) {
+				 dto = new Employee();
+			}else {
+				 dto = new Member();
+			}
+			
+			dto.setId(id);
+			dto.setPw(password);
+			dto.setName(name);
+			dto.setAddress(address);
+			dto.setMobile(mobile);
+			
+			
+			MemberDAO dao = MemberDAO.getInstance();
+			if(!dao.insert(dto)) {
+				throw new Exception();
+			}
+			else {
+				request.setAttribute("altmsg", "회원가입에 성공하였습니다.");
+			}
 		}
-		
-		dto.setId(id);
-		dto.setPw(password);
-		dto.setName(name);
-		dto.setAddress(address);
-		dto.setMobile(mobile);
-		
-		
-		MemberDAO dao = MemberDAO.getInstance();
-		boolean result = dao.insert(dto);
-		
-		nextAction = new ActionForward();
-		nextAction.setNextPath("signUpResultView.jsp?result="+result);
-		nextAction.setRedirect(true);
-		
+		catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("altmsg", "회원가입에 실패하였습니다.");
+		}
+		finally {
+
+			nextAction = new ActionForward();
+			nextAction.setNextPath("Result.signup");
+			nextAction.setRedirect(false);
+			
+		}
 		return nextAction;
-		
 	}
 	
 	public ActionForward CheckID(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -58,8 +69,8 @@ public class SignUpService extends Service{
 		boolean result = dao.isExistID(id);
 		
 		nextAction = new ActionForward();
-		nextAction.setNextPath("CheckIdView.jsp?id=" + id + "&result=" + result);
-		nextAction.setRedirect(true);
+		nextAction.setNextPath("/MrDaebak_2MM/Member/CheckIdView.jsp?id=" + id + "&result=" + result);
+		nextAction.setRedirect(false);
 		
 		return nextAction;
 	}

@@ -62,7 +62,7 @@ public class MemberDAO {
 			close(con,ps,null);
 		}
 
-		public boolean update(Member member) {
+		public boolean update(Member member) throws Exception{
 			
 				sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ? WHERE no = ?";
 				
@@ -97,19 +97,15 @@ public class MemberDAO {
 				
 			}catch (Exception e) {
 				e.printStackTrace();
+				throw new Exception();
 			}
 			finally {
-				try {
-					close(con,ps);
-					
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
+				close(con,ps);
 			}
 			return result;
 		}
 
-		public boolean insert(Member member) {
+		public boolean insert(Member member) throws Exception{
 			sql = "INSERT INTO member VALUES(0, ?, ?, ?, ?, ?, ?, default, default)";
 			boolean result = false;
 			
@@ -136,6 +132,7 @@ public class MemberDAO {
 				result = ps.executeUpdate() == 1;	
 			}catch(Exception e) {
 				e.printStackTrace();
+				throw new Exception();
 			}
 			finally {  // 닫는건 예외처리 상관없이 실행되어야 함으로.
 				close(con,ps);
@@ -145,7 +142,7 @@ public class MemberDAO {
 		}
 		
 		
-		public Member select(String id, String password) {
+		public Member select(String id, String password) throws Exception{
 			Member member = null;
 			sql = "SELECT * FROM member WHERE id = ? AND pw = ?";
 			try {
@@ -196,6 +193,7 @@ public class MemberDAO {
 				}		
 			}catch(Exception e) {
 				e.printStackTrace();
+				throw new Exception();
 			}
 			finally {
 				close(con,ps,rs);
@@ -203,7 +201,7 @@ public class MemberDAO {
 			return member;
 		}
 		
-		public Member select(String id) {
+		public Member select(String id)  throws Exception{
 			Member member = null;
 			sql = "SELECT * FROM member WHERE id = ?";
 			try {
@@ -252,6 +250,7 @@ public class MemberDAO {
 				}		
 			}catch(Exception e) {
 				e.printStackTrace();
+				throw new Exception();
 			}
 			finally {
 				close(con,ps,rs);
@@ -259,7 +258,7 @@ public class MemberDAO {
 			return member;
 		}
 		
-		public Member select(int no) {
+		public Member select(int no) throws Exception{
 			Member member = null;
 			sql = "SELECT * FROM member WHERE no = ?";
 			try {
@@ -310,6 +309,7 @@ public class MemberDAO {
 				}		
 			}catch(Exception e) {
 				e.printStackTrace();
+				throw new Exception();
 			}
 			finally {
 				close(con,ps,rs);
@@ -317,7 +317,7 @@ public class MemberDAO {
 			return member;
 		}
 		
-		public boolean delete(int no) {
+		public boolean delete(int no) throws Exception{
 			boolean result = false;
 			sql = "DELETE FROM MEMBER WHERE no = ?";
 			try {
@@ -327,6 +327,7 @@ public class MemberDAO {
 				result = 1 ==ps.executeUpdate();	
 			}catch(Exception e) {
 				e.printStackTrace();
+				throw new Exception();
 			}
 			finally {
 				close(con,ps);
@@ -334,7 +335,7 @@ public class MemberDAO {
 			return result;
 		}
 		
-		public boolean isExistID(String id) {
+		public boolean isExistID(String id)  throws Exception{
 			boolean exist = false;
 			String sql = "SELECT * FROM MEMBER WHERE ID = ?";
 			try {
@@ -352,12 +353,13 @@ public class MemberDAO {
 					if(con != null) con.close();
 				} catch(Exception e) {
 					e.printStackTrace();
+					throw new Exception();
 				}
 			}
 			return exist;
 		}
 		
-		public ArrayList<Member> getList(int page){
+		public ArrayList<Member> getList(int page) throws Exception{
 			ArrayList<Member> list = new ArrayList<Member>();
 			Member member = null;
 			int start = page * 10 -9;
@@ -381,6 +383,7 @@ public class MemberDAO {
 				
 			}catch(Exception e) {
 				e.printStackTrace();
+				throw new Exception();
 			}
 		finally {
 			close(con,ps,rs);
@@ -389,7 +392,7 @@ public class MemberDAO {
 			
 		}
 		
-		public int getTotalPage() {
+		public int getTotalPage() throws Exception{
 			int total = 0;
 			sql = "SELECT COUNT(*) FROM Member";
 			try{
@@ -402,6 +405,7 @@ public class MemberDAO {
 			
 			}catch(Exception e) {
 				e.printStackTrace();
+				throw new Exception();
 			}
 		finally {
 			close(con,ps,rs);

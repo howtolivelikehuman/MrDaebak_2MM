@@ -94,37 +94,46 @@ public class ManageStockService extends Service{
 		
 		return nextAction;
 	}
-	public ArrayList<Stock> ParseNewList(String s){
+	public ArrayList<Stock> ParseNewList(String s) throws Exception {
 		JsonParser jsonParser = new JsonParser();
 		JsonArray jsonArray = (JsonArray) jsonParser.parse(s);
 		JsonObject object;
 		ArrayList<Stock> list = new ArrayList<Stock>();
 		Stock stock;
 		
-		for (int i = 0; i < jsonArray.size(); i++) {
-			object = (JsonObject) jsonArray.get(i);
-			stock = new Stock();
-			stock.setNo(object.get("no").getAsInt());
-			stock.setName(object.get("name").getAsString());
-			stock.setAmount(object.get("amount").getAsInt());
-			stock.setPrice(object.get("price").getAsInt());
-			stock.setNextSupplyDate(object.get("nextSupplyDate").getAsString());
-			list.add(stock);
+		try {
+			for (int i = 0; i < jsonArray.size(); i++) {
+				object = (JsonObject) jsonArray.get(i);
+				stock = new Stock();
+				stock.setNo(object.get("no").getAsInt());
+				stock.setName(object.get("name").getAsString());
+				stock.setAmount(object.get("amount").getAsInt());
+				stock.setPrice(object.get("price").getAsInt());
+				stock.setNextSupplyDate(object.get("nextSupplyDate").getAsString());
+				list.add(stock);
+			}
+		}catch(Exception e) {
+			throw new Exception();
 		}
 		return list.size() > 0 ? list : null;
 	}
 	
-	public int[] ParseDeleteList(String s){
+	public int[] ParseDeleteList(String s) throws Exception {
 		JsonParser jsonParser = new JsonParser();
 		JsonArray jsonArray = (JsonArray) jsonParser.parse(s);
 		JsonObject object;
-		if(jsonArray.size() > 0) {
-			int [] list = new int[jsonArray.size()];
-			for (int i = 0; i < jsonArray.size(); i++) {
-				object = (JsonObject) jsonArray.get(i);
-				list[i] = object.get("no").getAsInt();
+		
+		try {
+			if(jsonArray.size() > 0) {
+				int [] list = new int[jsonArray.size()];
+				for (int i = 0; i < jsonArray.size(); i++) {
+					object = (JsonObject) jsonArray.get(i);
+					list[i] = object.get("no").getAsInt();
+				}
+				return list;
 			}
-			return list;
+		}catch(Exception e) {
+			throw new Exception();
 		}
 		return null;
 	}

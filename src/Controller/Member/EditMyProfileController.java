@@ -46,14 +46,14 @@ public class EditMyProfileController extends HttpServlet{
 				nextAction = service.DeleteMyProfile(request, response);
 			}
 			else if(requestPage.equals("Result.myprofile")) { //결과
-				nextAction.setNextPath("/MainView.jsp");  //맞는 회원 뷰로 바꿔야함.
+				nextAction.setNextPath("/MainView.jsp"); 
 				nextAction.setRedirect(false);
 			}
 			
-			if(nextAction != null) { //리다이렉트 방식으로 nextPath
+			if(nextAction != null) { 
 				if(nextAction.isRedirect()) {
-					response.sendRedirect(nextAction.getNextPath()); // nextPath 로 redirect
-				} else { //forward방식으로 nextpath
+					response.sendRedirect(nextAction.getNextPath());
+				} else {
 					request.getRequestDispatcher(nextAction.getNextPath()).forward(request, response);
 				}
 			}

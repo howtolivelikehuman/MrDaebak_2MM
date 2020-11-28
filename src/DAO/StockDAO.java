@@ -116,90 +116,7 @@ public class StockDAO{
 		}
 		return result;
 	}
-	
-	public boolean update(Stock stock) throws Exception{
-		sql = "UPDATE stock SET name = ?, amount = ?, nextSupplyDate = ?, price = ? WHERE no = ?";
-		boolean result = false;
-		
-		try {
-			con = ds.getConnection();
-			ps=con.prepareStatement(sql);
-			ps.setString(1, stock.getName());
-			ps.setInt(2, stock.getAmount());
-			ps.setString(3, stock.getNextSupplyDate());
-			ps.setInt(4, stock.getPrice());
-			ps.setInt(5, stock.getNo());
-			result = 1 == ps.executeUpdate();
-		}catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}finally {
-			try {
-				close(con,ps);
-				
-			} catch(Exception e) {
-				e.printStackTrace();
-				throw e;
-			}
-		}
-		return result;
-	}
-	
-	public boolean insert(Stock stock)  throws Exception{
-		sql = "INSERT INTO stock VALUES(stock_seq.NEXTVAL, ?,?,?,?)";
-		boolean result = false;
-		
-		try {
-			con = ds.getConnection();
-			ps=con.prepareStatement(sql);
-			ps.setString(1, stock.getName());
-			ps.setInt(2, stock.getAmount());
-			ps.setString(3, stock.getNextSupplyDate());
-			ps.setInt(4, stock.getPrice());
-			result = 1 == ps.executeUpdate();
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}finally {
-			try {
-				close(con,ps);
-				
-			} catch(Exception e) {
-				e.printStackTrace();
-				throw e;
-			}
-		}
-		return result;
-	}
-	
-	public Stock select(int no) throws Exception{
-		Stock stock = null;
-		sql = "SELECT * FROM stock WHERE no = ?";
-		try {
-			con = ds.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, no);
-			rs = ps.executeQuery();
-			
-			if(rs.next()) {
-				stock = new Stock();
-				stock.setNo(no);
-				stock.setName(rs.getString("name"));
-				stock.setAmount(rs.getInt("amount"));
-				stock.setNextSupplyDate(rs.getDate("nextSupplyDate").toString());
-				System.out.println(rs.getDate("nextSupplyDate") + " " + stock.getNextSupplyDate());
-				stock.setPrice(rs.getInt("price"));
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-		finally {
-			close(con,ps,rs);
-		}
-		return stock;
-	}
+
 
 	public ArrayList<Stock> getList() throws Exception{
 		ArrayList<Stock> list = new ArrayList<Stock>();
@@ -273,14 +190,14 @@ public class StockDAO{
 		return list.isEmpty() ? null : list;
 	}
 
-	public void setUnAvailable(ArrayList<Integer> stockidx) throws Exception{
+	public void setUnAvailable(ArrayList<Integer> stockNo) throws Exception{
 		sql = "UPDATE MENU SET available = 0 " 
 		+ "WHERE MENU.NO IN (SELECT menuno FROM MENUWITHSTOCK WHERE MENUWITHSTOCK.stockno  IN ("; 
 		
-		for(int i=0; i < stockidx.size()-1; i++) {
-			sql = sql + stockidx.get(i) + ",";
+		for(int i=0; i < stockNo.size()-1; i++) {
+			sql = sql + stockNo.get(i) + ",";
 		}
-		sql = sql+stockidx.get(stockidx.size()-1) + "))";
+		sql = sql+stockNo.get(stockNo.size()-1) + "))";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);

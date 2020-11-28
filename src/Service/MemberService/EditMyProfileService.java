@@ -16,52 +16,58 @@ public class EditMyProfileService extends Service{
 	public ActionForward UpdateMyProfile(HttpServletRequest request, HttpServletResponse response) throws Exception {	
 		
 		request.setCharacterEncoding("UTF-8");
-		int no = Integer.parseInt(request.getParameter("user_no"));
-		String password = request.getParameter("user_password");
-		String name = request.getParameter("user_name");
-		String mobile = request.getParameter("user_mobile");
-		String address= request.getParameter("user_address");
-		
-		Member member = new Member();
-		member.setNo(no);
-		member.setPw(password);
-		member.setName(name);
-		member.setAddress(address);
-		member.setMobile(mobile);
-		
-		MemberDAO dao = MemberDAO.getInstance();
-		boolean result = dao.update(member);
-		
-		if(result) {
+		try {
+			MemberDAO dao = MemberDAO.getInstance();
+			
+			int no = Integer.parseInt(request.getParameter("user_no"));
+			String password = request.getParameter("user_password");
+			String name = request.getParameter("user_name");
+			String mobile = request.getParameter("user_mobile");
+			String address= request.getParameter("user_address");
+			
+			Member member = new Member();
+			member.setNo(no);
+			member.setPw(password);
+			member.setName(name);
+			member.setAddress(address);
+			member.setMobile(mobile);
+			
+			
+			if(!dao.update(member)) {
+				throw new Exception();
+			}
 			request.setAttribute("altmsg", "수정에 성공하였습니다.");
-		}else {
+		}
+		catch (Exception e) {
 			request.setAttribute("altmsg", "수정도중 요류가 발생하였습니다.");
 		}
-		
-		nextAction = new ActionForward();
-		nextAction.setNextPath("Result.myprofile");
-		nextAction.setRedirect(false);
-		
+		finally {
+			nextAction = new ActionForward();
+			nextAction.setNextPath("Result.myprofile");
+			nextAction.setRedirect(false);
+		}
 		return nextAction;
 	}
 	
 	public ActionForward DeleteMyProfile(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		int no = Integer.parseInt(request.getParameter("user_no"));
-		
-		MemberDAO dao = MemberDAO.getInstance();
-		boolean result = dao.delete(no);
-		
-		nextAction = new ActionForward();
-		if(result) {
+	
+		try {
+			int no = Integer.parseInt(request.getParameter("user_no"));
+			MemberDAO dao = MemberDAO.getInstance();
+			
+			if(!dao.delete(no)) {
+				throw new Exception();
+			}
+			
 			request.setAttribute("altmsg", "삭제에 성공하였습니다.");
 			nextAction.setNextPath("Logic.logout");
-		}else {
+			
+		}catch (Exception e) {
 			request.setAttribute("altmsg", "삭제도중 요류가 발생하였습니다.");
+			nextAction = new ActionForward();
 			nextAction.setNextPath("Result.myprofile");
+			nextAction.setRedirect(false);	
 		}
-		nextAction.setRedirect(false);	
-
 		return nextAction;
 	}
 	
@@ -69,17 +75,22 @@ public class EditMyProfileService extends Service{
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String id = (String) request.getSession().getAttribute("Id");
-		MemberDAO dao = MemberDAO.getInstance();
-		Member member = dao.select(id);
-		System.out.println(member.getNo());
-		
-		request.setAttribute("member", member);
-		
-		nextAction = new ActionForward();
-		nextAction.setNextPath("EditView.myprofile");
-		nextAction.setRedirect(false);
-		
+		try {
+			String id = (String) request.getSession().getAttribute("Id");
+			MemberDAO dao = MemberDAO.getInstance();
+			Member member = dao.select(id);
+			
+			if(member == null) {
+				throw new Exception();
+			}
+						
+		}catch (Exception e) {
+			request.setAttribute("altmsg", "읽어오는데 오류가 발생했습니다.");
+		}finally {
+			nextAction = new ActionForward();
+			nextAction.setNextPath("EditView.myprofile");
+			nextAction.setRedirect(false);
+		}
 		return nextAction;
 	}
 	

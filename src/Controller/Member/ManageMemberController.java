@@ -56,10 +56,10 @@ public class ManageMemberController extends HttpServlet{
 			} 
 
 			
-			if(nextAction != null) { //리다이렉트 방식으로 nextPath
+			if(nextAction != null) {
 				if(nextAction.isRedirect()) {
-					response.sendRedirect(nextAction.getNextPath()); // nextPath 로 redirect
-				} else { //forward방식으로 nextpath
+					response.sendRedirect(nextAction.getNextPath()); 
+				} else { 
 					request.getRequestDispatcher(nextAction.getNextPath()).forward(request, response);
 				}
 			}

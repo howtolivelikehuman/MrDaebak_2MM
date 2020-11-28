@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
 		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
-		<script type = "text/javascript" src ="script.js"></script>
+		<script type = "text/javascript" src ="/MrDaebak_2MM/Member/script.js"></script>
 </head>
 <body>
 	<jsp:include page = "/layout/header.jsp">

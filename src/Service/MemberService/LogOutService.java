@@ -11,21 +11,21 @@ import Service.ActionForward;
 public class LogOutService extends Service{
 	public ActionForward LogOut(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("user_id");
-		String password = request.getParameter("user_password");
-
-				
-		ActionForward nextAction = new ActionForward();
-		
-		HttpSession session = request.getSession();
-		session.removeAttribute("Name");
-		session.removeAttribute("Id");
-		session.invalidate();
-		
-		nextAction.setNextPath("/MainView.jsp");
-		nextAction.setRedirect(false);
-		
+		try {
+			request.setCharacterEncoding("UTF-8");
+			String id = request.getParameter("user_id");
+			String password = request.getParameter("user_password");
+			HttpSession session = request.getSession();
+			session.removeAttribute("Name");
+			session.removeAttribute("Id");
+			session.invalidate();			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			nextAction = new ActionForward();
+			nextAction.setNextPath("/MainView.jsp");
+			nextAction.setRedirect(false);
+		}
 		return nextAction;
 		
 	}

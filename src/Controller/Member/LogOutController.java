@@ -15,8 +15,8 @@ import Service.MemberService.SignUpService;
 
 @WebServlet("*.logout")
 public class LogOutController extends HttpServlet{
-	ActionForward nextAction = null; 
-	Service action = null;
+	ActionForward nextAction = new ActionForward(); 
+	LogOutService service = new LogOutService();
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,16 +28,14 @@ public class LogOutController extends HttpServlet{
 		
 		
 		try {
-			if(requestPage.equals("Logic.logout")) { //로그인 창요청
-				action = new LogOutService();
-				nextAction = ((LogOutService)action).LogOut(request, response);
+			if(requestPage.equals("Logic.logout")) { //로그아웃
+				nextAction = service.LogOut(request, response);
 			}
 			
-			
-			if(nextAction != null) { //리다이렉트 방식으로 nextPath
+			if(nextAction != null) {
 				if(nextAction.isRedirect()) {
-					response.sendRedirect(nextAction.getNextPath()); // nextPath 로 redirect
-				} else { //forward방식으로 nextpath
+					response.sendRedirect(nextAction.getNextPath());
+				} else {
 					request.getRequestDispatcher(nextAction.getNextPath()).forward(request, response);
 				}
 			}
