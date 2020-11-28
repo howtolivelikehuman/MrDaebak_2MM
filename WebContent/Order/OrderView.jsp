@@ -117,11 +117,11 @@ var detailPrice={};
       </div>
       <c:choose>
           <c:when test = "${requestScope.member.vip==true}">
-             <p class="text-info">(할인 미적용)가격:</p>
+             <p class="text-info">(VIP -10%)가격:</p>
             <p class="text-info" id='total-price'></p>
             </c:when>
           <c:otherwise>
-             <p class="text-info">(VIP -10%)가격:</p>
+             <p class="text-info">(할인 미적용)가격:</p>
             <p class="text-info" id='total-price'></p>   
          </c:otherwise>
      </c:choose>
