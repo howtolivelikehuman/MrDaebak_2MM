@@ -5,7 +5,7 @@
 <head>
       <meta charset="UTF-8">
       <title>Mr.Daebak</title>
-      <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12fss">
+      <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?zd">
       <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?zdssr"></script>
 </head>
 <script>
@@ -117,11 +117,11 @@ var detailPrice={};
       </div>
       <c:choose>
           <c:when test = "${requestScope.member.vip==true}">
-             <p class="text-info">가격(-10%):</p>
+             <p class="text-info">(VIP -10%)가격:</p>
             <p class="text-info" id='total-price'></p>
             </c:when>
           <c:otherwise>
-             <p class="text-info">가격:</p>
+             <p class="text-info">(할인 미적용)가격:</p>
             <p class="text-info" id='total-price'></p>   
          </c:otherwise>
      </c:choose>

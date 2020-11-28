@@ -8,6 +8,11 @@
 		<title>Mr.Daebak</title>
 		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
 </head>
+<script>
+	function setStatus(value){
+		document.getElementsByName('user_isVip')[0].value=document.getElementById(value).value;
+	}
+</script>
 <body>
 <jsp:include page = "/layout/header.jsp">
 	<jsp:param name="title" value="회원정보 확인"/>
@@ -55,7 +60,12 @@
 				</c:when>
 				<c:otherwise>
 					<th>단골고객</th>
-					<td><input class="input" type = "text" name = "user_isVip" value = "${dto.vip}" required></td>
+					<td><input style="display:none" class="input" type = "text" name = "user_isVip" value = "${dto.vip}" required>
+						<select onchange="setStatus(this.value)" id="status">
+						    <option id='true' value='true' <c:if test="${dto.vip == true}">selected</c:if>>O</option>
+						    <option id='false' value='false' <c:if test="${dto.vip== false}">selected</c:if>>X</option>
+						</select>
+					</td>
 				</c:otherwise>
 			</c:choose>
 		</table>

@@ -26,7 +26,18 @@ body{
    justify-content: center;
    align-items: center;
    overflow: auto;
+   overflow-x:hidden;
 }
+.container::-webkit-scrollbar{
+   width:1px;
+   background-color: black;
+}
+.container::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+  }
+  .container::-webkit-scrollbar-track {
+    background-color: aliceblue;
+  }
 table{
    width: 100%;
    margin-top:2%;
@@ -174,7 +185,7 @@ a{
 }
 #texts{
    display: grid;
-   grid-template-columns: 2fr 4fr 1fr 1fr;
+   grid-template-columns: 1fr 1fr 2fr 1fr;
 }
 #border-right{
    border-right: 1px solid gray;
