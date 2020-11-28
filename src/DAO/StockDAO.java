@@ -89,6 +89,7 @@ public class StockDAO{
 			con = ds.getConnection();
 			ps=con.prepareStatement(sql);
 			ps.setInt(1, stock.getNo());
+			
 			//update
 			ps.setString(2, stock.getName());
 			ps.setInt(3, stock.getAmount());
@@ -99,7 +100,8 @@ public class StockDAO{
 			ps.setInt(7, stock.getAmount());
 			ps.setString(8, stock.getNextSupplyDate());
 			ps.setInt(9, stock.getPrice());
-			result = 1 == ps.executeUpdate();			
+			
+			result = 1 == ps.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -230,27 +232,48 @@ public class StockDAO{
 		return list.isEmpty() ? null : list;
 	}
 
-	public boolean setAvailable() throws Exception{
-		boolean result = false;
+	public void setAvailable() throws Exception{
 		sql = "UPDATE MENU SET AVAILABLE = 1";
 		
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
-			result = 1 == ps.executeUpdate();
+			ps.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 			throw e;
 			}
 	
 		finally {
+			close(con,ps);
+		}
+	}
+	
+	public ArrayList<Integer> getUnAvailableStock() throws Exception{
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		sql = "select no from stock where amount < 1";
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				list.add(rs.getInt("no"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+			}
+		
+		finally {
 			close(con,ps,rs);
 		}
-		return result;
-		}
+		
+		return list.isEmpty() ? null : list;
+	}
 
-	public boolean setUnAvailable(ArrayList<Integer> stockidx) throws Exception{
-		boolean result = false;
+	public void setUnAvailable(ArrayList<Integer> stockidx) throws Exception{
 		sql = "UPDATE MENU SET available = 0 " 
 		+ "WHERE MENU.NO IN (SELECT menuno FROM MENUWITHSTOCK WHERE MENUWITHSTOCK.stockno  IN ("; 
 		
@@ -258,11 +281,10 @@ public class StockDAO{
 			sql = sql + stockidx.get(i) + ",";
 		}
 		sql = sql+stockidx.get(stockidx.size()-1) + "))";
-		
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
-			result = 1 == ps.executeUpdate();
+			ps.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -271,6 +293,5 @@ public class StockDAO{
 		finally {
 			close(con,ps,rs);
 		}
-		return result;
-		}
+	}
 }
