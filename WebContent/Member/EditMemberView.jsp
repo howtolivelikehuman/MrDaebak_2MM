@@ -15,12 +15,6 @@
 <div class="container">
 <c:set var = "dto" value = "${requestScope.member}" scope = "page"/>
 <c:remove var ="dto" scope = "request"/>
-	<c:if test = "${dto == null }">
-		<script>
-			alert("오류가 발생하였습니다");
-			history.back();
-		</script>
-	</c:if>
 <div>
 	<form action = "MemberEdit.manageMem" method = "post">
 		<input type = "hidden" name = "user_no" value = "${dto.no}">

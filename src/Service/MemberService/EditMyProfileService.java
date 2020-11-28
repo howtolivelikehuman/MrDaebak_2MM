@@ -83,9 +83,11 @@ public class EditMyProfileService extends Service{
 			if(member == null) {
 				throw new Exception();
 			}
+			request.setAttribute("member", member);
 						
 		}catch (Exception e) {
 			request.setAttribute("altmsg", "읽어오는데 오류가 발생했습니다.");
+			e.printStackTrace();
 		}finally {
 			nextAction = new ActionForward();
 			nextAction.setNextPath("EditView.myprofile");
