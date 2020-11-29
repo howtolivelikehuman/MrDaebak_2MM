@@ -69,7 +69,7 @@ public class SignUpService extends Service{
 		boolean result = dao.isExistID(id);
 		
 		nextAction = new ActionForward();
-		nextAction.setNextPath("/MrDaebak_2MM/Member/CheckIdView.jsp?id=" + id + "&result=" + result);
+		nextAction.setNextPath("/Member/CheckIdView.jsp?id=" + id + "&result=" + result);
 		nextAction.setRedirect(false);
 		
 		return nextAction;

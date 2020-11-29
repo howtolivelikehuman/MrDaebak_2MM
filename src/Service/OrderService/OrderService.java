@@ -89,7 +89,8 @@ public class OrderService extends Service{
 			OrderDAO orderDAO = OrderDAO.getInstance();
 			int orderno = orderDAO.InsertOrder(order);
 			for(int i=0; i<order.getCart().size(); i++) {
-				result = orderDAO.InsertOrderedMenu(order.getCart().get(i),orderno);
+				OrderedMenu orderedMenu = order.getCart().get(i);
+				result = orderDAO.InsertOrderedMenu(orderedMenu,orderno);
 			}
 			
 			if(result == false) {

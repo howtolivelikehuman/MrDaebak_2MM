@@ -41,19 +41,19 @@ public class CheckMyOrderListService extends Service{
 	
 	public ActionForward ReadMyOrder(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			request.setCharacterEncoding("UTF-8");
-		
+			nextAction = new ActionForward();
 		try {
 			int orderNum = Integer.parseInt( request.getParameter("OrdNo"));
 			OrderDAO dao = OrderDAO.getInstance();
 			Order order = dao.selectOrder(orderNum);
 			order.setCart(dao.selectOrderedMenu(order.getNo()));
 			request.setAttribute("order", order);
+			nextAction.setNextPath("ReadMyOrderView.myorderlist");
+			nextAction.setRedirect(false);
 			
 		}catch(Exception e) {
 			request.setAttribute("altmsg", "내 주문 세부정보를 불러오는 도중 요류가 발생하였습니다.");
-		}finally {
-			nextAction = new ActionForward();
-			nextAction.setNextPath("ReadMyOrderView.myorderlist");
+			nextAction.setNextPath("Result.myorderlist");
 			nextAction.setRedirect(false);
 		}
 		return nextAction;

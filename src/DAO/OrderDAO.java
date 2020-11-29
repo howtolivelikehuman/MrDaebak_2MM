@@ -344,7 +344,7 @@ public class OrderDAO {
 		Order order = null;
 		int start = page * 10 -10;
 		int end = page * 10 -1;
-		sql = "SELECT no, name, totalPrice, memberID, status, ordertime FROM ORDERS LIMIT ?, ? ORDER BY status";
+		sql = "SELECT no, name, totalPrice, memberID, status, ordertime FROM ORDERS ORDER BY STATUS LIMIT ?, ? ";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);

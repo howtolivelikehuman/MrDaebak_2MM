@@ -20,7 +20,7 @@
 </c:if>
 
 	<div class="container">
-	<p>${sessionScope.name} 님의 주문목록</p>
+	<p>${sessionScope.Name} 님의 주문목록</p>
 <c:choose>
 	<c:when test = "${ requestScope.list == null}"> <%-- 주문이 한개라도 없을 경우 --%>
 		<H2>마지막 페이지입니다.</H2>

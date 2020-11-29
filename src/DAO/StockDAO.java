@@ -54,7 +54,7 @@ public class StockDAO{
 				close(con,ps,null);
 			}
 
-	public boolean delete(int[] no) {
+	public boolean delete(int[] no) throws Exception{
 		boolean result = false;
 		sql = "DELETE FROM stock WHERE no In (";
 		try {
@@ -70,6 +70,7 @@ public class StockDAO{
 			result = 1 ==ps.executeUpdate();	
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw e;
 		}
 		finally {
 			close(con,ps);
