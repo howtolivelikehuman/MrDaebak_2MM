@@ -74,7 +74,14 @@ var detailPrice={};
             <p id="dinner-info">원하는 디너를 선택하세요.</p>
             <div>
                <c:forEach var = "menu" items = "${ requestScope.menulist }" varStatus="status">
-                  <input type="radio" name="dinner-radio" value="${menu.no}" onclick="click_dinner(this.value)">${menu.name}
+                  <c:choose>
+		          <c:when test = "${menu.available==0}">
+		          	<input type="radio" name="dinner-radio" value="${menu.no}" disabled onclick="click_dinner(this.value)"><del>${menu.name}</del>
+		          </c:when>
+		          <c:otherwise>
+		            <input type="radio" name="dinner-radio" value="${menu.no}" onclick="click_dinner(this.value)">${menu.name}
+		          </c:otherwise>
+		     	  </c:choose>
                </c:forEach>   
             </div>
          </div>
