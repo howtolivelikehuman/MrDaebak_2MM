@@ -216,6 +216,7 @@ public class OrderDAO {
 			
 			while(rs.next()) {
 				list.add(rs.getInt("styleno"));
+				System.out.println(rs.getInt("styleno"));
 			}
 			
 		}catch(Exception e) {
