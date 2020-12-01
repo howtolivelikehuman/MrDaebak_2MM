@@ -24,14 +24,14 @@ public class OrderController extends HttpServlet{
 		System.out.println("Controller 등장 " + requestPage);
 		
 		try {
-			if(requestPage.equals("GetOrderForm.order")) { //재고 목록 - DB조회
+			if(requestPage.equals("GetOrderForm.order")) { //메뉴가져오기- DB조회
 				nextAction = service.GetOrderForm(request, response);
 
-			} else if(requestPage.equals("OrderView.order")) { //재고 목록 - View
+			} else if(requestPage.equals("OrderView.order")) { //주문  - View
 				nextAction.setNextPath("/Order/OrderView.jsp");
 				nextAction.setRedirect(false);
 				
-			} else if(requestPage.equals("DoOrder.order")) { //재고 로직
+			} else if(requestPage.equals("DoOrder.order")) { //주문하기
 				nextAction = service.DoOrder(request, response);
 				
 			}else if(requestPage.equals("ResultView.order")) { //재고 완료 뷰
