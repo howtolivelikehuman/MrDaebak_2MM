@@ -74,7 +74,14 @@ var detailPrice={};
             <p id="dinner-info">원하는 디너를 선택하세요.</p>
             <div>
                <c:forEach var = "menu" items = "${ requestScope.menulist }" varStatus="status">
-                  <input type="radio" name="dinner-radio" value="${menu.no}" onclick="click_dinner(this.value)">${menu.name}
+                  <c:choose>
+		          <c:when test = "${menu.available==0}">
+		          	<input type="radio" name="dinner-radio" value="${menu.no}" disabled onclick="click_dinner(this.value)"><del>${menu.name}</del>
+		          </c:when>
+		          <c:otherwise>
+		            <input type="radio" name="dinner-radio" value="${menu.no}" onclick="click_dinner(this.value)">${menu.name}
+		          </c:otherwise>
+		     	  </c:choose>
                </c:forEach>   
             </div>
          </div>
@@ -94,13 +101,13 @@ var detailPrice={};
             <c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
                <div class="detail">
                   <div class="detail-name">${detailMenu.name}</div>
-                  <input class="num-box" id='${detailMenu.stockNo}' type="number" value="0" min="0" max="${detailMenu.ea}"/>
+                  <input class="num-box" id='${detailMenu.stockNo}' type="number" value="0" min="0" max="99"/>
                </div>
             </c:forEach>
             <c:forEach var = "extraMenu" items = "${ requestScope.menulist[0].extraDetailList }" varStatus="status">
                <div class="detail">
                   <div class="detail-name" >${extraMenu.name}</div>
-                  <input class="num-box" id='${extraMenu.stockNo }' type="number" value="0" min="0" max="${extraMenu.ea}"/>
+                  <input class="num-box" id='${extraMenu.stockNo }' type="number" value="0" min="0" max="99"/>
                </div>
             </c:forEach>
          </div>

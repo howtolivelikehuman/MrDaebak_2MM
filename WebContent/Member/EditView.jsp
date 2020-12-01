@@ -63,7 +63,10 @@
 				</c:when>
 				<c:otherwise>
 					<th>단골고객</th>
-					<td>${dto.vip}</td>
+					<td>
+						<c:if test="${dto.vip == true}">O</c:if>
+						<c:if test="${dto.vip == false}">X</c:if>
+					</td>
 				</c:otherwise>
 			</c:choose>
 			
