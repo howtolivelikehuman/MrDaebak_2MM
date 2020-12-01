@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?">
 </head>
 <script>
 	function setStatus(value){

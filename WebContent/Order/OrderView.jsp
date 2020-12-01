@@ -101,13 +101,13 @@ var detailPrice={};
             <c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
                <div class="detail">
                   <div class="detail-name">${detailMenu.name}</div>
-                  <input class="num-box" id='${detailMenu.stockNo}' type="number" value="0" min="0" max="${detailMenu.ea}"/>
+                  <input class="num-box" id='${detailMenu.stockNo}' type="number" value="0" min="0" max="99"/>
                </div>
             </c:forEach>
             <c:forEach var = "extraMenu" items = "${ requestScope.menulist[0].extraDetailList }" varStatus="status">
                <div class="detail">
                   <div class="detail-name" >${extraMenu.name}</div>
-                  <input class="num-box" id='${extraMenu.stockNo }' type="number" value="0" min="0" max="${extraMenu.ea}"/>
+                  <input class="num-box" id='${extraMenu.stockNo }' type="number" value="0" min="0" max="99"/>
                </div>
             </c:forEach>
          </div>
