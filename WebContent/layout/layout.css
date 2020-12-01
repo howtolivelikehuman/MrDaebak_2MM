@@ -45,11 +45,21 @@ body{
    background-color: black;
 }
 .container::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
-  }
-  .container::-webkit-scrollbar-track {
-    background-color: aliceblue;
-  }
+   background-color: #2f3542;
+}
+.container::-webkit-scrollbar-track {
+   background-color: aliceblue;
+}
+#detail-box::-webkit-scrollbar{
+   width:1px;
+   background-color: black;
+}
+#detail-box::-webkit-scrollbar-thumb {
+   background-color: #2f3542;
+}
+#detail-box::-webkit-scrollbar-track {
+   background-color: aliceblue;
+}
 table{
    width: 100%;
    margin-top:2%;

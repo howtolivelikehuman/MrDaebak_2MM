@@ -26,10 +26,11 @@ function click_dinner(data){
    var tag="";
    var target=document.getElementById('style-check');
 
-   for (var i in menu.availableStyle[data-1]){
-      var j=Number(i)+Number(1);
-      tag+="<input type='radio' name='style-radio' value="+j+" onclick=click_style(this.value)>"+style.name[i];
-   } 
+   for (var i=0;i<menu.availableStyle[dinnerIdx].length;i++){
+      var tmp=menu.availableStyle[dinnerIdx][i];
+      var j=Number(tmp);
+      tag+="<input type='radio' name='style-radio' value="+j+" onclick=click_style(this.value)>"+style.name[tmp-1];
+   }
    target.innerHTML=tag;
 }
 
