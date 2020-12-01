@@ -6,7 +6,7 @@
       <meta charset="UTF-8">
       <title>Mr.Daebak</title>
       <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?zd">
-      <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?zdssr"></script>
+      <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?r"></script>
 </head>
 <script>
 
@@ -97,17 +97,17 @@ var detailPrice={};
       <div id="details">
          <div align="center" class="text">Detail</div>
          
-         <div id="detail-box">
+         <div id="detail-box" style="overflow:auto;">
             <c:forEach var = "detailMenu" items = "${ requestScope.menulist[0].menuDetailList }" varStatus="status">
                <div class="detail">
                   <div class="detail-name">${detailMenu.name}</div>
-                  <input class="num-box" id='${detailMenu.stockNo}' type="number" value="0" min="0" max="99"/>
+                  <input class="num-box" id='${detailMenu.stockNo}' type="number" value="0" min="0" max="${detailMenu.stockAmount}"/>
                </div>
             </c:forEach>
             <c:forEach var = "extraMenu" items = "${ requestScope.menulist[0].extraDetailList }" varStatus="status">
                <div class="detail">
                   <div class="detail-name" >${extraMenu.name}</div>
-                  <input class="num-box" id='${extraMenu.stockNo }' type="number" value="0" min="0" max="99"/>
+                  <input class="num-box" id='${extraMenu.stockNo }' type="number" value="0" min="0" max="${extraMenu.stockAmount}"/>
                </div>
             </c:forEach>
          </div>
