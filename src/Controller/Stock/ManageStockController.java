@@ -13,7 +13,7 @@ import Service.StockService.ManageStockService;
 
 @WebServlet("*.stock")
 public class ManageStockController extends HttpServlet{
-	ActionForward nextAction  = new ActionForward();
+	ActionForward nextAction = new ActionForward();
 	ManageStockService service = new ManageStockService();
 	private static final long serialVersionUID = 1L;
 	

@@ -13,7 +13,7 @@ import Service.OrderService.OrderService;
 
 @WebServlet("*.order")
 public class OrderController extends HttpServlet{
-	ActionForward nextAction  = new ActionForward();
+	ActionForward nextAction = new ActionForward();
 	OrderService service = new OrderService();
 	private static final long serialVersionUID = 1L;
 	

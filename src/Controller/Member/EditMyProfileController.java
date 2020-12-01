@@ -15,7 +15,7 @@ import Service.MemberService.SignUpService;
 
 @WebServlet("*.myprofile") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
 public class EditMyProfileController extends HttpServlet{
-	ActionForward nextAction  = new ActionForward();
+	ActionForward nextAction = new ActionForward();
 	EditMyProfileService service = new EditMyProfileService();
 	private static final long serialVersionUID = 1L;
 	

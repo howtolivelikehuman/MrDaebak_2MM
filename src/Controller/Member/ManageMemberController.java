@@ -15,7 +15,7 @@ import Service.ActionForward;
 @WebServlet("*.manageMem")
 
 public class ManageMemberController extends HttpServlet{
-	ActionForward nextAction  = new ActionForward();
+	ActionForward nextAction = new ActionForward();
 	ManageMemberService service = new ManageMemberService();
 	private static final long serialVersionUID = 1L;
 	

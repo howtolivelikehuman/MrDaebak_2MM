@@ -15,7 +15,7 @@ import Service.MemberService.SignUpService;
 
 @WebServlet("*.logout")
 public class LogOutController extends HttpServlet{
-	ActionForward nextAction = new ActionForward(); 
+	ActionForward nextAction = new ActionForward();
 	LogOutService service = new LogOutService();
 	private static final long serialVersionUID = 1L;
 	

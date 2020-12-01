@@ -15,7 +15,7 @@ import Service.OrderService.CheckMyOrderListService;
 public class CheckMyOrderListController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	ActionForward nextAction  = new ActionForward();
+	ActionForward nextAction = new ActionForward();
 	CheckMyOrderListService service = new CheckMyOrderListService();
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
