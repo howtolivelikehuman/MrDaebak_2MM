@@ -76,7 +76,9 @@ public class ManageMemberService extends Service{
 		try {
 
 			int no = Integer.parseInt(request.getParameter("user_no"));
-			String password = EncryptSHA256.SHA256(request.getParameter("user_password"));
+			
+			String password = request.getParameter("user_password");
+			password = EncryptSHA256.SHA256(password);
 			String name = request.getParameter("user_name");
 			String mobile = request.getParameter("user_mobile");
 			String address= request.getParameter("user_address");

@@ -15,10 +15,7 @@ var order={ "name":"",
             "price":0
            } */]
       }
-function resetVar(){
-   dinnerIdx=-1;
-   styleIdx=-1;
-}
+
 function click_dinner(data){
    dinnerIdx=data-1;
    var temp=document.getElementById('dinner-info');
@@ -111,7 +108,8 @@ function click_cart(){
       document.getElementsByClassName('num-box')[i].value=0;
    }
    post_cart();
-   resetVar();
+   dinnerIdx=-1;
+   styleIdx=-1;
 }
 function click_cart_delete(){
    if(order.cart.length==0){
@@ -137,8 +135,9 @@ function click_order(){
    }
    push_cart();
    document.getElementById('final-box').style.display='inline';
+   dinnerIdx=-1;
+   styleIdx=-1;
    post_cart();
-   resetVar();
 }
 function post_cart(){
    var str="";

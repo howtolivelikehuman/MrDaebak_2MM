@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class EncryptSHA256 {
 	public static String SHA256(String str){
-	  String SHA = "";
+	  String password = "";
 	  try{
 	   MessageDigest sh = MessageDigest.getInstance("SHA-256");
 	   sh.update(str.getBytes());
@@ -15,12 +15,12 @@ public class EncryptSHA256 {
 	   for(int i = 0 ; i < byteData.length ; i++){
 	    sb.append(Integer.toString((byteData[i]&0xff) + 0x100, 16).substring(1));
 	   }
-	   SHA = sb.toString().substring(10,30);
+	   password = sb.toString().substring(10,30);
 	   
 	  }catch(NoSuchAlgorithmException e){
 	   e.printStackTrace();
-	   SHA = null;
+	   password = null;
 	  }
-	  return SHA;
+	  return password;
 	}
 }
