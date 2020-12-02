@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?21">
 		<script type = "text/javascript" src ="/MrDaebak_2MM/Member/script.js?s"></script>
 </head>
 <body>
@@ -15,19 +15,19 @@
 
 <div class="container">	
 	<form class="form-signUp" name = "joinForm" method = "post" action = "signUpLogic.signup">
-		
-					<input class="input" type = "text" name ="user_id" placeholder="아이디를 입력하세요." required>
-					<input class="btn" type = "button" value = "중복확인" onclick = "checkId()">
-					<input class="input" type = "password" name = "user_password" placeholder="비밀번호를 입력하세요." required>
-					<input class="input" type = "password" name = "user_repassword" placeholder="비밀번호를 다시 입력하세요." required>
-					<input class="input" type = "text" name = "user_name" placeholder = "이름을 입력하세요." required>
-					<input class="input" type = "text" name = "user_mobile" placeholder = "전화번호를 입력하세요." required>
-					<input class="input" type = "text" name = "user_address" placeholder = "주소를 입력하세요." required>
-					<input class = "input" type = "password" name = "user_code" placeholder = "관리자라면 관리자 코드를 입력하세요.">
-					<input class="btn" type = "button" value = "가입" onclick = "checkBlank()">
+		<div class="id-form-con">
+			<input class="input" type = "text" name ="user_id" placeholder="아이디를 입력하세요." required>
+			<input class="btn" type = "button" value = "중복확인" onclick = "checkId()">
+		</div>
+		<input class="input" type = "password" name = "user_password" placeholder="비밀번호를 입력하세요." required>
+		<input class="input" type = "password" name = "user_repassword" placeholder="비밀번호를 다시 입력하세요." required>
+		<input class="input" type = "text" name = "user_name" placeholder = "이름을 입력하세요." required>
+		<input class="input" type = "text" name = "user_mobile" placeholder = "전화번호를 입력하세요." required>
+		<input class="input" type = "text" name = "user_address" placeholder = "주소를 입력하세요." required>
+		<input class = "input" type = "password" name = "user_code" placeholder = "관리자라면 관리자 코드를 입력하세요.">
+		<input class="btn" type = "button" value = "가입" onclick = "checkBlank()">
 
 	</form>
 </div>
 <jsp:include page = "/layout/footer.jsp"/>
 </body>
-

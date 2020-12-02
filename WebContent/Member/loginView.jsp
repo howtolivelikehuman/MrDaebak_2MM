@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?afte1r">
 </head>
 <body>
 
@@ -20,7 +20,6 @@
 			alert( "${requestScope.altmsg}");
 		</script>
 	</c:if>	
-		
 	<div class="container">
 		<form class="form-login" action = "Logic.login" method = "post">
 			<c:choose>
@@ -38,30 +37,3 @@
 	<jsp:include page = "/layout/footer.jsp"/>
 </body>
 
-
-
-
-<%-- <form action = "Logic.login" method = "post">
-			<table border = "1">
-			<caption><h3>로그인</h3></caption>
-				<tr>
-					
-				<c:choose>
-						<c:when test = "${cookie.rememberID.value == null }">
-					<td><input type = "text" name = "user_id" placeholder="ID를 입력하세요." required></td>
-						</c:when>
-					<c:otherwise>
-						<td><input type = "text" name = "user_id" value =  ${cookie.rememberID.value }></td>
-					</c:otherwise>
-				</c:choose>
-				</tr>
-				<tr>
-					
-					<td><input type = "password" name = "user_password" placeholder="PASSWORD를 입력하세요." required></td>
-					</tr>
-				<tr>
-					<td colspan ="2"  align = "center"><input type = "submit" value = "로그인">
-				</tr>
-		
-			</table>
-		</form> --%>

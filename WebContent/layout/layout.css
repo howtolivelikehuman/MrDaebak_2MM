@@ -139,7 +139,8 @@ button{
    justify-content: center;
 }
 .form-signUp{
-   width:50%;
+   /*width:50%;*/
+   width: 70%;
    height: 100%;
    display:flex;
    flex-direction: column;
@@ -286,10 +287,54 @@ a{
    font: sans-serif;
    font-weight: bold;
 }
-
 /* .top-menu{
    padding: 5%;
    margin-left: 5%;
    background-color: black;
    color: white;
 } 
+/*추가*/
+.form-login input{
+    padding: 10px;
+    margin-bottom: 5px;
+}
+input:focus, .input:focus{
+	outline: 1px solid lightgray;
+}
+.btn{ 
+    border-radius: 4px;
+    padding: 8px 0;
+}
+.id-form-con{
+	display: flex;
+    width: 100%;
+}
+.form-signUp .input{
+    padding: 10px;
+}	
+.id-form-con .input{
+	width: 65%;
+	margin-right: 5%;
+}
+.id-form-con.input:focus{
+	outline:none;
+}
+.id-form-con>.btn{
+	width: 30%;
+}
+.form-signUp>*{
+	margin-bottom:7px;
+}
+th>input, td>input {
+    border: none!important;
+}
+th>input:focus, td>input:focus {
+    border: none!important;
+    outline: none!important;
+}
+th, td{
+	padding: 10px;
+}
+.info-con{
+    margin-bottom: 10px;
+}
