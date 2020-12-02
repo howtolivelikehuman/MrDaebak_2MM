@@ -11,11 +11,20 @@
 
 
 <body>
+
+<c:if test = "${sessionScope.Type != 0}">
+		<script>
+			alert( "로그인된 고객만 이용하실 수 있습니다.");
+			 window.location.replace("/MrDaebak_2MM/MainView.jsp");
+		</script>
+</c:if>
 <c:if test = "${requestScope.altmsg != null}">
 		<script>
 			alert( "${requestScope.altmsg}");
 		</script>
 </c:if>
+
+
 
 	<div class="container">
 	<p>${sessionScope.Name} 님의 주문목록</p>
@@ -55,20 +64,20 @@
 					<input class="btn-page" type ="Button" value = "이전" onclick = "location.href = 'OrderList.orderlist?page=${currentpage-3 }'">
 				</c:if>
 				<c:if test = "${currentpage > 2 }">
-					<input class="btn-page" type ="Button" value = "${currentpage-2 }" onclick = "location.href = 'OrderList.orderlist?page=${currentpage-2 }'">	
+					<input class="btn-page" type ="Button" value = "${currentpage-2 }" onclick = "location.href = 'MyOrderList.myorderlist?page=${currentpage-2 }'">	
 				</c:if>
 				<c:if test = "${currentpage > 1 }">
-					<input class="btn-page" type ="Button" value = "${currentpage-1 }" onclick = "location.href = 'OrderList.orderlist?page=${currentpage-1 }'">
+					<input class="btn-page" type ="Button" value = "${currentpage-1 }" onclick = "location.href = 'MyOrderList.myorderlist?page=${currentpage-1 }'">
 				</c:if>
 				${currentpage }
 				<c:if test = "${currentpage < totalpage }">
-					<input class="btn-page" type ="Button" value = "${currentpage+1 }" onclick = "location.href = 'OrderList.orderlist?page=${currentpage+1 }'">
+					<input class="btn-page" type ="Button" value = "${currentpage+1 }" onclick = "location.href = 'MyOrderList.myorderlist?page=${currentpage+1 }'">
 				</c:if>
 				<c:if test = "${currentpage+1 < totalpage }">
-					<input class="btn-page" type ="Button" value = "${currentpage+2 }" onclick = "location.href = 'OrderList.orderlist?page=${currentpage+2 }'">
+					<input class="btn-page" type ="Button" value = "${currentpage+2 }" onclick = "location.href = 'MyOrderList.myorderlist?page=${currentpage+2 }'">
 				</c:if>
 				<c:if test = "${currentpage+2 < totalpage }">
-					<input class="btn-page" type ="Button" value = "다음" onclick = "location.href = 'OrderList.orderlist?page=${currentpage+3 }'">
+					<input class="btn-page" type ="Button" value = "다음" onclick = "location.href = 'MyOrderList.myorderlist?page=${currentpage+3 }'">
 				</c:if>
 				</td>
 			</tr>			

@@ -340,13 +340,12 @@ public class OrderDAO {
 		ArrayList<Order> list = new ArrayList<Order>();
 		Order order = null;
 		int start = page * 10 -10;
-		int end = page * 10 -1;
-		sql = "SELECT no, name, totalPrice, memberID, status, ordertime FROM ORDERS ORDER BY STATUS LIMIT ?, ? ";
+		sql = "SELECT no, name, totalPrice, memberID, status, ordertime FROM ORDERS order by no desc LIMIT ?, ? ";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, start);
-			ps.setInt(2, end);
+			ps.setInt(2, 10);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -375,15 +374,14 @@ public class OrderDAO {
 		ArrayList<Order> list = new ArrayList<Order>();
 		Order order = null;
 		int start = page * 10 -10;
-		int end = page * 10 -1;
 		sql = "SELECT no, name, totalPrice, memberID, status, ordertime "
-				+ " FROM ORDERS WHERE memberNo = ? LIMIT ?, ? ";
+				+ " FROM ORDERS WHERE memberNo = ? order by no desc LIMIT ?, ? ";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, memberno);
 			ps.setInt(2, start);
-			ps.setInt(3, end);
+			ps.setInt(3, 10);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {

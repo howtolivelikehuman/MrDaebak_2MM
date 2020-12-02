@@ -15,6 +15,13 @@
 	</c:forEach>
 </script>
 <body>
+
+<c:if test = "${sessionScope.Type != 1 }">
+		<script>
+			alert( "직원만 이용하실 수 있습니다.");
+			 window.location.replace("/MrDaebak_2MM/MainView.jsp");
+		</script>
+</c:if>
 <c:if test = "${requestScope.altmsg != null}">
 		<script>
 			alert( "${requestScope.altmsg}");

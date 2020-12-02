@@ -23,8 +23,8 @@ public class ManageMemberService extends Service{
 			int page = Integer.parseInt(request.getParameter("page"));
 			
 			MemberDAO dao = MemberDAO.getInstance();
-			ArrayList<Member> list = dao.getList(page);
 			int totalpages = dao.getTotalPage();
+			ArrayList<Member> list = dao.getList(page);
 			
 			request.setAttribute("totalpage", totalpages);
 			request.setAttribute("currentpage", page);

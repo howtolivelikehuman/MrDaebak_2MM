@@ -19,12 +19,19 @@
 
 <c:set var = "dto" value = "${requestScope.order}" scope = "page"/>
 <c:remove var ="dto" scope = "request"/>
-	<c:if test = "${dto == null }">
+
+<c:if test = "${sessionScope.Type != 1 }">
 		<script>
-			alert("오류가 발생하였습니다");
-			history.back();
+			alert( "직원만 이용하실 수 있습니다.");
+			 window.location.replace("/MrDaebak_2MM/MainView.jsp");
 		</script>
-	</c:if>
+</c:if>
+<c:if test = "${requestScope.altmsg != null}">
+		<script>
+			alert( "${requestScope.altmsg}");
+		</script>
+</c:if>
+
 	
 <div class = "orderlist">
 	<form action = "UpdateOrder.orderlist" method = "post">

@@ -363,13 +363,12 @@ public class MemberDAO {
 			ArrayList<Member> list = new ArrayList<Member>();
 			Member member = null;
 			int start = page * 10 -9;
-			int end = page * 10;
-			sql = "SELECT no, id, name, type FROM MEMBER order by type desc LIMIT ?, ?";
+			sql = "SELECT no, id, name, type FROM MEMBER LIMIT ?, ?";
 			try {
 				con = ds.getConnection();
 				ps = con.prepareStatement(sql);
 				ps.setInt(1, start);
-				ps.setInt(2, end);
+				ps.setInt(2, 10);
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
@@ -410,6 +409,6 @@ public class MemberDAO {
 		finally {
 			close(con,ps,rs);
 		}
-			return (total-1)/10 +1;
+			return (total-2)/10 +1;
 		}
 }
