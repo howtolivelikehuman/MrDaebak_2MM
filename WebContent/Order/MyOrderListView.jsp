@@ -39,7 +39,11 @@
 				
 				<td width="20%" align = "left"><a href = "ReadMyOrder.myorderlist?OrdNo=${dto.no}">${dto.name }</a></td>
 				<td style="font-size:0.7rem;">${dto.orderTime }</td>
-				<td>${dto.status }</th>
+				<td><c:if test="${dto.status == 0}">준비중</c:if>
+					<c:if test="${dto.status == 1}">준비완료</c:if>
+					<c:if test="${dto.status == 2}">배달중</c:if>
+					<c:if test="${dto.status == 3}">취소</c:if>
+					<c:if test="${dto.status == 4}">배달완료</c:if></td>
 				<td style="font-size:0.8rem;">${dto.totalPrice }</td>
 				<td style="font-size:0.8rem;">${dto.memberID }</td>
 				
