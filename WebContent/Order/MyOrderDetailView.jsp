@@ -61,7 +61,10 @@
 			</tr>
 			<tr>
 				<th>단골 할인</th>
-				<td>${dto.isDiscounted}</td>
+				<td>
+					<c:if test="${dto.isDiscounted == true}">O</c:if>
+					<c:if test="${dto.isDiscounted == false}">X</c:if>
+				</td>
 			</tr>
 			<tr>
 				<th>가격</th>
