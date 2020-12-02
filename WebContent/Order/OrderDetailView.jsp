@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>상세 주문</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12">
 </head>
 <script>
 	function setStatus(value){
@@ -39,7 +39,7 @@
 		<table border = "0">
 			<tr>
 				<th>주문자</th>
-				<td>${dto.name}</td>
+				<td width = "80%">${dto.name}</td>
 			</tr>
 			<tr>
 				<th>전화번호 </th>
@@ -106,7 +106,7 @@
 			</tr>
 			<tr align = "center">
 				<th>세부 구성</th>
-				<td>${dto_list.orderedDetailList}</td>
+				<td width = "80%">${dto_list.orderedDetailList}</td>
 			</tr>
 			<tr align = "center">
 				<th>가격</th>

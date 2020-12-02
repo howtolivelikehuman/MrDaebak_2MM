@@ -9,9 +9,6 @@
 		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
 </head>
 <body>
-<jsp:include page = "/layout/header.jsp"></jsp:include>
-<div class="container">
-
 <c:set var = "dto" value = "${requestScope.order}" scope = "page"/>
 <c:remove var ="dto" scope = "request"/>
 
@@ -26,8 +23,9 @@
 			alert( "${requestScope.altmsg}");
 		</script>
 </c:if>
-
-<div>
+<jsp:include page = "/layout/header.jsp"></jsp:include>
+<div class="container">
+	<div class = "orderlist">
 		<table border = "0">
 			<tr>
 				<th>주문자</th>
@@ -95,7 +93,7 @@
 			</tr>
 			<tr align = "center">
 				<th>세부 구성</th>
-				<td>${dto_list.orderedDetailList}</td>
+				<td width = "80%">${dto_list.orderedDetailList}</td>
 			</tr>
 			<tr align = "center">
 				<th>가격</th>
