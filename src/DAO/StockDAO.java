@@ -54,8 +54,7 @@ public class StockDAO{
 				close(con,ps,null);
 			}
 
-	public boolean delete(int[] no) throws Exception{
-		boolean result = false;
+	public void delete(int[] no) throws Exception{
 		sql = "DELETE FROM stock WHERE no In (";
 		try {
 			con = ds.getConnection();
@@ -65,9 +64,8 @@ public class StockDAO{
 				sql = sql + no[i] + ",";
 			}
 			sql = sql + no[no.length-1] + ")";
-			
 			ps = con.prepareStatement(sql);
-			result = 1 ==ps.executeUpdate();	
+			ps.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -75,7 +73,6 @@ public class StockDAO{
 		finally {
 			close(con,ps);
 		}
-		return result;
 	}
 	
 	public boolean merge(Stock stock) throws Exception{

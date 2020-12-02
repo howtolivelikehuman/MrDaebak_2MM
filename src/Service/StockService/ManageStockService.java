@@ -52,7 +52,7 @@ public class ManageStockService extends Service{
 			
 			if(deletelist != null) {
 				//삭제 먼저 수행
-				result = dao.delete(deletelist);
+				dao.delete(deletelist);
 			}
 		
 			if(newlist != null) {
@@ -71,12 +71,7 @@ public class ManageStockService extends Service{
 				dao.setUnAvailable(zerostock);
 			}
 			
-			
-			if(!result) {
-				throw new Exception();
-			}else {
-				request.setAttribute("altmsg", "재고를 성공적으로 업데이트하였습니다.");
-			}
+			request.setAttribute("altmsg", "재고를 성공적으로 업데이트하였습니다.");
 			
 			
 		}catch (Exception e) {
