@@ -23,7 +23,7 @@
 		<input class="input" type = "text" name = "user_mobile" placeholder = "전화번호를 입력하세요." required>
 		<input class="input" type = "text" name = "user_address" placeholder = "주소를 입력하세요." required>
 		<input class = "input" type = "password" name = "user_code" placeholder = "관리자라면 관리자 코드를 입력하세요.">
-		<input class="btn" type = "button" value = "가입" onclick = "checkPassword()">
+		<input class="btn" type = "button" name="signUpButton" value = "가입" onclick = "checkPassword()" disabled="">
 
 	</form>
 </div>
