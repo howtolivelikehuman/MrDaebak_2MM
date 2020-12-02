@@ -29,7 +29,9 @@ function click_dinner(data){
    for (var i=0;i<menu.availableStyle[dinnerIdx].length;i++){
       var tmp=menu.availableStyle[dinnerIdx][i];
       var j=Number(tmp);
-      tag+="<input type='radio' name='style-radio' value="+j+" onclick=click_style(this.value)>"+style.name[tmp-1];
+      
+      tag+= "<label class='box-radio-input'><input type='radio' name='style-radio' value="+j+" onclick=click_style(this.value)><span>"+ style.name[tmp-1] +"</span></label>";
+      //tag+="<input type='radio' name='style-radio' value="+j+" onclick=click_style(this.value)>"+style.name[tmp-1];
    }
    target.innerHTML=tag;
 }

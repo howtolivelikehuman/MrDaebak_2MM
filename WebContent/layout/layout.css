@@ -15,11 +15,13 @@ body{
    align-items: center;
    flex-direction: column;
    justify-content: center;
+  
 }
 .container{
    display: flex;
    width:50vw;
    height:90vh;
+   margin: 30px;
    background-color: aliceblue;
    flex-direction: column;
    text-align: center;
@@ -114,6 +116,7 @@ tr:hover
 }
 .header{
    width:50vw;
+   margin:0.2%;
    display:flex;
    flex-direction: row;
    justify-content: flex-end;
@@ -133,10 +136,14 @@ button{
 }
 #logo{
    margin-right: auto;
+   font-size: 2.6vh;
 
 }
 #footer{
-   font-size: 1vh;
+   font-size: 1.5vh;
+   width:50vw; 
+   margin:0.5%;
+   text-align:center;
 }
 #logout{
    cursor: pointer;
@@ -176,10 +183,10 @@ a{
    font-size: 2vh;
 }
 #order{
-   width: 100%;
-   height: 100%;
-   margin-top:2%;
-   margin-bottom: auto;
+   width: 90%;
+   height: 95%;
+   margin-top: 1%;
+   margin-bottom: 1%;
 }
 .btn{
    cursor: pointer;
@@ -191,6 +198,29 @@ a{
    background-color:aquamarine;
    font-size: 3vh;
 }
+
+.btn-page{
+  font-weight: 400;
+   text-align: center;
+   vertical-align: middle;
+   border:2px solid transparent;
+   font-size: 2vh;
+}
+
+.btn-page-selected{
+  font-weight: 400;
+   text-align: center;
+   vertical-align: middle;
+   border:2px solid transparent;
+   background-color:white;
+   padding: 2px;
+   font-size: 2vh;
+}
+.orderlist{
+	margin : 1%;
+	height: 80vh;
+}
+
 .btn-check{
    cursor: pointer;
    font-weight: 400;
@@ -202,29 +232,63 @@ a{
    display:flex;
    justify-content: center;
    align-items: center;
-   width: 33%;
+   width: 20%;
    height: 100%;
    border-right: 1px solid gray;
    font-size: 3vh;
 }
 .sub-container{
    display: grid;
-   width: 66%;
-   height: 100%;
+   width: 80%;
+   height: 90%;
+   margin-left : 10px;
+   grid-gap: 10px;
    grid-template-rows: 2fr 1fr;
 }
+
+
 #dinner-info, #style-info{
    text-align: center;
    margin-top:5%;
 }
-#dinners, #styles, #details, #buttons, #texts{
+#dinners, #styles,#details, #texts{
    width:100%;
    height: 15%;
    display: flex;
    flex-direction: row;
    border-bottom: 1px solid gray;
-   font-size:1vh;
+   font-size:1.5vh;
 }
+
+ #buttons{
+   width:100%;
+   height: 15%;
+   display: flex;
+   flex-direction: row;
+   border-bottom: 1px solid gray;
+ }
+ 
+.box-radio-input input[type="radio"]{
+  display:none;
+}
+
+.box-radio-input input[type="radio"] + span{
+  display:inline-block;
+  background:#ffffff;
+  border:1px solid #dfdfdf;  
+  padding:0px 10px;
+  margin : 3px;
+  text-align:center;
+  height:35px;
+  line-height:33px;
+  font-weight:500;
+  cursor:pointer;
+}
+
+.box-radio-input input[type="radio"]:checked + span{
+  background: aquamarine;
+}
+
 #buttons, #texts{
    height: 6%;
 }
@@ -243,8 +307,9 @@ a{
    height:30%;
 }
 #detail-box{
-   width:66%;
-   height: 100%;
+   width:80%;
+   height: 95%;
+   margin-left : 10px;
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
@@ -314,10 +379,20 @@ a{
 input:focus, .input:focus{
 	outline: 1px solid lightgray;
 }
-.btn{ 
-    border-radius: 4px;
-    padding: 8px 0;
+
+.btn-order{
+   cursor: pointer;
+   font-weight: 400;
+   text-align: center;
+   vertical-align: middle;
+   border:1px solid transparent;
+   width:100%;
+   background-color:aquamarine;
+   margin : 2px;
+   border-radius: 4px; 
+   font-size:1.8vh;
 }
+
 .id-form-con{
 	display: flex;
     width: 100%;

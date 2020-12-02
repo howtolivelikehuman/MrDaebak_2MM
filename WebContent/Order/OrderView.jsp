@@ -4,9 +4,9 @@
 <%request.setCharacterEncoding("UTF-8"); %>
 <head>
       <meta charset="UTF-8">
-      <title>Mr.Daebak</title>
-      <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?zd">
-      <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?zdssr"></script>
+      <title>주문하기</title>
+      <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?z1111">
+      <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?z"></script>
 </head>
 <script>
 
@@ -63,11 +63,11 @@ var detailPrice={};
       </script>
 </c:if>
 
-<jsp:include page = "/layout/header.jsp">
-      <jsp:param name="title" value="주문하기"/>
-</jsp:include>
+<jsp:include page = "/layout/header.jsp"></jsp:include>
+
 <div class="container">
    <div id="order">
+   
       <div id="dinners">
          <div align="center" class="text">Dinner</div>
          <div class="sub-container">
@@ -76,16 +76,18 @@ var detailPrice={};
                <c:forEach var = "menu" items = "${ requestScope.menulist }" varStatus="status">
                   <c:choose>
 		          <c:when test = "${menu.available==0}">
-		          	<input type="radio" name="dinner-radio" value="${menu.no}" disabled onclick="click_dinner(this.value)"><del>${menu.name}</del>
+		            <label class="box-radio-input"><input type="radio" name="dinner-radio" value="${menu.no}"  disabled onclick="click_dinner(this.value)"><span>${menu.name}</span></label>
+		          	<!--<input type="radio" name="dinner-radio" value="${menu.no}" disabled onclick="click_dinner(this.value)"><del>${menu.name}</del>-->
 		          </c:when>
 		          <c:otherwise>
-		            <input type="radio" name="dinner-radio" value="${menu.no}" onclick="click_dinner(this.value)">${menu.name}
+		            <label class="box-radio-input"><input type="radio" name="dinner-radio" value="${menu.no}"  onclick="click_dinner(this.value)"><span>${menu.name}</span></label>
 		          </c:otherwise>
 		     	  </c:choose>
                </c:forEach>   
             </div>
          </div>
       </div>
+      
       <div id="styles">
          <div align="center" class="text">Style</div>
          <div class="sub-container">
@@ -94,6 +96,7 @@ var detailPrice={};
             </div>
          </div>
       </div>
+      
       <div id="details">
          <div align="center" class="text">Detail</div>
          
@@ -112,11 +115,13 @@ var detailPrice={};
             </c:forEach>
          </div>
       </div>
+      
       <div id="buttons">
-      <button class="btn" id="border-right" onclick="click_cart()">장바구니 담기</button>
-      <button class="btn" id="border-right" onclick="click_cart_delete()">장바구니 빼기</button>
-      <button class="btn" onclick="click_order()">선택 완료</button>
+      <button class="btn-order" onclick="click_cart()">장바구니 담기</button>
+      <button class="btn-order" onclick="click_cart_delete()">장바구니 빼기</button>
+      <button class="btn-order" onclick="click_order()">선택 완료</button>
       </div>
+      
       <div id="texts">
       <p class="text-info">장바구니:</p>
       <div style="overflow:auto;">

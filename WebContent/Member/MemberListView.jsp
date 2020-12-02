@@ -4,12 +4,10 @@
 <%request.setCharacterEncoding("UTF-8"); %>
 <head>
 		<meta charset="UTF-8">
-		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after1">
+		<title>회원 목록</title>
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?122">
 </head>
-<jsp:include page="/layout/header.jsp">
-	<jsp:param name = "title" value = "회원 목록" />
-</jsp:include>
+<jsp:include page="/layout/header.jsp"></jsp:include>
 
 
 <body>
@@ -52,23 +50,23 @@
 			<tr>
 				<td colspan = 5 align = "center">
 				<c:if test = "${currentpage > 3 }">
-					<input type ="Button" value = "이전" onclick = "location.href = 'MemberList.manageMem?page=${currentpage-3 }'">
+					<input class="btn-page" type ="Button" value = "이전" onclick = "location.href = 'MemberList.manageMem?page=${currentpage-3 }'">
 				</c:if>
 				<c:if test = "${currentpage > 2 }">
-					<input type ="Button" value = "${currentpage-2 }" onclick = "location.href = 'MemberList.manageMem?page=${currentpage-2 }'">	
+					<input class="btn-page" type ="Button" value = "${currentpage-2 }" onclick = "location.href = 'MemberList.manageMem?page=${currentpage-2 }'">	
 				</c:if>
 				<c:if test = "${currentpage > 1 }">
-					<input type ="Button" value = "${currentpage-1 }" onclick = "location.href = 'MemberList.manageMem?page=${currentpage-1 }'">
+					<input class="btn-page" type ="Button" value = "${currentpage-1 }" onclick = "location.href = 'MemberList.manageMem?page=${currentpage-1 }'">
 				</c:if>
-				${currentpage }
+				<input class="btn-page-selected" type ="Button" value = "${currentpage }" >
 				<c:if test = "${currentpage < totalpage }">
-					<input type ="Button" value = "${currentpage+1 }" onclick = "location.href = 'MemberList.manageMem?page=${currentpage+1 }'">
+					<input class="btn-page" type ="Button" value = "${currentpage+1 }" onclick = "location.href = 'MemberList.manageMem?page=${currentpage+1 }'">
 				</c:if>
 				<c:if test = "${currentpage+1 < totalpage }">
-					<input type ="Button" value = "${currentpage+2 }" onclick = "location.href = 'MemberList.manageMem?page=${currentpage+2 }'">
+					<input class="btn-page" type ="Button" value = "${currentpage+2 }" onclick = "location.href = 'MemberList.manageMem?page=${currentpage+2 }'">
 				</c:if>
 				<c:if test = "${currentpage+2 < totalpage }">
-					<input type ="Button" value = "다음" onclick = "location.href = 'MemberList.manageMem?page=${currentpage+3 }'">
+					<input class="btn-page" type ="Button" value = "다음" onclick = "location.href = 'MemberList.manageMem?page=${currentpage+3 }'">
 				</c:if>
 				</td>
 			</tr>			

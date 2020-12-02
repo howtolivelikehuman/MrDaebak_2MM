@@ -364,7 +364,7 @@ public class MemberDAO {
 			Member member = null;
 			int start = page * 10 -9;
 			int end = page * 10;
-			sql = "SELECT no, id, name, type FROM MEMBER LIMIT ?, ?";
+			sql = "SELECT no, id, name, type FROM MEMBER order by type desc LIMIT ?, ?";
 			try {
 				con = ds.getConnection();
 				ps = con.prepareStatement(sql);

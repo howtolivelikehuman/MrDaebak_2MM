@@ -4,14 +4,12 @@
 <%request.setCharacterEncoding("UTF-8"); %>
 <head>
 		<meta charset="UTF-8">
-		<title>Mr.Daebak</title>
+		<title>회원 가입</title>
 		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
 		<script type = "text/javascript" src ="/MrDaebak_2MM/Member/script.js?s"></script>
 </head>
 <body>
-	<jsp:include page = "/layout/header.jsp">
-		<jsp:param name="title" value="회원 가입 !"/>
-	</jsp:include>
+	<jsp:include page = "/layout/header.jsp"></jsp:include>
 
 <div class="container">	
 	<form class="form-signUp" name = "joinForm" method = "post" action = "signUpLogic.signup">

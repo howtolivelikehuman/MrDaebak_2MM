@@ -25,7 +25,7 @@ public class LogInController extends HttpServlet{
 		int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
 		String requestPage = requestURI.substring(Index); // "xxx.login" 꼴만 남게
 		
-		System.out.println("Controller 등장 " + requestPage);
+		//System.out.println("Controller 등장 " + requestPage);
 		
 		try {
 			if(requestPage.equals("LoginView.login")) { //로그인 창요청

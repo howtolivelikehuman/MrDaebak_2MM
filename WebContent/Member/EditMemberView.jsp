@@ -5,7 +5,7 @@
 
 <head>
 		<meta charset="UTF-8">
-		<title>Mr.Daebak</title>
+		<title>회원정보 수정</title>
 		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?">
 </head>
 <script>
@@ -14,9 +14,7 @@
 	}
 </script>
 <body>
-<jsp:include page = "/layout/header.jsp">
-	<jsp:param name="title" value="회원정보 확인"/>
-</jsp:include>
+<jsp:include page = "/layout/header.jsp"></jsp:include>
 <div class="container">
 <c:set var = "dto" value = "${requestScope.member}" scope = "page"/>
 <c:remove var ="dto" scope = "request"/>

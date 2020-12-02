@@ -24,7 +24,7 @@ public class EditMyProfileController extends HttpServlet{
 		int Index = requestURI.lastIndexOf("/") + 1; 
 		String requestPage = requestURI.substring(Index); 
 		
-		System.out.println("Controller 등장 " + requestPage);
+		//System.out.println("Controller 등장 " + requestPage);
 		
 		try {
 			if(requestPage.equals("Read.myprofile")) { //회원정보 받아오기 (로직)

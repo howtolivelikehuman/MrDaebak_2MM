@@ -5,7 +5,7 @@
 <head>
 	  <link rel="icon" type="image/png" href="http://example.com/myicon.png">
       <meta charset="UTF-8">
-      <title>환영합니다!</title>
+      <title>미스터 대박 디너 서비스!</title>
       <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after">
 </head>
 <body>
@@ -21,9 +21,9 @@
    </script>
 </c:if>
 
+<div class="container">
 <c:choose>
    <c:when test = "${sessionScope.Type == 0}">
-      <div class="container">
          <div class = "main-menu">
             <form class="menu" action = "Read.myprofile" method = "post">
                <button class="menu menu-submit" type="submit">내 정보 확인</button>
@@ -35,10 +35,8 @@
                <button class="menu menu-submit" type="submit">주문기록 확인</button>
             </form>  
          </div>
-      </div>
    </c:when>
    <c:when test = "${sessionScope.Type == 1}">
-   <div class="container">
          <div class = "main-menu">
             <form class="menu" action = "MemberList.manageMem?page=1" method = "post">
                <button class="menu menu-submit" type="submit">회원 관리</button>
@@ -50,19 +48,17 @@
                <button class="menu menu-submit" type="submit">주문목록 관리</button>
             </form>      
          </div>
-      </div>
    </c:when>
    <c:otherwise>
-      <div class="container">
+   
 	<div class = "main-menu">
 		<button class="menu" type="button" onclick="location.href='LoginView.login'">로그인</button>
 		<button class="menu" type="button" onclick="location.href='signUpView.signup'">회원가입</button>
 		<button class="menu" type="button" onclick="location.href='GetOrderForm.order'">비회원 주문</button>
 	</div>
-	</div>
    </c:otherwise>
 </c:choose>
-
+      </div>
 
 <jsp:include page = "/layout/footer.jsp"/>
 </body>

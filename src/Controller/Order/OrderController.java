@@ -21,7 +21,7 @@ public class OrderController extends HttpServlet{
 		String requestURI = request.getRequestURI();
 		int Index = requestURI.lastIndexOf("/") + 1;
 		String requestPage = requestURI.substring(Index);
-		System.out.println("Controller 등장 " + requestPage);
+		//System.out.println("Controller 등장 " + requestPage);
 		
 		try {
 			if(requestPage.equals("GetOrderForm.order")) { //메뉴가져오기- DB조회

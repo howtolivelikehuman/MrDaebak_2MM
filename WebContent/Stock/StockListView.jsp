@@ -4,13 +4,11 @@
 <%request.setCharacterEncoding("UTF-8"); %>
 <head>
 		<meta charset="UTF-8">
-		<title>재고</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after12">
-		<script type ="text/javascript" src = "/MrDaebak_2MM/Stock/script.js?adssr"></script>
+		<title>재고 관리</title>
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
+		<script type ="text/javascript" src = "/MrDaebak_2MM/Stock/script.js?1"></script>
 </head>
-<jsp:include page="/layout/header.jsp">
-	<jsp:param name = "title" value = "재고" />
-</jsp:include>
+<jsp:include page="/layout/header.jsp"></jsp:include>
 
 
 <body>

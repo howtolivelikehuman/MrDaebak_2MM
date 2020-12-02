@@ -5,13 +5,11 @@
 
 <head>
 		<meta charset="UTF-8">
-		<title>Mr.Daebak</title>
+		<title>개인정보 수정</title>
 		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
 </head>
 <body>
-<jsp:include page = "/layout/header.jsp">
-	<jsp:param name="title" value="개인정보 확인"/>
-</jsp:include>
+<jsp:include page = "/layout/header.jsp"></jsp:include>
 <div class="container">
 <c:set var = "dto" value = "${requestScope.member}" scope = "page"/>
 <c:remove var ="dto" scope = "request"/>

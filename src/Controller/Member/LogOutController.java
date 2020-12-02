@@ -24,7 +24,7 @@ public class LogOutController extends HttpServlet{
 		int Index = requestURI.lastIndexOf("/") + 1; 
 		String requestPage = requestURI.substring(Index);
 		
-		System.out.println("Controller 등장 " + requestPage);
+		//System.out.println("Controller 등장 " + requestPage);
 		
 		
 		try {

@@ -22,7 +22,7 @@ public class CheckMyOrderListController extends HttpServlet{
 		String requestURI = request.getRequestURI();
 		int Index = requestURI.lastIndexOf("/") + 1;
 		String requestPage = requestURI.substring(Index);
-		System.out.println("Controller 등장 " + requestPage);
+		//System.out.println("Controller 등장 " + requestPage);
 		
 		try {
 			if(requestPage.equals("MyOrderList.myorderlist")) { //주문 목록 - DB조회

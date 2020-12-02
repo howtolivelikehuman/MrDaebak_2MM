@@ -5,8 +5,8 @@
 
 <head>
 		<meta charset="UTF-8">
-		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
+		<title>상세 주문</title>
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
 </head>
 <script>
 	function setStatus(value){
@@ -14,9 +14,7 @@
 	}
 </script>
 <body>
-<jsp:include page = "/layout/header.jsp">
-	<jsp:param name="title" value="주문정보 확인"/>
-</jsp:include>
+<jsp:include page = "/layout/header.jsp"></jsp:include>
 <div class="container">
 
 <c:set var = "dto" value = "${requestScope.order}" scope = "page"/>
@@ -27,7 +25,8 @@
 			history.back();
 		</script>
 	</c:if>
-<div>
+	
+<div class = "orderlist">
 	<form action = "UpdateOrder.orderlist" method = "post">
 		<input type = "hidden" name = "order_no" value = "${dto.no}">
 		<table border = "0">
@@ -109,15 +108,13 @@
 		<button class="btn" type = "submit" >수정</button>
 		</form>
 		
-		<div class="id-form-con">
-		<form action = "DeleteOrder.orderlist" style="margin-top:3px; margin-bottom:3px;"  method = "post">  
+		<form action = "DeleteOrder.orderlist"   method = "post">  
 			<input type = "hidden" name = "order_no" value = "${dto.no}">
 			<button class="btn" type = "submit" >삭제 </button> 
 		</form>
-		<form action = "Result.orderlist" method = "post"> <button class="btn" type = "submit" >확인</button> </form>
-		</div>
-		
+		<form action = "Result.orderlist" method = "post"> <button class="btn" type = "submit" >확인</button> </form>		
 	</div>
-	</div>
+</div>
+
 <jsp:include page = "/layout/footer.jsp"/>
 </body>

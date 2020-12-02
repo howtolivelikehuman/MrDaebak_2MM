@@ -5,15 +5,13 @@
 
 <head>
 		<meta charset="UTF-8">
-		<title>Mr.Daebak</title>
+		<title>로그인</title>
 		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
 </head>
 <body>
 
 
-	<jsp:include page = "/layout/header.jsp">
-				<jsp:param name="title" value="로그인"/>
-	</jsp:include>
+	<jsp:include page = "/layout/header.jsp"></jsp:include>
 	
 	<c:if test = "${requestScope.altmsg != null}">
 		<script>

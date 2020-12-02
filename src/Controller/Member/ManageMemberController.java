@@ -23,7 +23,7 @@ public class ManageMemberController extends HttpServlet{
 		String requestURI = request.getRequestURI(); //요청된 uri 주소
 		int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
 		String requestPage = requestURI.substring(Index); // "xxx.manageMem" 꼴만 남게
-		System.out.println("Controller 등장 " + requestPage);
+		//System.out.println("Controller 등장 " + requestPage);
 		
 		try {
 			if(requestPage.equals("MemberList.manageMem")) { //회원 목록 - DB조회
