@@ -30,6 +30,6 @@ function checkId(){
 
 function checkIdFormClose(sId){
 	opener.joinForm.user_id.value = sId;
-	opener.joinForm.signUpButton.disabled=false;
+	opener.joinForm.sbButton.disabled = false;
 	window.close();
 }

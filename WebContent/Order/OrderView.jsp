@@ -5,7 +5,7 @@
 <head>
       <meta charset="UTF-8">
       <title>주문하기</title>
-      <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?z1111">
+      <link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?z1">
       <script type ="text/javascript" src = "/MrDaebak_2MM/Order/script.js?z"></script>
 </head>
 <script>

@@ -21,7 +21,7 @@ body{
    display: flex;
    width:50vw;
    height:90vh;
-   margin: 30px;
+   margin: 2px;
    background-color: aliceblue;
    flex-direction: column;
    text-align: center;
@@ -276,14 +276,16 @@ a{
   display:inline-block;
   background:#ffffff;
   border:1px solid #dfdfdf;  
-  padding:0px 10px;
-  margin : 3px;
+  padding:0px 1%;
+  /* margin : 3px; */
+  margin-left:2%;
   text-align:center;
-  height:35px;
-  line-height:33px;
+  height:100%;
+  line-height:270%;
   font-weight:500;
   cursor:pointer;
 }
+
 
 .box-radio-input input[type="radio"]:checked + span{
   background: aquamarine;
