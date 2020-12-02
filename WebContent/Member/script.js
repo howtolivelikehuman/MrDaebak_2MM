@@ -1,4 +1,5 @@
-function checkBlank(){
+
+function checkPassword(){
 	var inputs=document.getElementsByClassName('input');
 	for (var i=0;i<inputs.length-1;i++){
 		if(inputs[i].value==''){
@@ -6,9 +7,6 @@ function checkBlank(){
 			return;
 		}
 	}
-	checkPassword();
-}
-function checkPassword(){
 	var pw1 = joinForm.user_password.value;
 	var pw2 = joinForm.user_repassword.value;
 	if(pw1 != pw2){
