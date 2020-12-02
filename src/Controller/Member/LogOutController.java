@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Service.Service;
 import Service.ActionForward;
 import Service.MemberService.LogOutService;
-import Service.MemberService.SignUpService;
 
 @WebServlet("*.logout")
 public class LogOutController extends HttpServlet{

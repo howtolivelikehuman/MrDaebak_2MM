@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Service.Service;
 import Service.ActionForward;
 import Service.MemberService.EditMyProfileService;
-import Service.MemberService.SignUpService;
 
 @WebServlet("*.myprofile") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.
 public class EditMyProfileController extends HttpServlet{

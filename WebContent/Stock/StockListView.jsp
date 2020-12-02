@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>재고 관리</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12">
 		<script type ="text/javascript" src = "/MrDaebak_2MM/Stock/script.js?1"></script>
 </head>
 <jsp:include page="/layout/header.jsp"></jsp:include>
@@ -26,12 +26,11 @@
 		<c:otherwise> 
 			<table>
 				<tr align = "center">
-					<th>번호</th>
+					<th width = "7%">번호</th>
 					<th>이름</th>
 					<th>가격</th>
 					<th>수량</th>
-					<th>다음 입고일</th>
-					<th colspan="2"></th>
+					<th colspan="2">다음 입고일</th>
 				</tr>
 				<tbody id = "table_body">
 					<c:forEach var = "dto" items = "${ requestScope.list }" varStatus="status">
