@@ -1,6 +1,6 @@
 package Service;
 
-public class ActionForward { // 페이지의 다음 실행 페이지가 어디인지 
+public class ActionForward { // 다음 동작
 	private boolean isRedirect; // true : redirect 할 것이다. false : forward 할 것이다. 
 	private String nextPath; 	// 다음 경로
 	

@@ -10,6 +10,7 @@ import DTO.Customer;
 import DTO.Member;
 import Service.Service;
 import Service.ActionForward;
+import Service.EncryptSHA256;
 
 public class LogInService extends Service{
 	public ActionForward LogIn(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -18,7 +19,7 @@ public class LogInService extends Service{
 		
 		try {
 			String id = request.getParameter("user_id");
-			String password = request.getParameter("user_password");
+			String password = EncryptSHA256.SHA256(request.getParameter("user_password"));
 					
 			MemberDAO dao = MemberDAO.getInstance();
 			Member member = dao.select(id, password);

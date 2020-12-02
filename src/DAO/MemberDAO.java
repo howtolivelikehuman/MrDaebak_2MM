@@ -67,7 +67,7 @@ public class MemberDAO {
 				sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ? WHERE no = ?";
 				
 			if(member instanceof Customer) {				
-				sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ?, vip = ? WHERE no = ?";
+				sql = "UPDATE member SET pw = ), name = ?, phone = ?, address = ?, vip = ? WHERE no = ?";
 			}			
 			else if(member instanceof Employee) {
 				sql = "UPDATE member SET pw = ?, name = ?, phone = ?, address = ?, position = ? WHERE no = ?";

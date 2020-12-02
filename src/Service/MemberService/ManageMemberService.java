@@ -10,6 +10,7 @@ import DTO.Customer;
 import DTO.Employee;
 import DTO.Member;
 import Service.ActionForward;
+import Service.EncryptSHA256;
 import Service.Service;
 
 public class ManageMemberService extends Service{
@@ -75,7 +76,7 @@ public class ManageMemberService extends Service{
 		try {
 
 			int no = Integer.parseInt(request.getParameter("user_no"));
-			String password = request.getParameter("user_password");
+			String password = EncryptSHA256.SHA256(request.getParameter("user_password"));
 			String name = request.getParameter("user_name");
 			String mobile = request.getParameter("user_mobile");
 			String address= request.getParameter("user_address");

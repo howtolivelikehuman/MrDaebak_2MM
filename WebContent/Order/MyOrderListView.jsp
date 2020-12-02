@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?after">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?afte1r">
 </head>
 <jsp:include page="/layout/header.jsp">
 	<jsp:param name = "title" value = "주문 목록" />
@@ -37,13 +37,13 @@
 			</tr>
 			<c:forEach var = "dto" items = "${ requestScope.list }"  varStatus="status">
 			<tr align = "center">
-				<th>${currentpage*10 +status.index - 9 }</th>
+				<td>${currentpage*10 +status.index - 9 }</td>
 				
-				<th width="20%" align = "left"><a href = "ReadMyOrder.myorderlist?OrdNo=${dto.no}">${dto.name }</a></th>
-				<th style="font-size:0.7rem;">${dto.orderTime }</th>
-				<th>${dto.status }</th>
-				<th style="font-size:0.8rem;">${dto.totalPrice }</th>
-				<th style="font-size:0.8rem;">${dto.memberID }</th>
+				<td width="20%" align = "left"><a href = "ReadMyOrder.myorderlist?OrdNo=${dto.no}">${dto.name }</a></td>
+				<td style="font-size:0.7rem;">${dto.orderTime }</td>
+				<td>${dto.status }</th>
+				<td style="font-size:0.8rem;">${dto.totalPrice }</td>
+				<td style="font-size:0.8rem;">${dto.memberID }</td>
 				
 			</tr>	
 			</c:forEach>

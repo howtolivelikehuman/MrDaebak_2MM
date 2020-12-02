@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?21">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
 		<script type = "text/javascript" src ="/MrDaebak_2MM/Member/script.js?s"></script>
 </head>
 <body>

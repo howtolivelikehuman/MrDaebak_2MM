@@ -84,7 +84,7 @@
 			<c:forEach var = "dto_list" items = "${ dto.cart }"  varStatus="status">
 			
 			<tr align = "center">
-			<td colspan =2> -</td>
+			<td colspan =2> </td>
 			</tr>
 			
 			<tr align = "center">
@@ -109,12 +109,14 @@
 		<button class="btn" type = "submit" >수정</button>
 		</form>
 		
-		
+		<div class="id-form-con">
 		<form action = "DeleteOrder.orderlist" style="margin-top:3px; margin-bottom:3px;"  method = "post">  
 			<input type = "hidden" name = "order_no" value = "${dto.no}">
 			<button class="btn" type = "submit" >삭제 </button> 
 		</form>
 		<form action = "Result.orderlist" method = "post"> <button class="btn" type = "submit" >확인</button> </form>
+		</div>
+		
 	</div>
 	</div>
 <jsp:include page = "/layout/footer.jsp"/>

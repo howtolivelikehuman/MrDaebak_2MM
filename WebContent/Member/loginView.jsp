@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>Mr.Daebak</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?afte1r">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
 </head>
 <body>
 

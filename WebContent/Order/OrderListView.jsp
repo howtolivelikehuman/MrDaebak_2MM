@@ -40,11 +40,11 @@
 			</tr>
 			<c:forEach var = "dto" items = "${ requestScope.list }"  varStatus="status">
 			<tr align = "center">
-				<th>${currentpage*10 +status.index - 9 }</th>
+				<td>${currentpage*10 +status.index - 9 }</td>
 				
-				<th width="20%" align = "left"><a href = "ReadOrder.orderlist?OrdNo=${dto.no}">${dto.name }</a></th>
-				<th style="font-size:0.7rem;">${dto.orderTime }</th>
-				<th>
+				<td width="20%" align = "left"><a href = "ReadOrder.orderlist?OrdNo=${dto.no}">${dto.name }</a></td>
+				<td style="font-size:0.7rem;">${dto.orderTime }</td>
+				<td>
 					<c:if test="${dto.status==0}">
 					준비중
 					</c:if>
@@ -61,9 +61,9 @@
 					<c:if test="${dto.status ==4}">
 					배달완료
 					</c:if>
-				</th>
-				<th style="font-size:0.8rem;">${dto.totalPrice }</th>
-				<th style="font-size:0.8rem;">${dto.memberID }</th>
+				</td>
+				<td style="font-size:0.8rem;">${dto.totalPrice }</td>
+				<td style="font-size:0.8rem;">${dto.memberID }</td>
 				
 			</tr>	
 			</c:forEach>

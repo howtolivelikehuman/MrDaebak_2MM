@@ -34,16 +34,16 @@
 			</tr>
 			<c:forEach var = "dto" items = "${ requestScope.list }"  varStatus="status">
 			<tr align = "center">
-				<th>${currentpage*10 +status.index - 9 }</th>
-				<th width="47%" align = "left"><a href = "MemberRead.manageMem?MemNo=${dto.no}">${dto.id }</a></th>
-				<th>${dto.name }</th>
+				<td>${currentpage*10 +status.index - 9 }</td>
+				<td width="47%"><a href = "MemberRead.manageMem?MemNo=${dto.no}">${dto.id }</a></td>
+				<td>${dto.name }</td>
 				
 			<c:choose>
 				<c:when test = "${dto.type == 1}">
-					<th>Employee</th>
+					<td>Employee</td>
 				</c:when>
 				<c:otherwise>
-					<th>Customer</th>
+					<td>Customer</td>
 				</c:otherwise>
 			</c:choose>
 			

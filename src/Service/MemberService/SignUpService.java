@@ -9,6 +9,7 @@ import DTO.Employee;
 import DTO.Member;
 import Service.Service;
 import Service.ActionForward;
+import Service.EncryptSHA256;
 
 public class SignUpService extends Service{
 
@@ -32,6 +33,7 @@ public class SignUpService extends Service{
 				 dto = new Member();
 			}
 			
+			password = EncryptSHA256.SHA256(password);
 			dto.setId(id);
 			dto.setPw(password);
 			dto.setName(name);
