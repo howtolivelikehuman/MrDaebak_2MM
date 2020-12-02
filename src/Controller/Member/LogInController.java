@@ -19,42 +19,43 @@ public class LogInController extends HttpServlet{
 	private LogInService service = new LogInService();
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String requestURI = request.getRequestURI(); //요청된 uri 주소
-		int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
-		String requestPage = requestURI.substring(Index); // "xxx.login" 꼴만 남게
-		
-		//System.out.println("Controller 등장 " + requestPage);
-		
-		try {
-			if(requestPage.equals("LoginView.login")) { //로그인 창요청
-				nextAction = new ActionForward();
-				nextAction.setNextPath("/Member/loginView.jsp");
-				nextAction.setRedirect(false);
-			}
-			else if(requestPage.equals("Logic.login")) { //로그인 논리 요청
-				nextAction = service.LogIn(request, response);
-			}
-			else if(requestPage.equals("Result.login")) { //회원 창요청
-				nextAction = new ActionForward();
-				nextAction.setNextPath("/MainView.jsp");
-				nextAction.setRedirect(false);
-			}
-			
-			
-			if(nextAction != null) { //리다이렉트 방식으로 nextPath
-				if(nextAction.isRedirect()) {
-					response.sendRedirect(nextAction.getNextPath()); // nextPath 로 redirect
-				} else { //forward방식으로 nextpath
-					request.getRequestDispatcher(nextAction.getNextPath()).forward(request, response);
-				}
-			}
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+		doPost(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			doGet(request, response);
+			
+			String requestURI = request.getRequestURI(); //요청된 uri 주소
+			int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
+			String requestPage = requestURI.substring(Index); // "xxx.login" 꼴만 남게
+			
+			//System.out.println("Controller 등장 " + requestPage);
+			
+			try {
+				if(requestPage.equals("LoginView.login")) { //로그인 창요청
+					nextAction = new ActionForward();
+					nextAction.setNextPath("/Member/loginView.jsp");
+					nextAction.setRedirect(false);
+				}
+				else if(requestPage.equals("Logic.login")) { //로그인 논리 요청
+					nextAction = service.LogIn(request, response);
+				}
+				else if(requestPage.equals("Result.login")) { //회원 창요청
+					nextAction = new ActionForward();
+					nextAction.setNextPath("/MainView.jsp");
+					nextAction.setRedirect(false);
+				}
+				
+				
+				if(nextAction != null) { //리다이렉트 방식으로 nextPath
+					if(nextAction.isRedirect()) {
+						response.sendRedirect(nextAction.getNextPath()); // nextPath 로 redirect
+					} else { //forward방식으로 nextpath
+						request.getRequestDispatcher(nextAction.getNextPath()).forward(request, response);
+					}
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 	}
 }

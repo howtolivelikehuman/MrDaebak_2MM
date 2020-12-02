@@ -18,7 +18,12 @@ public class ManageStockController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		String requestURI = request.getRequestURI(); //요청된 uri 주소
 		int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
 		String requestPage = requestURI.substring(Index); // "xxx.stock" 꼴만 남게
@@ -49,9 +54,5 @@ public class ManageStockController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-	}
-	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 }

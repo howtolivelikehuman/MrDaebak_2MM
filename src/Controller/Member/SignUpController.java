@@ -20,6 +20,12 @@ public class SignUpController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		String requestURI = request.getRequestURI(); //요청된 uri 주소
 		int Index = requestURI.lastIndexOf("/") + 1; //뒤에 빼기
 		String requestPage = requestURI.substring(Index); // "xxx.signup" 꼴만 남게
@@ -57,10 +63,5 @@ public class SignUpController extends HttpServlet{
 			e.printStackTrace();
 			request.setAttribute("altmsg", "개인정보 처리 과정에서 요류가 발생하였습니다.");
 		}
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 }

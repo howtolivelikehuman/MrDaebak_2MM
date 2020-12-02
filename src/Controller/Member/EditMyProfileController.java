@@ -18,6 +18,11 @@ public class EditMyProfileController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String requestURI = request.getRequestURI(); 
 		int Index = requestURI.lastIndexOf("/") + 1; 
 		String requestPage = requestURI.substring(Index); 
@@ -59,9 +64,6 @@ public class EditMyProfileController extends HttpServlet{
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		
 	}
 }

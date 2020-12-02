@@ -12,9 +12,9 @@ public class Order {
 	private boolean isDiscounted;
 	private String orderTime;
 	
-	private int status; //상태(얘는 필요없음) 무조건 처음 주문때는 0
-	private int memberNo; //세션 (얘는 필요없음)
-	private String memberID; //세션 (얘는 필요없음)
+	private int status; //상태 무조건 처음 주문때는 0
+	private int memberNo; //세션
+	private String memberID; //세션
 	private String info; 
 	private ArrayList<OrderedMenu> cart = null;
 	

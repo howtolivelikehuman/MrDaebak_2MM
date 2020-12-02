@@ -4,7 +4,7 @@ public class OrderedMenu {
 	private int orderNo;
 	private String menu;
 	private String style;
-	private String orderedDetailList; //이거는 전에 말했듯이, 스끼다시 그냥 한줄로 쭉 합쳐서
+	private String orderedDetailList; //세부항목은 한줄로
 	private int price;
 	
 	public int getOrderNo() {
