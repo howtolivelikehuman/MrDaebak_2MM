@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Service.ActionForward;
-import Service.Service;
-import Service.MemberService.EditMyProfileService;
 import Service.MemberService.LogInService;
 
 @WebServlet("*.login") //얘는 끝에 이걸로끝나는애들 진공청소기마냥 다받음.

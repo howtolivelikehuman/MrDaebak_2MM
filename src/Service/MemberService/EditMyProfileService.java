@@ -1,10 +1,7 @@
 package Service.MemberService;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
 
 import DAO.MemberDAO;
 import DTO.Member;
