@@ -340,7 +340,7 @@ public class OrderDAO {
 		ArrayList<Order> list = new ArrayList<Order>();
 		Order order = null;
 		int start = page * 10 -10;
-		sql = "SELECT no, name, totalPrice, memberID, status, ordertime FROM ORDERS order by no desc LIMIT ?, ? ";
+		sql = "SELECT no, name, totalPrice, memberID, status, ordertime FROM ORDERS order by status,no LIMIT ?, ? ";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
@@ -375,7 +375,7 @@ public class OrderDAO {
 		Order order = null;
 		int start = page * 10 -10;
 		sql = "SELECT no, name, totalPrice, memberID, status, ordertime "
-				+ " FROM ORDERS WHERE memberNo = ? order by no desc LIMIT ?, ? ";
+				+ " FROM ORDERS WHERE memberNo = ? order by status,no LIMIT ?, ? ";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);

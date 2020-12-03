@@ -363,7 +363,7 @@ public class MemberDAO {
 			ArrayList<Member> list = new ArrayList<Member>();
 			Member member = null;
 			int start = page * 10 -9;
-			sql = "SELECT no, id, name, type FROM MEMBER LIMIT ?, ?";
+			sql = "SELECT no, id, name, type FROM MEMBER order by type desc,no LIMIT ?, ?";
 			try {
 				con = ds.getConnection();
 				ps = con.prepareStatement(sql);
