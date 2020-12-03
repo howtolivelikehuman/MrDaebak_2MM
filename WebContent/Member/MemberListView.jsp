@@ -5,7 +5,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>회원 목록</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?122">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css">
 </head>
 <jsp:include page="/layout/header.jsp"></jsp:include>
 

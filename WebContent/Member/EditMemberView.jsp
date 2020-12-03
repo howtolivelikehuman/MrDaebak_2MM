@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>회원정보 수정</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css">
 </head>
 <script>
 	function setStatus(value){
@@ -33,11 +33,11 @@
 
 
 
-<div>
+<div id='member-table'>
 	<form action = "MemberEdit.manageMem" method = "post">
 		<input type = "hidden" name = "user_no" value = "${dto.no}">
 		<input type = "hidden" name = "user_type" value = "${dto.type}">
-		<table border = "0">
+		<table>
 			<tr>
 				<th>ID</th>
 				<td>${dto.id}</td>

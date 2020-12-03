@@ -5,8 +5,8 @@
 <head>
 		<meta charset="UTF-8">
 		<title>회원 가입</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?1">
-		<script type = "text/javascript" src ="/MrDaebak_2MM/Member/script.js?s"></script>
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css">
+		<script type = "text/javascript" src ="/MrDaebak_2MM/Member/script.js"></script>
 </head>
 <body>
 	<jsp:include page = "/layout/header.jsp"></jsp:include>
@@ -23,7 +23,7 @@
 		<input class="input" type = "text" name = "user_mobile" placeholder = "전화번호를 입력하세요." required>
 		<input class="input" type = "text" name = "user_address" placeholder = "주소를 입력하세요." required>
 		<input class = "input" type = "password" name = "user_code" placeholder = "관리자라면 관리자 코드를 입력하세요.">
-		<input class="btn" type = "button" name="sbButton" value = "가입" onclick = "checkPassword()" disabled="">
+		<input class="btn" type = "button" name="sbButton" value = "가입" onclick = "checkPassword()" disabled>
 
 	</form>
 </div>

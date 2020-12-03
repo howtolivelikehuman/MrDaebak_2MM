@@ -5,8 +5,8 @@
 <head>
 		<meta charset="UTF-8">
 		<title>재고 관리</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12">
-		<script type ="text/javascript" src = "/MrDaebak_2MM/Stock/script.js?1"></script>
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css">
+		<script type ="text/javascript" src = "/MrDaebak_2MM/Stock/script.js"></script>
 </head>
 <jsp:include page="/layout/header.jsp"></jsp:include>
 

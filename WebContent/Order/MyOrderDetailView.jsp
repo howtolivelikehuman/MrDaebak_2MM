@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>내 상세 주문</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css">
 </head>
 <body>
 <c:set var = "dto" value = "${requestScope.order}" scope = "page"/>
@@ -26,7 +26,7 @@
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 <div class="container">
 	<div class = "orderlist">
-		<table border = "0">
+		<table>
 			<tr>
 				<th>주문자</th>
 				<td>${dto.name}</td>

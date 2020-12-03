@@ -5,7 +5,7 @@
 <html>
 <head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="./layout.css?12">
+		<link rel="stylesheet" type="text/css" href="./layout.css">
 	</head>
 <body>
 <p id="footer"> © 2020 2MM - All rights reserved</p>

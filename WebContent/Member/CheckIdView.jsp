@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content = "text/html" charset="UTF-8">
 <title>아이디 중복 확인</title>
-<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ss">
+<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css">
 <script type ="text/javascript" src = "/MrDaebak_2MM/Member/script.js"></script>
 </head>
 <body>

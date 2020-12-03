@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>개인정보 수정</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?ssss">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css">
 </head>
 <body>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
@@ -28,11 +28,11 @@
 	</script>
 </c:if>
 
-<div>
+<div id='member-table'>
 	<form action = "Update.myprofile" method = "post">
 		<input type = "hidden" name = "user_no" value = "${dto.no}">
 
-		<table border = "0">
+		<table>
 			<tr>
 				<th>ID</th>
 				<td>${dto.id}</td>

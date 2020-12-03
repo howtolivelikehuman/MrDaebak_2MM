@@ -6,7 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>상세 주문</title>
-		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css?12">
+		<link rel="stylesheet" type="text/css" href="/MrDaebak_2MM/layout/layout.css">
 </head>
 <script>
 	function setStatus(value){
@@ -36,7 +36,7 @@
 <div class = "orderlist">
 	<form action = "UpdateOrder.orderlist" method = "post">
 		<input type = "hidden" name = "order_no" value = "${dto.no}">
-		<table border = "0">
+		<table>
 			<tr>
 				<th>주문자</th>
 				<td width = "80%">${dto.name}</td>
