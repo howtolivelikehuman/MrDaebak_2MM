@@ -3,7 +3,7 @@
 ~~service available at http://118.67.135.24:8080/MrDaebak_2MM/MainView.jsp~~
 
 ### 1. Initial screen
-![MainImage](https://user-images.githubusercontent.com/63439738/111036356-29ed2180-8462-11eb-816c-6ac5bc697aad.png)
+![MainImage](https://user-images.githubusercontent.com/63439738/111036460-a2ec7900-8462-11eb-8c93-fb005b2e19df.png)
 
 
 ### 2. Order screen
