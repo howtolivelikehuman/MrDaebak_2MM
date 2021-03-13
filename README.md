@@ -1,5 +1,6 @@
 # MrDaebak_2MM
 
+2020/2 Software Engineering Final Task
 ~~service available at http://118.67.135.24:8080/MrDaebak_2MM/MainView.jsp~~
 
 ### 1. Initial screen
